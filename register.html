@@ -7,21 +7,42 @@
 </head>
 <body>
 
-<div id="loginContainer">
+<div id="regContainer">
     <span class="pageTitle">Create your Purple account</span>
-    <div id="loginLower">
+    <div id="regLower">
         <div id="loginFields">
-            <input type="text" placeholder="email" id="loginEmail">
-            <input type="password" placeholder="password" id="loginPassword">
+            <span class="regLabel">Email: </span>
+            <input type="text" placeholder="email" id="regEmail">
+            <span class="regLabel">Password: </span><input type="password" placeholder="password" id="regPassword">
+            <span class="regLabel">Re-enter Password: </span><input type="password" placeholder="password" id="regPassword2">
             <div>
                 <span class="regText">Already registered?</span>
                 <a href="login.html">Log in</a>
             </div>
         </div>
-        <button id="loginButton" class="mainButton">Register</buttton>
+        <button id="regButton" class="mainButton">Register</buttton>
     </div>
 </div>
 
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+
+<script>
+// Initialize Cloud Firestore through Firebase
+firebase.initializeApp({
+  apiKey: "AIzaSyA2L4AY133YKerq5ghhgwQvNZUMzTF4Wpc",
+  authDomain: "etek-1564177445364.firebaseapp.com",
+  projectId: "etek-1564177445364"
+});
+
+const db = firebase.firestore();
+
+</script>
 
 <script src='js/register.js'></script>
 </body>
