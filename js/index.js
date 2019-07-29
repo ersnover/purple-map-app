@@ -26,3 +26,9 @@ function validateAddress(){
         return address
     }
 }
+
+
+
+const Likes = () => {
+    // build likes model
+}
