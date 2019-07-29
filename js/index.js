@@ -1,5 +1,7 @@
 let usersRef = db.collection('users')
 var activeUserId = ""
+const proxy = 'https://cors-anywhere.herokuapp.com/'
+const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
 firebase.auth().onAuthStateChanged(user => {
 
@@ -45,6 +47,20 @@ addressInput.addEventListener("keypress", event=>{
 })
 
 
+function getLatLng(address) {
+    let geocoder = new google.maps.Geocoder()
+
+    geocoder.geocode({ 'address': address }, function (results, status) {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+            let latitude = results[0].geometry.location.lat()
+            console.log(latitude)
+            let longitude = results[0].geometry.location.lng()
+            console.log(longitude)
+
+        }
+    })
+}
 
 function validateAddress(){
     let address = addressInput.value
@@ -52,6 +68,6 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-        return address
+        getLatLng(address)
     }
 }
