@@ -23,18 +23,13 @@ regButton.addEventListener('click', () => {
     }
 })
 
-
 function registerUser(email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then(user => {
-        usersRef.doc(user.user.uid).set({
-            uid: user.user.uid,
-            email: email
-        })
-    })
     .catch(error => {
         var errorCode = error.code;
         var errorMessage = error.message;
         alert(`Error ${errorCode}\n\n${errorMessage}`)
       });
+
+      window.open("index.html")
 }

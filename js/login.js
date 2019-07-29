@@ -11,5 +11,6 @@ loginButton.addEventListener('click', () => {
         var errorCode = error.code;
         var errorMessage = error.message;
         alert(`Error ${errorCode}\n\n${errorMessage}`)
-      });
+    });
+    window.open("index.html")
 })
