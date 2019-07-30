@@ -1,0 +1,65 @@
+body {
+  background-color: #5352ed;
+  font-family: 'Roboto', sans-serif;
+}
+
+#loginContainer {
+  color: white;
+  margin-top: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#loginContainer .pageTitle {
+  font-size: 35px;
+}
+
+#loginContainer #loginLower {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#loginContainer #loginLower #loginFields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#loginContainer #loginLower #loginFields input {
+  height: 50px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: none;
+}
+
+#loginContainer #loginLower button {
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
+  height: 50px;
+  width: 100px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: none;
+}
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,58 @@
+@import 'mobile', 'midSize', 'desktop';
+
+body {
+    background-color: #5352ed;
+    font-family: 'Roboto', sans-serif;
+}
+
+#regContainer {
+    color: white;
+    margin-top: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pageTitle {
+        font-size: 35px;
+    }
+
+    #regLower {
+        display: flex;
+        align-items: center;
+
+        #regFields {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                height: 50px;
+                font-size: 20px;
+                color: white;
+                padding: 10px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background: none;
+            }
+        }
+        button {
+            margin-left: 10px;
+
+            font-size: 25px;
+            font-weight: 400;
+            color: white;
+            height: 100px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: none;
+
+        }
+    }
+
+    #loginLink {
+        text-align: center;
+    }
+}
+
+
+
+
