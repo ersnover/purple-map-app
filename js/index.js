@@ -94,7 +94,15 @@ async function fetchPlaces(latlng, criteriaType) {
     return await response.json()
 }
 
-async function countPlaces(address, criteriaArray) {
+class CriteriaOutput {
+    constructor(type, importance, placeIds) {
+        this.type = type
+        this.importance = importance
+        this.placeIds = placeIds
+    }
+}
+
+async function getPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
     .then(function(results) {
         let latitude = results[0].geometry.location.lat()
@@ -105,13 +113,37 @@ async function countPlaces(address, criteriaArray) {
         //insert alert(status) here
     })
 
-    //do i need to make the internal functions here async/await?
+    let criteriaOutputObjs = []
+
+    let promises = []
+    let promisesCriteria = []
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
-        fetchPlaces(latlng, criteriaType).then(function(json) {
-            console.log(json) //replace with actual code
-        })
-        //push to db
+        let criteriaImportance = obj['importance']
+        let promise = fetchPlaces(latlng, criteriaType, criteriaImportance)
+        promisesCriteria.push([criteriaType, criteriaImportance])
+        promises.push(promise)
+    })
+
+    Promise.all(promises).then(function(promiseArray) {  
+        //use index loop to call the corresponding values for each promise
+        function pushPlaceIds(json) {
+            let placeIds = []
+                json.results.forEach(function(obj) {
+                    placeIds.push(obj.place_id)
+                })
+            return placeIds
+        }
+        for (let i = 0; i < promises.length; i++) {
+            let criteriaType = promisesCriteria[i][0]
+            let criteriaImportance = promisesCriteria[i][1]
+            let placeIds = pushPlaceIds(promiseArray[i])
+            let criteriaOutputObj = new CriteriaOutput(criteriaType, criteriaImportance, placeIds)
+            criteriaOutputObjs.push(criteriaOutputObj)
+        }
+
+    }).then(function(obj) {
+        return criteriaOutputObjs 
     })
 }
 //end api calls
@@ -123,7 +155,7 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-        countPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
+        getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
     }
 }
 
