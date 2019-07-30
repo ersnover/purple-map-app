@@ -158,14 +158,10 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-<<<<<<< HEAD
         getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
-=======
         userRef.collection("addresses").add({
             address: address
         })
-        countPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
->>>>>>> master
     }
 }
 
