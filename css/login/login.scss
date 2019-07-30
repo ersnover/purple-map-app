@@ -3,6 +3,10 @@
 body {
     background-color: #5352ed;
     font-family: 'Roboto', sans-serif;
+    
+    button {
+        cursor: pointer;
+    }
 }
 
 #loginContainer {

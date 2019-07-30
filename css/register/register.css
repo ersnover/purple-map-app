@@ -3,6 +3,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+body button {
+  cursor: pointer;
+}
+
 #regContainer {
   color: white;
   margin-top: 40vh;

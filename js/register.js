@@ -5,6 +5,12 @@ const confirmPasswordField = document.getElementById('regPassword2')
 
 let usersRef = db.collection('users')
 
+confirmPasswordField.addEventListener('keyup', e => {
+    if (e.keyCode === 13) {
+        regButton.click()
+    }
+})
+
 regButton.addEventListener('click', () => {
     let email = emailField.value
     let password = passwordField.value

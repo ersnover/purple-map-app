@@ -3,6 +3,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+body button {
+  cursor: pointer;
+}
+
 .navBar {
   width: 100vw;
   height: 50px;
@@ -28,6 +32,8 @@ body {
 
 .navBar button {
   font-size: 27px;
+  background: none;
   color: white;
+  border: none;
 }
 /*# sourceMappingURL=index.css.map */

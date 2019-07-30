@@ -51,10 +51,13 @@ firebase.auth().onAuthStateChanged(user => {
 
 //  sign out function (called from signout button)
 function signOutUser() {
-    firebase.auth().signOut().then(function() {
-        window.open("login.html")
-      }).catch(error => {
-      });
+    firebase.auth().signOut()
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {     //if a user is logged out, redirect to login
+          window.location = "login.html"
+      }
+    })
 }
 
 let addressInput = document.getElementById("addressInput")
@@ -123,8 +126,6 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-        console.log(userRef)
-        console.log(activeUserId)
         userRef.collection("addresses").add({
             address: address
         })
