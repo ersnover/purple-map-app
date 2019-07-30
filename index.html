@@ -2,10 +2,18 @@
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/styles.css'>
+<script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
+<link rel='stylesheet' href='css/index/index.css'>
 <title>Purp Home</title>
 </head>
 <body>
+
+    <nav class="navBar">
+        <span class="pageTitle">Purp</span>
+        <button id="userButton"><i class="fas fa-user"></i></button>
+        <button id="signOutButton"><i class="fas fa-sign-out-alt"></i></button>
+
+    </nav>
 
     <input type="text" placeholder="Enter an address..." id="addressInput">
     <div id="text"></div>
@@ -13,14 +21,56 @@
         Submit
     </button>
 
-    <div id="signOutDiv">
-        <button id="signOutButton">Sign Out</button>
+
+
+    <div id="search-criteria-div"> 
+        <label for="restaurants">Restaurants</label>
+        <input type="checkbox" name="restaurants" id="restaurants"> 
+        <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select> <br>
+    
+        <label for="parks">Parks</label>
+        <input type="checkbox" name="parks" id="parks">
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select> <br>
+    
+        <label for="bars">Bars</label>
+        <input type="checkbox" name="bars" id="bars">    
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select> <br>
+        
+        <label for="schools">Schools</label>
+        <input type="checkbox" name="schools" id="schools">    
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select> <br>
+        
     </div>
+    <button id="see-results-btn">See Results</button>
 
 
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg&libraries=places"></script>  
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg&libraries=places"></script>    
 
 <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
@@ -39,6 +89,7 @@
 </script>
 
 
+<script src='js/config.js'></script>
 <script src='js/index.js'></script>
 <!-- <script src='js/getapi.js'></script> -->
 </body>

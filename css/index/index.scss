@@ -1,0 +1,37 @@
+@import 'mobile', 'midSize', 'desktop';
+
+body {
+    background-color: lavender;
+    font-family: 'Roboto', sans-serif;
+
+    button {
+        cursor: pointer;
+    }
+}
+//  #5352ed;
+
+.navBar {
+    width: 100vw;
+    height: 50px;
+    color: white;
+    font-size: 27px;
+    background-color:  #5352ed;
+    display: flex;
+    align-items: center;
+
+    .pageTitle {
+        margin-right: auto;
+        margin-left: 15px;
+    }
+
+    i {
+        margin-right: 20px;
+    }
+
+    button {
+        font-size: 27px;
+        background: none;
+        color: white;
+        border: none;
+    }
+}

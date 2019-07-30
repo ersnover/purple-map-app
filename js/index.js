@@ -1,13 +1,13 @@
 // user auth stuff
 let usersCollectionRef = db.collection('users')
+let userRef = ""
+
 let activeUserId = ""
 const signOutButton = document.getElementById("signOutButton")
 signOutButton.addEventListener('click', () => {
     signOutUser()
 })
 
-const proxy = 'https://cors-anywhere.herokuapp.com/'
-const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
 //test data
 class CriteriaType {
@@ -51,10 +51,13 @@ firebase.auth().onAuthStateChanged(user => {
 
 //  sign out function (called from signout button)
 function signOutUser() {
-    firebase.auth().signOut().then(function() {
-        window.open("login.html")
-      }).catch(error => {
-      });
+    firebase.auth().signOut()
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) {     //if a user is logged out, redirect to login
+          window.location = "login.html"
+      }
+    })
 }
 
 let addressInput = document.getElementById("addressInput")
@@ -90,7 +93,7 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
+    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
     return await response.json()
 }
 
@@ -155,7 +158,19 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
+<<<<<<< HEAD
         getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
+=======
+        userRef.collection("addresses").add({
+            address: address
+        })
+        countPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
+>>>>>>> master
     }
 }
 
+
+
+const Likes = () => {
+    // build likes model
+}

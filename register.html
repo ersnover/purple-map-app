@@ -2,7 +2,7 @@
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/styles.css'>
+<link rel='stylesheet' href='css/register/register.css'>
 <title>Purple Register</title>
 </head>
 <body>
@@ -10,18 +10,19 @@
 <div id="regContainer">
     <span class="pageTitle">Create your Purple account</span>
     <div id="regLower">
-        <div id="loginFields">
+        <div id="regFields">
             <span class="regLabel">Email: </span>
             <input type="text" placeholder="email" id="regEmail">
             <span class="regLabel">Password: </span><input type="password" placeholder="password" id="regPassword">
             <span class="regLabel">Re-enter Password: </span><input type="password" placeholder="password" id="regPassword2">
-            <div>
+            <div id="loginLink">
                 <span class="regText">Already registered?</span>
                 <a href="login.html">Log in</a>
             </div>
         </div>
-        <button id="regButton" class="mainButton">Register</buttton>
+        <button id="regButton">Register</buttton>
     </div>
+
 </div>
 
 
@@ -44,6 +45,7 @@ const db = firebase.firestore();
 
 </script>
 
+<script src='js/config.js'></script>
 <script src='js/register.js'></script>
 </body>
 </html>
