@@ -6,8 +6,6 @@ signOutButton.addEventListener('click', () => {
     signOutUser()
 })
 
-const proxy = 'https://cors-anywhere.herokuapp.com/'
-const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
 //test data
 class CriteriaType {
@@ -90,7 +88,7 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
+    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
     return await response.json()
 }
 
