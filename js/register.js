@@ -37,5 +37,11 @@ function registerUser(email, password) {
         alert(`Error ${errorCode}\n\n${errorMessage}`)
       });
 
-      window.open("index.html")
+      // redirect on login
+    firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {     //if a user is logged in
+            window.location = "index.html"  //redirects to index.html
+        }
+})
 }
