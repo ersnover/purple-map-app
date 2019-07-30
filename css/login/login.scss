@@ -1,0 +1,54 @@
+@import 'mobile', 'midSize', 'desktop';
+
+body {
+    background-color: #5352ed;
+    font-family: 'Roboto', sans-serif;
+}
+
+#loginContainer {
+    color: white;
+    margin-top: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .pageTitle {
+        font-size: 35px;
+    }
+
+    #loginLower {
+        display: flex;
+        align-items: flex-start;
+
+        #loginFields {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                height: 50px;
+                font-size: 20px;
+                color: white;
+                padding: 10px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background: none;
+            }
+        }
+        button {
+            margin-left: 10px;
+            font-size: 25px;
+            font-weight: 400;
+            color: white;
+            height: 50px;
+            width: 100px;
+            border: 2px solid white;
+            border-radius: 5px;
+            background: none;
+
+        }
+    }
+}
+
+
+
+

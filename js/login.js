@@ -6,6 +6,9 @@ loginButton.addEventListener('click', () => {
     email = loginEmailField.value
     password = loginPasswordField.value
 
+    loginEmailField.value = ""
+    loginPasswordField.value = ""
+
     firebase.auth().signInWithEmailAndPassword(email, password)
     .catch(error => {
         var errorCode = error.code;
