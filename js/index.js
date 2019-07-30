@@ -1,5 +1,11 @@
-let usersRef = db.collection('users')
-var activeUserId = ""
+// user auth stuff
+let usersCollectionRef = db.collection('users')
+let activeUserId = ""
+const signOutButton = document.getElementById("signOutButton")
+signOutButton.addEventListener('click', () => {
+    signOutUser()
+})
+
 const proxy = 'https://cors-anywhere.herokuapp.com/'
 const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
@@ -16,9 +22,10 @@ const typeObj3 = new CriteriaType('bus_station', 'important;')
 let criteriaArray = [typeObj1, typeObj2, typeObj3]
 //end test data
 
+//login algorithm
 firebase.auth().onAuthStateChanged(user => {
 
-    if (user) {
+    if (user) {     //if a user is logged in
         var displayName = user.displayName;
         var email = user.email;
         var emailVerified = user.emailVerified;
@@ -27,11 +34,10 @@ firebase.auth().onAuthStateChanged(user => {
         var uid = user.uid;
         var providerData = user.providerData;
 
-        usersRef.doc(uid).get()
+        usersCollectionRef.doc(uid).get()     
         .then(snapshot => {
-            if (!snapshot.exists) {
-                console.log("new user")
-                usersRef.doc(uid).set({
+            if (!snapshot.exists) {     //checks whether user is already saved in database
+                usersCollectionRef.doc(uid).set({
                     email: email,
                     uid: uid
                 })
@@ -39,8 +45,17 @@ firebase.auth().onAuthStateChanged(user => {
         })
 
         activeUserId = uid
+        userRef = usersCollectionRef.doc(uid)
     }    
 })
+
+//  sign out function (called from signout button)
+function signOutUser() {
+    firebase.auth().signOut().then(function() {
+        window.open("login.html")
+      }).catch(error => {
+      });
+}
 
 let addressInput = document.getElementById("addressInput")
 let addressIntakeBtn = document.getElementById("addressIntakeBtn")
