@@ -158,14 +158,10 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-<<<<<<< HEAD
         getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
-=======
         userRef.collection("addresses").add({
             address: address
         })
-        countPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
->>>>>>> master
     }
 }
 
@@ -173,4 +169,76 @@ function validateAddress(){
 
 const Likes = () => {
     // build likes model
+}
+
+
+// algorithm calculations (will need var names adjusted based on input)
+
+function calcChunks(criteriaOutputObjs, chunkType) {
+    let highCount = 0
+    let medCount = 0
+    let lowCount = 0
+
+    for (criteria in criteriaOutputObjs) {
+        if (criteria.criteriaImportance == "high") {
+            highCount ++
+        } else if (criteria.criteriaImportance == "med") {
+            medCount ++
+        } else if (criteria.criteriaImportance == "low") {
+            lowCount ++
+        }
+    }
+
+    let scale = 100 / (10 * highCount + 5 * medCount + 1 * lowCount)
+
+    let highChunk = 10 * scale
+    let medChunk = 5 * scale
+    let lowChunk = scale
+
+    if (chunkType == 'high') {
+        return highChunk
+    } else if (chunkType == 'med') {
+        return medChunk
+    } else {
+        return lowChunk
+    }
+}
+
+function calcCriteriaScore(num, critObj) {
+    let score
+    if (num <= critObj.avg) {
+        score = 70 * Math.pow((num / critObj.avg), 2)
+    } else if (num > critObj.avg && num <= critObj.max) {
+        score = 70 + 30 * num / (critObj.max - critObj.avg)
+    } else {
+        score = 100
+    }
+
+    return score
+}
+
+function findScore(criteria) {          // pass in criteriaOutputObject from kelseyCode.js
+    let criteriaType = criteria.criteriaType
+    let num = criteria.placeIds.length()
+
+    let individualScore = calcCriteriaScore(num, criteriaStats[criteriaType])
+
+    return individualScore
+}
+
+function findAllScores(criteriaOutputObjs) {
+    let totalScore
+
+    for (criteria in criteriaOutputObjs) {
+        let score = findScore(criteria)     //out of 100
+        let chunk = calcChunks(criteriaOutputObjs, criteria.criteriaImportance)     //also out of 100
+
+        let adjustedScore = score * chunk / 100
+
+        totalScore += adjustedScore
+
+        //updateSearchObject(bunchOfShitIDontWannaFigureOutRightNow)
+    }
+
+    return totalScore
 }
