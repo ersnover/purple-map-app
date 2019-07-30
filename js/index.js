@@ -132,3 +132,8 @@ function validateAddress(){
     }
 }
 
+
+
+const Likes = () => {
+    // build likes model
+}
