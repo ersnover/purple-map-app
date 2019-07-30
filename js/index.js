@@ -1,5 +1,7 @@
 // user auth stuff
 let usersCollectionRef = db.collection('users')
+let userRef = ""
+
 let activeUserId = ""
 const signOutButton = document.getElementById("signOutButton")
 signOutButton.addEventListener('click', () => {
@@ -123,6 +125,11 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
+        console.log(userRef)
+        console.log(activeUserId)
+        userRef.collection("addresses").add({
+            address: address
+        })
         countPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
     }
 }
