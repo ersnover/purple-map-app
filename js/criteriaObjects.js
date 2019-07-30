@@ -1,18 +1,18 @@
 const criteriaStats = {
 
-    restaurants: 
+    restaurant: 
     {
         avg: 5,
         max: 20
     },
 
-    parks:
+    park:
     {
         avg: 2,
         max: 5
     },
     
-    bars:
+    bar:
     {
         avg: 2,
         max:20

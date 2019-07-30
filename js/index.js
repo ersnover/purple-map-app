@@ -174,17 +174,37 @@ const Likes = () => {
 
 // algorithm calculations (will need var names adjusted based on input)
 
+// let criteriaOutputObjs = [
+//     {
+//       criteriaType: 'restaurant',
+//       criteriaImportance: 'high',
+//       placeIds: [1,2,3,4,5,5,6,7,9]
+//     },
+//     {
+//       criteriaType: 'park',
+//       criteriaImportance: 'med',
+//       placeIds: [1,2,3]
+//     },
+//     {
+//       criteriaType: 'bar',
+//       criteriaImportance: 'low',
+//       placeIds: [1,4,5,5,6,7,9]
+//     }
+//   ]
+
 function calcChunks(criteriaOutputObjs, chunkType) {
     let highCount = 0
     let medCount = 0
     let lowCount = 0
 
-    for (criteria in criteriaOutputObjs) {
-        if (criteria.criteriaImportance == "high") {
+    for (i = 0; i < criteriaOutputObjs.length; i++) {
+        let importance = criteriaOutputObjs[i].criteriaImportance
+
+        if (importance == "high") {
             highCount ++
-        } else if (criteria.criteriaImportance == "med") {
+        } else if (importance == "med") {
             medCount ++
-        } else if (criteria.criteriaImportance == "low") {
+        } else if (importance == "low") {
             lowCount ++
         }
     }
@@ -204,12 +224,16 @@ function calcChunks(criteriaOutputObjs, chunkType) {
     }
 }
 
-function calcCriteriaScore(num, critObj) {
-    let score
-    if (num <= critObj.avg) {
-        score = 70 * Math.pow((num / critObj.avg), 2)
-    } else if (num > critObj.avg && num <= critObj.max) {
-        score = 70 + 30 * num / (critObj.max - critObj.avg)
+
+function findScore(criteria) {          // pass in criteriaOutputObject from kelseyCode.js
+    let criteriaType = criteria.criteriaType
+    let critStatObj = criteriaStats[criteriaType]
+    let num = criteria.placeIds.length
+
+    if (num <= critStatObj.avg) {
+        score = 70 * Math.pow((num / critStatObj.avg), 2)
+    } else if (num > critStatObj.avg && num <= critStatObj.max) {
+        score = 70 + 30 * num / (critStatObj.max - critStatObj.avg)
     } else {
         score = 100
     }
@@ -217,28 +241,21 @@ function calcCriteriaScore(num, critObj) {
     return score
 }
 
-function findScore(criteria) {          // pass in criteriaOutputObject from kelseyCode.js
-    let criteriaType = criteria.criteriaType
-    let num = criteria.placeIds.length()
+function findAllScores() {
+    let totalScore = 0
 
-    let individualScore = calcCriteriaScore(num, criteriaStats[criteriaType])
-
-    return individualScore
-}
-
-function findAllScores(criteriaOutputObjs) {
-    let totalScore
-
-    for (criteria in criteriaOutputObjs) {
+    for (j = 0; j < criteriaOutputObjs.length; j ++) {
+        let criteria = criteriaOutputObjs[j]
         let score = findScore(criteria)     //out of 100
         let chunk = calcChunks(criteriaOutputObjs, criteria.criteriaImportance)     //also out of 100
 
         let adjustedScore = score * chunk / 100
 
         totalScore += adjustedScore
-
+        console.log(score, adjustedScore)
         //updateSearchObject(bunchOfShitIDontWannaFigureOutRightNow)
     }
-
+    totalScore = Math.round(totalScore)
+    console.log(totalScore)
     return totalScore
 }
