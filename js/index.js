@@ -1,21 +1,6 @@
-// user auth stuff
 let usersCollectionRef = db.collection('users')
 let userRef = ""
-
 let activeUserId = ""
-const signOutButton = document.getElementById("signOutButton")
-signOutButton.addEventListener('click', () => {
-    signOutUser()
-})
-
-
-//test data
-class CriteriaType {
-    constructor(type, importance) {
-        this.type = type
-        this.importance = importance
-    }
-}
 
 const typeObj1 = new CriteriaType('park', 'important')
 const typeObj2 = new CriteriaType('cafe', 'important')
@@ -23,8 +8,7 @@ const typeObj3 = new CriteriaType('bus_station', 'important;')
 let criteriaArray = [typeObj1, typeObj2, typeObj3]
 //end test data
 
-//login algorithm
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
     if (user) {     //if a user is logged in
         var displayName = user.displayName;
@@ -34,32 +18,39 @@ firebase.auth().onAuthStateChanged(user => {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-
-        usersCollectionRef.doc(uid).get()     
-        .then(snapshot => {
-            if (!snapshot.exists) {     //checks whether user is already saved in database
-                usersCollectionRef.doc(uid).set({
-                    email: email,
-                    uid: uid
-                })
-            }
-        })
+//Might bring this back after we figure out the registration page. TBD.
+        // usersCollectionRef.doc(uid).get()     
+        // .then(snapshot => {
+        //     if (!snapshot.exists) {     //checks whether user is already saved in database
+        //         usersCollectionRef.doc(uid).set({
+        //             email: email,
+        //             uid: uid
+        //         })
+        //     }
+        // })
+        usernameSpan.innerHTML = email
 
         activeUserId = uid
+
         userRef = usersCollectionRef.doc(uid)
     }    
 })
 
-//  sign out function (called from signout button)
-function signOutUser() {
-    firebase.auth().signOut()
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {     //if a user is logged out, redirect to login
-          window.location = "login.html"
-      }
-    })
+//test data
+class CriteriaType {
+    constructor(type, importance) {
+        this.type = type
+        this.importance = importance
+    }
 }
+
+// should we only create these object if the type is checked?
+const typeObj1 = new CriteriaType('park', 'important')
+const typeObj2 = new CriteriaType('cafe', 'important')
+const typeObj3 = new CriteriaType('bus_station', 'important;')
+let criteriaArray = [typeObj1, typeObj2, typeObj3]
+//end test data
+
 
 let addressInput = document.getElementById("addressInput")
 let addressIntakeBtn = document.getElementById("addressIntakeBtn")
@@ -171,19 +162,11 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
+    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
     return await response.json()
 }
 
-class CriteriaOutput {
-    constructor(type, importance, placeIds) {
-        this.type = type
-        this.importance = importance
-        this.placeIds = placeIds
-    }
-}
-
-async function getPlaces(address, criteriaArray) {
+async function countPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
     .then(function(results) {
         let latitude = results[0].geometry.location.lat()
@@ -194,37 +177,13 @@ async function getPlaces(address, criteriaArray) {
         //insert alert(status) here
     })
 
-    let criteriaOutputObjs = []
-
-    let promises = []
-    let promisesCriteria = []
+    //do i need to make the internal functions here async/await?
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
-        let criteriaImportance = obj['importance']
-        let promise = fetchPlaces(latlng, criteriaType, criteriaImportance)
-        promisesCriteria.push([criteriaType, criteriaImportance])
-        promises.push(promise)
-    })
-
-    Promise.all(promises).then(function(promiseArray) {  
-        //use index loop to call the corresponding values for each promise
-        function pushPlaceIds(json) {
-            let placeIds = []
-                json.results.forEach(function(obj) {
-                    placeIds.push(obj.place_id)
-                })
-            return placeIds
-        }
-        for (let i = 0; i < promises.length; i++) {
-            let criteriaType = promisesCriteria[i][0]
-            let criteriaImportance = promisesCriteria[i][1]
-            let placeIds = pushPlaceIds(promiseArray[i])
-            let criteriaOutputObj = new CriteriaOutput(criteriaType, criteriaImportance, placeIds)
-            criteriaOutputObjs.push(criteriaOutputObj)
-        }
-
-    }).then(function(obj) {
-        return criteriaOutputObjs 
+        fetchPlaces(latlng, criteriaType).then(function(json) {
+            console.log(json) //replace with actual code
+        })
+        //push to db
     })
 }
 //end api calls
@@ -243,20 +202,13 @@ function validateAddress(){
     }
 }
 
-
-
-const Likes = () => {
-    // build likes model
-}
-
-
-// algorithm calculations (will need var names adjusted based on input)
-
+// // algorithm calculations (will need var names adjusted based on input)
+// let address = "1200 richmond"
 // let criteriaOutputObjs = [
 //     {
 //       criteriaType: 'restaurant',
 //       criteriaImportance: 'high',
-//       placeIds: [1,2,3,4,5,5,6,7,9]
+//       placeIds: [1,2,3,4,5,5,6,7,9]          please for the love of god don't delete this
 //     },
 //     {
 //       criteriaType: 'park',
@@ -270,36 +222,26 @@ const Likes = () => {
 //     }
 //   ]
 
-function calcChunks(criteriaOutputObjs, chunkType) {
-    let highCount = 0
-    let medCount = 0
-    let lowCount = 0
+function calcScoreScale(criteriaOutputObjs) {
+    let highPriority = 0
+    let medPriority = 0
+    let lowPriority = 0
 
     for (i = 0; i < criteriaOutputObjs.length; i++) {
         let importance = criteriaOutputObjs[i].criteriaImportance
 
         if (importance == "high") {
-            highCount ++
+            highPriority ++
         } else if (importance == "med") {
-            medCount ++
+            medPriority ++
         } else if (importance == "low") {
-            lowCount ++
+            lowPriority ++
         }
     }
 
-    let scale = 100 / (10 * highCount + 5 * medCount + 1 * lowCount)
+    let scale = 100 / (10 * highPriority + 5 * medPriority + 1 * lowPriority)           // edit score scaling and ALSO in findAllScores()
 
-    let highChunk = 10 * scale
-    let medChunk = 5 * scale
-    let lowChunk = scale
-
-    if (chunkType == 'high') {
-        return highChunk
-    } else if (chunkType == 'med') {
-        return medChunk
-    } else {
-        return lowChunk
-    }
+    return scale
 }
 
 
@@ -319,21 +261,37 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     return score
 }
 
-function findAllScores() {
+function generateScoreObjects(criteriaOutputObjs) {         // runs individual scores, calculates final score, builds and outputs Score Report object
     let totalScore = 0
+    let parameterInfoArray = []
+
+    let scoreScale = calcScoreScale(criteriaOutputObjs)
 
     for (j = 0; j < criteriaOutputObjs.length; j ++) {
         let criteria = criteriaOutputObjs[j]
+        let num = criteriaOutputObjs[j].placeIds.length
         let score = findScore(criteria)     //out of 100
-        let chunk = calcChunks(criteriaOutputObjs, criteria.criteriaImportance)     //also out of 100
+        let priorityScale
 
-        let adjustedScore = score * chunk / 100
+        if (criteria.criteriaImportance == "high") {
+            priorityScale = 10
+        } else if (criteria.criteriaImportance == "med") {      // priority scaling
+            priorityScale = 5
+        } else {
+            priorityScale = 1
+        }
+
+        let adjustedScore = score * scoreScale * priorityScale / 100
 
         totalScore += adjustedScore
-        console.log(score, adjustedScore)
-        //updateSearchObject(bunchOfShitIDontWannaFigureOutRightNow)
+        
+        let parameterObj = new ParameterInfo(criteria.CriteriaType, criteria.criteriaImportance, num, score, adjustedScore)
+        parameterInfoArray.push(parameterObj)
+        
     }
+
     totalScore = Math.round(totalScore)
-    console.log(totalScore)
-    return totalScore
+    let reportObject = new ReportObject(address, parameterInfoArray, totalScore, scoreScale)
+
+    return reportObject
 }

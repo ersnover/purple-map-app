@@ -1,34 +1,93 @@
-const criteriaStats = {
+class ReportObject {                    // used in building of score report
+    constructor(address, parameterInfoArray, score, scale) {
+        this.address = address
+        this.parameterInfoArray = parameterInfoArray
+        this.score = score
+        this.scale = scale
+    }
+}
+
+class ParameterInfo {
+    constructor(type, importance, number, score, tSC) {
+        this.type = type
+        this.importance = importance
+        this.number = number
+        this.score = score
+        this.totalScoreContribution = tSC
+    }
+}
+const criteriaStats = {     ///// can potentially add radius modifiers to diving locations like grocery stores
 
     restaurant: 
     {
-        placeDisplayName: 'Restaurants',
-        googleidname: 'restaurant',
-        avg: 5,
+        gooogleidname: "restaurant",
+        placeDisplayName: "Restaurants",
+        avg: 13.16,
         max: 20
     },
 
     park:
     {
-        placeDisplayName: 'Parks',
-        googleidname: 'park',
-        avg: 2,
-        max: 5
+        gooogleidname: "park",
+        placeDisplayName: "Parks",
+        avg: 3.88,
+        max: 20
     },
     
     bar:
     {
-        placeDisplayName: 'Bars',
-        googleidname: 'bar',
-        avg: 2,
+        gooogleidname: "bar",
+        placeDisplayName: "Bars",
+        avg: 7.28,
         max:20
     },
-    
-    school:
+    gym:
     {
-        placeDisplayName: 'Schools',
-        googleidname: 'school',
-        avg: 2,
-        max:20
+        gooogleidname: "gym",
+        placeDisplayName: "Gyms",
+        avg: 6.88,
+        max: 20
+    },
+    atm:
+    {
+        gooogleidname: "atm",
+        placeDisplayName: "ATMs",
+        avg: 9.64,
+        max: 20
+    },
+    convenience_store:
+    {
+        gooogleidname: "convenience_store",
+        placeDisplayName: "Convenience Stores",
+        avg: 4.92,
+        max: 20
+    },
+    bus_station:
+    {
+        gooogleidname: "bus_station",
+        placeDisplayName: "Bus Stations",
+        avg: 13.4,
+        max: 20
+    },
+    liquor_store:
+    {
+        gooogleidname: "liquor_store",
+        placeDisplayName: "Liquor Stores",
+        avg: 1.92,
+        max: 15
+    },
+    post_office:
+    {
+        gooogleidname: "post_office",
+        placeDisplayName: "Post Offices",
+        avg: 0.4,
+        max: 2
+    },
+    supermarket:
+    {
+        gooogleidname: "supermarket",
+        placeDisplayName: "Supermarkets",
+        avg: 0.8,
+        max: 5
     }
 }
