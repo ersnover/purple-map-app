@@ -362,7 +362,7 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     } else {
         score = 100
     }
-    
+
     return score
 }
 
