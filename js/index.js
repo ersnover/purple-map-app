@@ -80,27 +80,6 @@ addressInput.addEventListener("keypress", event=>{
 })
 
 
-
-// placeTypes = [
-//     {
-//         placeDisplayName: 'Restaurants',
-//         googleidname: 'restaurant'
-//     },
-//     {
-//         placeDisplayName: 'Parks',
-//         googleidname: 'park'
-//     },
-//     {
-//         placeDisplayName: 'Bars',
-//         googleidname: 'bar'
-//     },
-//     {
-//         placeDisplayName: 'Schools',
-//         googleidname: 'school'
-//     }
-// ]
-
-
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
 placeTypes = Object.keys(criteriaStats)
