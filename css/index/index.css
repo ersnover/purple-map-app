@@ -1,8 +1,8 @@
 body {
-  background-color: lavender;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
 }
-
 body button {
   cursor: pointer;
 }
@@ -10,30 +10,72 @@ body button {
 .navBar {
   width: 100vw;
   height: 50px;
-  color: white;
+  color: #572a7a;
   font-size: 27px;
-  background-color: #5352ed;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: white;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
+  position: fixed;
 }
-
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
 }
-
 .navBar i {
   margin-right: 20px;
 }
-
 .navBar button {
   font-size: 27px;
   background: none;
   color: white;
   border: none;
 }
+
+#container {
+  background-image: linear-gradient(to top, rgba(63, 20, 113, 0.5), rgba(170, 144, 193, 0.5)), url(../../images/mainbackground.jpg);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addressIntakeDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 50vh;
+  padding: 20px;
+}
+#addressIntakeDiv h1 {
+  color: #572a7a;
+  font-size: 3.2em;
+}
+#addressIntakeDiv #addressInput {
+  width: 60%;
+  padding: 15px;
+  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px black solid;
+}
+#addressIntakeDiv #addressInput:focus {
+  outline: none;
+  border: #572a7a 2px solid;
+}
+#addressIntakeDiv #addressIntakeBtn {
+  background-color: #572a7a;
+  color: white;
+  padding: 5px 20px;
+  font-size: 1.5em;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+#addressIntakeDiv #addressIntakeBtn:focus {
+  outline: none;
+}
+
 /*# sourceMappingURL=index.css.map */

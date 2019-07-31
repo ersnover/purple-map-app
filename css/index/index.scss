@@ -1,8 +1,12 @@
 @import 'mobile', 'midSize', 'desktop';
 
+$purple: #572a7a;
+
 body {
-    background-color: lavender;
+
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
 
     button {
         cursor: pointer;
@@ -13,11 +17,12 @@ body {
 .navBar {
     width: 100vw;
     height: 50px;
-    color: white;
+    color: $purple;
     font-size: 27px;
-    background-color:  #5352ed;
+    background-color:  white;
     display: flex;
     align-items: center;
+    position: fixed;
 
     .pageTitle {
         margin-right: auto;
@@ -34,4 +39,59 @@ body {
         color: white;
         border: none;
     }
+}
+
+#container{
+    
+    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgb(170, 144, 193, 0.50)),
+                    url(../../images/mainbackground.jpg);
+    background-size: cover; 
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;            
+}
+
+#addressIntakeDiv {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 50%;
+    height: 50vh;
+    padding: 20px;
+    h1{
+        color: $purple;
+        font-size: 3.2em;
+    }
+    #addressInput{
+        width: 60%;
+        padding: 15px;
+        border-radius: 10px;
+        border-radius: 15px;
+        border: 1px black solid;
+    }
+
+    #addressInput:focus{
+        outline: none;
+        border: $purple 2px solid;
+    }
+    #addressIntakeBtn{
+        background-color: $purple;
+        color: white;
+        padding: 5px 20px;
+        font-size: 1.5em;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    #addressIntakeBtn:focus{
+        outline:none;
+    }
+    
+}
+
+.toTitleCase{
+    text-transform: capitalize;
 }
