@@ -81,36 +81,35 @@ addressInput.addEventListener("keypress", event=>{
 
 
 
-placeTypes = [
-    {
-        placeDisplayName: 'Restaurants',
-        googleidname: 'restaurant'
-    },
-    {
-        placeDisplayName: 'Parks',
-        googleidname: 'park'
-    },
-    {
-        placeDisplayName: 'Bars',
-        googleidname: 'bar'
-    },
-    {
-        placeDisplayName: 'Schools',
-        googleidname: 'school'
-    },
-    {
-        placeDisplayName: 'Clubs',
-        googleidname: 'club'
-    }
-]
+// placeTypes = [
+//     {
+//         placeDisplayName: 'Restaurants',
+//         googleidname: 'restaurant'
+//     },
+//     {
+//         placeDisplayName: 'Parks',
+//         googleidname: 'park'
+//     },
+//     {
+//         placeDisplayName: 'Bars',
+//         googleidname: 'bar'
+//     },
+//     {
+//         placeDisplayName: 'Schools',
+//         googleidname: 'school'
+//     }
+// ]
 
 
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
-const places = placeTypes.map((place, index) => {
+placeTypes = Object.keys(criteriaStats)
+
+placeTypes.map((type, index) => {
+    
     const markup = `
     
-    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
+    <label for="place-type-${index}" id="${criteriaStats[type].googleidname}">${criteriaStats[type].placeDisplayName}</label>
     <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
     <select id="select-${index}" class="importance-selector">
         <option value="3">3</option>
@@ -120,10 +119,14 @@ const places = placeTypes.map((place, index) => {
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
-    console.log(`place-type-${index} select-${index}`)
-
-
 })
+
+
+
+
+
+
+
 
 
 // Creat a map ? ...to get all of the id's below and create javascript variables for each
