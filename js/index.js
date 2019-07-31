@@ -230,13 +230,13 @@ function validateAddress(){
     }
 }
 
-// algorithm calculations (will need var names adjusted based on input)
-
+// // algorithm calculations (will need var names adjusted based on input)
+// let address = "1200 richmond"
 // let criteriaOutputObjs = [
 //     {
 //       criteriaType: 'restaurant',
 //       criteriaImportance: 'high',
-//       placeIds: [1,2,3,4,5,5,6,7,9]
+//       placeIds: [1,2,3,4,5,5,6,7,9]          please for the love of god don't delete this
 //     },
 //     {
 //       criteriaType: 'park',
@@ -289,13 +289,15 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     return score
 }
 
-function findAllScores() {
+function generateScoreObjects(criteriaOutputObjs) {         // runs individual scores, calculates final score, builds and outputs Score Report object
     let totalScore = 0
+    let parameterInfoArray = []
 
     let scoreScale = calcScoreScale(criteriaOutputObjs)
 
     for (j = 0; j < criteriaOutputObjs.length; j ++) {
         let criteria = criteriaOutputObjs[j]
+        let num = criteriaOutputObjs[j].placeIds.length
         let score = findScore(criteria)     //out of 100
         let priorityScale
 
@@ -310,10 +312,14 @@ function findAllScores() {
         let adjustedScore = score * scoreScale * priorityScale / 100
 
         totalScore += adjustedScore
-        console.log(score, adjustedScore)
-        //updateSearchObject(bunchOfShitIDontWannaFigureOutRightNow)
+        
+        let parameterObj = new ParameterInfo(criteria.CriteriaType, criteria.criteriaImportance, num, score, adjustedScore)
+        parameterInfoArray.push(parameterObj)
+        
     }
+
     totalScore = Math.round(totalScore)
-    console.log(totalScore)
-    return totalScore
+    let reportObject = new ReportObject(address, parameterInfoArray, totalScore, scoreScale)
+
+    return reportObject
 }
