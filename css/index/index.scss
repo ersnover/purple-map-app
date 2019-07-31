@@ -17,6 +17,14 @@ body {
 }
 //  #5352ed;
 
+h1{
+    color: $purple;
+    font-family: $headerFont;
+    font-weight: 700;
+    font-size: 3.2em;
+    margin-bottom: 10px;
+}
+
 .navBar {
     width: 100vw;
     height: 50px;
@@ -26,6 +34,7 @@ body {
     display: flex;
     align-items: center;
     position: fixed;
+    box-shadow: $box-shadow;
 
     .pageTitle {
         margin-right: auto;
@@ -35,12 +44,17 @@ body {
     i {
         margin-right: 20px;
     }
-
+    i:active{
+        outline:none;
+    }
     button {
         font-size: 27px;
         background: none;
         color: $purple;
         border: none;
+    }
+    #userButton:focus{
+        outline:none;
     }
 }
 
@@ -67,13 +81,7 @@ body {
     height: 50vh;
     padding: 60px 50px;
     box-shadow: $box-shadow;
-    h1{
-        color: $purple;
-        font-family: $headerFont;
-        font-weight: 700;
-        font-size: 3.2em;
-        margin-bottom: 10px;
-    }
+    
     p{
         width: 80%;
         color: $gray;
@@ -91,22 +99,6 @@ body {
     #addressInput:focus{
         outline: none;
         border: $purple 2px solid;
-    }
-    #addressIntakeBtn{
-        background-color: $purple;
-        color: white;
-        width:47%;
-        padding: 10px 30px;
-        font-size: 1.5em;
-        border-radius: 15px;
-        margin-top: 10px;
-        box-shadow: $box-shadow;
-    }
-    #addressIntakeBtn:focus{
-        outline:none;
-    }
-    #addressIntakeBtn:active{
-        transform: translate(0px, 1px);
     }
     
 }
@@ -153,16 +145,42 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10%;
     .pageTitle{
         color: $purple;
         font-family: $headerFont;
-        font-size: 2em;
+        font-size: 3em;
+        margin-bottom: 10%;
     }
     .textItem{
-        width:80%;
+        width:65%;
         margin-bottom:20px;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid black;
+        font-size:1.2em;
+    }
+    .textItem:focus{
+        outline: none;
     }
    
 }
 
 
+.mainButton {
+    background-color: $purple;
+        color: white;
+        width:47%;
+        padding: 10px 30px;
+        font-size: 1.5em;
+        border-radius: 15px;
+        margin-top: 10px;
+        box-shadow: $box-shadow;
+}
+
+.mainButton:focus{
+    outline:none;
+}
+.mainButton:active{
+    transform: translate(0px, 1px);
+}
