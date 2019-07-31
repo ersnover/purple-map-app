@@ -1,22 +1,37 @@
-// user auth stuff
 let usersCollectionRef = db.collection('users')
 let userRef = ""
 let activeUserId = ""
-const signOutButton = document.getElementById("signOutButton")
-signOutButton.addEventListener('click', () => {
-    signOutUser()
-})
-
-//  sign out function (called from signout button)
-function signOutUser() {
-    firebase.auth().signOut().then(function() {
-        window.open("login.html")
-      }).catch(error => {
-      });
-}
 
 const proxy = 'https://cors-anywhere.herokuapp.com/'
 const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
+
+firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+
+    if (user) {     //if a user is logged in
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+//Might bring this back after we figure out the registration page. TBD.
+        // usersCollectionRef.doc(uid).get()     
+        // .then(snapshot => {
+        //     if (!snapshot.exists) {     //checks whether user is already saved in database
+        //         usersCollectionRef.doc(uid).set({
+        //             email: email,
+        //             uid: uid
+        //         })
+        //     }
+        // })
+        usernameSpan.innerHTML = email
+
+        activeUserId = uid
+
+        userRef = usersCollectionRef.doc(uid)
+    }    
+})
 
 //test data
 class CriteriaType {
@@ -32,34 +47,6 @@ const typeObj2 = new CriteriaType('cafe', 'important')
 const typeObj3 = new CriteriaType('bus_station', 'important;')
 let criteriaArray = [typeObj1, typeObj2, typeObj3]
 //end test data
-
-//login algorithm
-firebase.auth().onAuthStateChanged(user => {
-
-    if (user) {     //if a user is logged in
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-
-        usersCollectionRef.doc(uid).get()     
-        .then(snapshot => {
-            if (!snapshot.exists) {     //checks whether user is already saved in database
-                usersCollectionRef.doc(uid).set({
-                    email: email,
-                    uid: uid
-                })
-            }
-        })
-
-        activeUserId = uid
-        userRef = usersCollectionRef.doc(uid)
-    }    
-})
-
 
 
 let addressInput = document.getElementById("addressInput")
@@ -80,53 +67,28 @@ addressInput.addEventListener("keypress", event=>{
 })
 
 
+// const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
-placeTypes = [
-    {
-        placeDisplayName: 'Restaurants',
-        googleidname: 'restaurant'
-    },
-    {
-        placeDisplayName: 'Parks',
-        googleidname: 'park'
-    },
-    {
-        placeDisplayName: 'Bars',
-        googleidname: 'bar'
-    },
-    {
-        placeDisplayName: 'Schools',
-        googleidname: 'school'
-    },
-    {
-        placeDisplayName: 'Clubs',
-        googleidname: 'club'
-    }
-]
-
-
-const searchCriteriaDiv = document.getElementById('search-criteria-div')
-
-const places = placeTypes.map((place, index) => {
-    const markup = `
+// const places = criteriaStats.forEach((place, index) => {
+//     const markup = `
     
-    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
-    <select id="select-${index}" class="importance-selector">
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1</option>
-    </select> <br>
-    `
+//     <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
+//     <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
+//     <select id="select-${index}" class="importance-selector">
+//         <option value="3">3</option>
+//         <option value="2">2</option>
+//         <option value="1">1</option>
+//     </select> <br>
+//     `
 
-    searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
-    console.log(`place-type-${index} select-${index}`)
-
-
-})
+//     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
+//     console.log(`place-type-${index} select-${index}`)
 
 
-// Creat a map ? ...to get all of the id's below and create javascript variables for each
+// })
+
+
+// Create a map ? ...to get all of the id's below and create javascript variables for each
 
 // run a for each function to apply the getPlaceCriteria for all of the place criteria
 
@@ -269,34 +231,7 @@ function validateAddress(){
 }
 
 
-//Pop up Login
 
-let modal = document.getElementById("loginModal")
-
-let btn = document.getElementById("userButton")
-
-let closeBtn = document.getElementsByClassName("close")[0];
-
-btn.onclick = function(){
-    modal.style.display = "block";
-
-}
-
-
-closeBtn.onclick = function() {
-    
-    modal.style.display = "block";
-}
-
-closeBtn.onclick = function(){
-    modal.style.display = "none";
-}
-
-window.onclick = function(event){
-    if(event.target == modal){
-        modal.style.display ="none";
-    }
-}
 
 
 // algorithm calculations (will need var names adjusted based on input)
