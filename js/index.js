@@ -92,7 +92,7 @@ placeTypes = [
     },
     {
         placeDisplayName: 'Bars',
-        googleidname: 'park'
+        googleidname: 'bar'
     },
     {
         placeDisplayName: 'Schools',
@@ -120,37 +120,52 @@ const places = placeTypes.map((place, index) => {
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
+    console.log(`place-type-${index} select-${index}`)
+
+
 })
 
 
+// Creat a map ? ...to get all of the id's below and create javascript variables for each
+
+// run a for each function to apply the getPlaceCriteria for all of the place criteria
 
 
 
 
 
+// find out how to limit the number of selections
 
+// about the radius input?
 
-let placeTypeOne = document.getElementById('place-type-1')
-let placeTypeTwo = document.getElementById('place-type-2')
-let placeTypeThree = document.getElementById('place-type-3')
-let placeTypeFour = document.getElementById('place-type-4')
+// is there an obj/var created for the address input
 
-let placeTypeOneImportance = document.getElementById('select-1')
-let placeTypeTwoImportance = document.getElementById('select-2')
-let placeTypeThreeImportance = document.getElementById('select-3')
-let placeTypeFourImportance = document.getElementById('select-4')
+// id's of the place types
+const placeTypeOne = document.getElementById('place-type-0')
+const placeTypeTwo = document.getElementById('place-type-1')
+const placeTypeThree = document.getElementById('place-type-2')
+const placeTypeFour = document.getElementById('place-type-3')
+
+// id's of importance selector of the place types
+const placeTypeOneImportance = document.getElementById('select-0')
+const placeTypeTwoImportance = document.getElementById('select-1')
+const placeTypeThreeImportance = document.getElementById('select-2')
+const placeTypeFourImportance = document.getElementById('select-3')
 
 const seeResultsButton = document.getElementById('see-results-btn')
 
 seeResultsButton.addEventListener('click', () => {
 
-    console.log(getPlaceCriteria(placeTypeOne, placeTypeOneImportance))
-    console.log(getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance))
-    console.log(getPlaceCriteria(placeTypeThree, placeTypeThreeImportance))
-    console.log(getPlaceCriteria(placeTypeFour, placeTypeFourImportance))
+    getPlaceCriteria(placeTypeOne, placeTypeOneImportance)
+    getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance)
+    getPlaceCriteria(placeTypeThree, placeTypeThreeImportance)
+    getPlaceCriteria(placeTypeFour, placeTypeFourImportance)
+    console.log(searchObjs)
 
 
 })
+
+const searchObjs = []
 
 function getPlaceCriteria (placeTypeID, placeTypeImportance) {
     
@@ -161,9 +176,16 @@ function getPlaceCriteria (placeTypeID, placeTypeImportance) {
             placeTypeImportance: placeTypeImportance.value
         }
 
+        if (obj) {
+            searchObjs.push(obj)
+        }
         return obj
     }    
+
+    
 }
+
+
 
 
 let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
@@ -173,8 +195,6 @@ allPlaceTypeCheckboxes.forEach(checkbox => {
         showPlaceTypeImportanceSelector(this)
     })
 })
-
-
 
 function showPlaceTypeImportanceSelector(checkbox) {
     let selectId = checkbox.dataset.selectid
