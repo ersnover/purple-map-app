@@ -1,8 +1,8 @@
 body {
-  background-color: lavender;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
 }
-
 body button {
   cursor: pointer;
 }
@@ -10,30 +10,141 @@ body button {
 .navBar {
   width: 100vw;
   height: 50px;
-  color: white;
+  color: #572a7a;
   font-size: 27px;
-  background-color: #5352ed;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: white;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
+  position: fixed;
 }
-
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
 }
-
 .navBar i {
   margin-right: 20px;
 }
-
 .navBar button {
   font-size: 27px;
   background: none;
-  color: white;
+  color: #572a7a;
   border: none;
 }
+
+#container {
+  background-image: linear-gradient(to top, rgba(63, 20, 113, 0.5), rgba(170, 144, 193, 0.5)), url(../../images/mainbackground.jpg);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addressIntakeDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 50vh;
+  padding: 60px 50px;
+  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
+}
+#addressIntakeDiv h1 {
+  color: #572a7a;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 3.2em;
+  margin-bottom: 10px;
+}
+#addressIntakeDiv p {
+  width: 80%;
+  color: #777;
+  text-align: center;
+}
+#addressIntakeDiv #addressInput {
+  width: 90%;
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px black solid;
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+#addressIntakeDiv #addressInput:focus {
+  outline: none;
+  border: #572a7a 2px solid;
+}
+#addressIntakeDiv #addressIntakeBtn {
+  background-color: #572a7a;
+  color: white;
+  width: 47%;
+  padding: 10px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+  margin-top: 10px;
+  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
+}
+#addressIntakeDiv #addressIntakeBtn:focus {
+  outline: none;
+}
+#addressIntakeDiv #addressIntakeBtn:active {
+  transform: translate(0px, 1px);
+}
+
+.toTitleCase {
+  text-transform: capitalize;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  width: 70%;
+  height: 70vh;
+  border-radius: 20px;
+}
+.modal .modal-content .close {
+  color: #777;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal .modal-content .close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#loginContainer .pageTitle {
+  color: #572a7a;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 2em;
+}
+#loginContainer .textItem {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
 /*# sourceMappingURL=index.css.map */

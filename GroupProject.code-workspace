@@ -1,0 +1,11 @@
+{
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "my-local-etek-project",
+        "liveServer.settings.port": 5501
+    },
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
+}

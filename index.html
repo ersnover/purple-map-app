@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
 <link rel='stylesheet' href='css/index/index.css'>
@@ -15,54 +16,75 @@
 
     </nav>
 
-    <input type="text" placeholder="Enter an address..." id="addressInput">
-    <div id="text"></div>
-    <button id="addressIntakeBtn">
-        Submit
-    </button>
+    <div id="container">
+        <div id ="addressIntakeDiv">
+            <h1>Purp.</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium natus quidem facilis, animi eveniet blanditiis perferendis porro doloribus? Porro eligendi optio cum aspernatur iure nesciunt excepturi voluptatum repudiandae molestias in!</p>
+                <input type="text" placeholder="Enter an address..." id="addressInput">
+                <div id="text"></div>
+                <button id="addressIntakeBtn">
+                    Submit
+                </button>
+        </div>
+        
+    </div>
+
+
+    <!--POP UP LOGIN-->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginContainer">
+                    <span class="pageTitle">Welcome to Purple</span>
+
+                            <input type="text" placeholder="email" id="loginEmail" class="textItem">
+                            <input type="password" placeholder="password" id="loginPassword" class="textItem">
+                            <div>
+                                <span class="regText">Don't have an account?</span>
+                                <a href="register.html">Sign up here</a>
+                            </div>
+                        </div>
+                        <button id="loginButton" class="mainButton">Go!</buttton>
+                    </div>
+                </div>
+        </div>
+
+    </div>
 
 
 
     <div id="search-criteria-div"> 
-        <label for="restaurants">Restaurants</label>
-        <input type="checkbox" name="restaurants" id="restaurants"> 
-        <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
+        <!-- <label for="place-type-1" id="restaurant">Restaurants</label>
+        <input type="checkbox" name="place-type-1" id="place-type-1" class="place-type-checkbox" data-selectid="select-1"> 
+        <select id="select-1" class="importance-selector">
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
         </select> <br>
     
-        <label for="parks">Parks</label>
-        <input type="checkbox" name="parks" id="parks">
-        <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
+        <label for="place-type-2" id="park">Parks</label>
+        <input type="checkbox" name="place-type-2" id="place-type-2" class="place-type-checkbox" data-selectid="select-2">
+        <select id="select-2" class="importance-selector">
             <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
         </select> <br>
     
-        <label for="bars">Bars</label>
-        <input type="checkbox" name="bars" id="bars">    
-        <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
+        <label for="place-type-3" id="bar">Bars</label>
+        <input type="checkbox" name="place-type-3" id="place-type-3" class="place-type-checkbox" data-selectid="select-3">    
+        <select id="select-3" class="importance-selector">
             <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
         </select> <br>
         
-        <label for="schools">Schools</label>
-        <input type="checkbox" name="schools" id="schools">    
-        <select>
-            <option value="1">1</option>
-            <option value="2">2</option>
+        <label for="place-type-4" id="school">Schools</label>
+        <input type="checkbox" name="place-type-4" id="place-type-4" class="place-type-checkbox" data-selectid="select-4">    
+        <select id="select-4" class="importance-selector">
             <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select> <br>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select> <br> -->
         
     </div>
     <button id="see-results-btn">See Results</button>
@@ -91,6 +113,7 @@
 <script src='js/criteriaObjects.js'></script>
 <script src='js/config.js'></script>
 <script src='js/index.js'></script>
+<script src='js/login.js'></script>
 <!-- <script src='js/getapi.js'></script> -->
 </body>
 </html>

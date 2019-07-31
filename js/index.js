@@ -8,6 +8,8 @@ signOutButton.addEventListener('click', () => {
     signOutUser()
 })
 
+const proxy = 'https://cors-anywhere.herokuapp.com/'
+const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
 //test data
 class CriteriaType {
@@ -16,6 +18,8 @@ class CriteriaType {
         this.importance = importance
     }
 }
+
+// should we only create these object if the type is checked?
 const typeObj1 = new CriteriaType('park', 'important')
 const typeObj2 = new CriteriaType('cafe', 'important')
 const typeObj3 = new CriteriaType('bus_station', 'important;')
@@ -51,13 +55,10 @@ firebase.auth().onAuthStateChanged(user => {
 
 //  sign out function (called from signout button)
 function signOutUser() {
-    firebase.auth().signOut()
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {     //if a user is logged out, redirect to login
-          window.location = "login.html"
-      }
-    })
+    firebase.auth().signOut().then(function() {
+        window.open("login.html")
+      }).catch(error => {
+      });
 }
 
 let addressInput = document.getElementById("addressInput")
@@ -77,6 +78,139 @@ addressInput.addEventListener("keypress", event=>{
     }
 })
 
+
+
+placeTypes = [
+    {
+        placeDisplayName: 'Restaurants',
+        googleidname: 'restaurant'
+    },
+    {
+        placeDisplayName: 'Parks',
+        googleidname: 'park'
+    },
+    {
+        placeDisplayName: 'Bars',
+        googleidname: 'bar'
+    },
+    {
+        placeDisplayName: 'Schools',
+        googleidname: 'school'
+    },
+    {
+        placeDisplayName: 'Clubs',
+        googleidname: 'club'
+    }
+]
+
+
+const searchCriteriaDiv = document.getElementById('search-criteria-div')
+
+const places = placeTypes.map((place, index) => {
+    const markup = `
+    
+    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
+    <select id="select-${index}" class="importance-selector">
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select> <br>
+    `
+
+    searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
+    console.log(`place-type-${index} select-${index}`)
+
+
+})
+
+
+// Creat a map ? ...to get all of the id's below and create javascript variables for each
+
+// run a for each function to apply the getPlaceCriteria for all of the place criteria
+
+
+
+
+
+// find out how to limit the number of selections
+
+// about the radius input?
+
+// is there an obj/var created for the address input
+
+// id's of the place types
+const placeTypeOne = document.getElementById('place-type-0')
+const placeTypeTwo = document.getElementById('place-type-1')
+const placeTypeThree = document.getElementById('place-type-2')
+const placeTypeFour = document.getElementById('place-type-3')
+
+// id's of importance selector of the place types
+const placeTypeOneImportance = document.getElementById('select-0')
+const placeTypeTwoImportance = document.getElementById('select-1')
+const placeTypeThreeImportance = document.getElementById('select-2')
+const placeTypeFourImportance = document.getElementById('select-3')
+
+const seeResultsButton = document.getElementById('see-results-btn')
+
+seeResultsButton.addEventListener('click', () => {
+
+    getPlaceCriteria(placeTypeOne, placeTypeOneImportance)
+    getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance)
+    getPlaceCriteria(placeTypeThree, placeTypeThreeImportance)
+    getPlaceCriteria(placeTypeFour, placeTypeFourImportance)
+    console.log(searchObjs)
+
+
+})
+
+const searchObjs = []
+
+function getPlaceCriteria (placeTypeID, placeTypeImportance) {
+    
+    if ( placeTypeID.checked == true ) {
+        
+        let obj = {
+            placeType: placeTypeID.previousElementSibling.id,
+            placeTypeImportance: placeTypeImportance.value
+        }
+
+        if (obj) {
+            searchObjs.push(obj)
+        }
+        return obj
+    }    
+
+    
+}
+
+
+
+
+let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
+
+allPlaceTypeCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        showPlaceTypeImportanceSelector(this)
+    })
+})
+
+function showPlaceTypeImportanceSelector(checkbox) {
+    let selectId = checkbox.dataset.selectid
+    let select = document.getElementById(selectId)
+    
+    if (checkbox.checked) {
+        select.style.display = 'inline-block'
+    } else {
+        select.style.display = 'none'
+    }
+}
+
+
+
+
+
+
 //api calls
 function getLatLng(address) {
     let geocoder = new google.maps.Geocoder()
@@ -93,19 +227,11 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
+    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
     return await response.json()
 }
 
-class CriteriaOutput {
-    constructor(type, importance, placeIds) {
-        this.type = type
-        this.importance = importance
-        this.placeIds = placeIds
-    }
-}
-
-async function getPlaces(address, criteriaArray) {
+async function countPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
     .then(function(results) {
         let latitude = results[0].geometry.location.lat()
@@ -116,37 +242,13 @@ async function getPlaces(address, criteriaArray) {
         //insert alert(status) here
     })
 
-    let criteriaOutputObjs = []
-
-    let promises = []
-    let promisesCriteria = []
+    //do i need to make the internal functions here async/await?
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
-        let criteriaImportance = obj['importance']
-        let promise = fetchPlaces(latlng, criteriaType, criteriaImportance)
-        promisesCriteria.push([criteriaType, criteriaImportance])
-        promises.push(promise)
-    })
-
-    Promise.all(promises).then(function(promiseArray) {  
-        //use index loop to call the corresponding values for each promise
-        function pushPlaceIds(json) {
-            let placeIds = []
-                json.results.forEach(function(obj) {
-                    placeIds.push(obj.place_id)
-                })
-            return placeIds
-        }
-        for (let i = 0; i < promises.length; i++) {
-            let criteriaType = promisesCriteria[i][0]
-            let criteriaImportance = promisesCriteria[i][1]
-            let placeIds = pushPlaceIds(promiseArray[i])
-            let criteriaOutputObj = new CriteriaOutput(criteriaType, criteriaImportance, placeIds)
-            criteriaOutputObjs.push(criteriaOutputObj)
-        }
-
-    }).then(function(obj) {
-        return criteriaOutputObjs 
+        fetchPlaces(latlng, criteriaType).then(function(json) {
+            console.log(json) //replace with actual code
+        })
+        //push to db
     })
 }
 //end api calls
@@ -166,9 +268,33 @@ function validateAddress(){
 }
 
 
+//Pop up Login
 
-const Likes = () => {
-    // build likes model
+let modal = document.getElementById("loginModal")
+
+let btn = document.getElementById("userButton")
+
+let closeBtn = document.getElementsByClassName("close")[0];
+
+btn.onclick = function(){
+    modal.style.display = "block";
+
+}
+
+
+closeBtn.onclick = function() {
+    
+    modal.style.display = "block";
+}
+
+closeBtn.onclick = function(){
+    modal.style.display = "none";
+}
+
+window.onclick = function(event){
+    if(event.target == modal){
+        modal.style.display ="none";
+    }
 }
 
 
@@ -192,36 +318,26 @@ const Likes = () => {
 //     }
 //   ]
 
-function calcChunks(criteriaOutputObjs, chunkType) {
-    let highCount = 0
-    let medCount = 0
-    let lowCount = 0
+function calcScoreScale(criteriaOutputObjs) {
+    let highPriority = 0
+    let medPriority = 0
+    let lowPriority = 0
 
     for (i = 0; i < criteriaOutputObjs.length; i++) {
         let importance = criteriaOutputObjs[i].criteriaImportance
 
         if (importance == "high") {
-            highCount ++
+            highPriority ++
         } else if (importance == "med") {
-            medCount ++
+            medPriority ++
         } else if (importance == "low") {
-            lowCount ++
+            lowPriority ++
         }
     }
 
-    let scale = 100 / (10 * highCount + 5 * medCount + 1 * lowCount)
+    let scale = 100 / (10 * highPriority + 5 * medPriority + 1 * lowPriority)           // edit score scaling and ALSO in findAllScores()
 
-    let highChunk = 10 * scale
-    let medChunk = 5 * scale
-    let lowChunk = scale
-
-    if (chunkType == 'high') {
-        return highChunk
-    } else if (chunkType == 'med') {
-        return medChunk
-    } else {
-        return lowChunk
-    }
+    return scale
 }
 
 
@@ -244,12 +360,22 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
 function findAllScores() {
     let totalScore = 0
 
+    let scoreScale = calcScoreScale(criteriaOutputObjs)
+
     for (j = 0; j < criteriaOutputObjs.length; j ++) {
         let criteria = criteriaOutputObjs[j]
         let score = findScore(criteria)     //out of 100
-        let chunk = calcChunks(criteriaOutputObjs, criteria.criteriaImportance)     //also out of 100
+        let priorityScale
 
-        let adjustedScore = score * chunk / 100
+        if (criteria.criteriaImportance == "high") {
+            priorityScale = 10
+        } else if (criteria.criteriaImportance == "med") {      // priority scaling
+            priorityScale = 5
+        } else {
+            priorityScale = 1
+        }
+
+        let adjustedScore = score * scoreScale * priorityScale / 100
 
         totalScore += adjustedScore
         console.log(score, adjustedScore)
