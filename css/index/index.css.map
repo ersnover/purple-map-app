@@ -1,12 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAEA,AAAA,IAAI,CAAC;EACD,gBAAgB,EAAE,QAAQ;EAC1B,WAAW,EAAE,oBAAoB;CACpC;;AAGD,AAAA,OAAO,CAAC;EACJ,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,IAAI;EACf,gBAAgB,EAAG,OAAO;EAC1B,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;CAetB;;AAtBD,AASI,OATG,CASH,UAAU,CAAC;EACP,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;CACpB;;AAZL,AAcI,OAdG,CAcH,CAAC,CAAC;EACE,YAAY,EAAE,IAAI;CACrB;;AAhBL,AAkBI,OAlBG,CAkBH,MAAM,CAAC;EACH,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,KAAK;CACf",
-    "sources": [
-        "index.scss",
-        "_mobile.scss",
-        "_midSize.scss",
-        "_desktop.scss"
-    ],
-    "names": [],
-    "file": "index.css"
-}
+{"version":3,"sourceRoot":"","sources":["index.scss"],"names":[],"mappings":"AAEA;EACI;EACA;;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAGJ;EACI;;AAGJ;EACI;EACA;;;AAIR;EACI","file":"index.css"}

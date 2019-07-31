@@ -16,6 +16,8 @@ class CriteriaType {
         this.importance = importance
     }
 }
+
+// should we only create these object if the type is checked?
 const typeObj1 = new CriteriaType('park', 'important')
 const typeObj2 = new CriteriaType('cafe', 'important')
 const typeObj3 = new CriteriaType('bus_station', 'important;')
@@ -73,6 +75,119 @@ addressInput.addEventListener("keypress", event=>{
         validateAddress()
     }
 })
+
+
+
+placeTypes = [
+    {
+        placeDisplayName: 'Restaurants',
+        googleidname: 'restaurant'
+    },
+    {
+        placeDisplayName: 'Parks',
+        googleidname: 'park'
+    },
+    {
+        placeDisplayName: 'Bars',
+        googleidname: 'park'
+    },
+    {
+        placeDisplayName: 'Schools',
+        googleidname: 'school'
+    },
+    {
+        placeDisplayName: 'Clubs',
+        googleidname: 'club'
+    }
+]
+
+
+const searchCriteriaDiv = document.getElementById('search-criteria-div')
+
+const places = placeTypes.map((place, index) => {
+    const markup = `
+    
+    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
+    <select id="select-${index}" class="importance-selector">
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select> <br>
+    `
+
+    searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
+})
+
+
+
+
+
+
+
+
+
+let placeTypeOne = document.getElementById('place-type-1')
+let placeTypeTwo = document.getElementById('place-type-2')
+let placeTypeThree = document.getElementById('place-type-3')
+let placeTypeFour = document.getElementById('place-type-4')
+
+let placeTypeOneImportance = document.getElementById('select-1')
+let placeTypeTwoImportance = document.getElementById('select-2')
+let placeTypeThreeImportance = document.getElementById('select-3')
+let placeTypeFourImportance = document.getElementById('select-4')
+
+const seeResultsButton = document.getElementById('see-results-btn')
+
+seeResultsButton.addEventListener('click', () => {
+
+    console.log(getPlaceCriteria(placeTypeOne, placeTypeOneImportance))
+    console.log(getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance))
+    console.log(getPlaceCriteria(placeTypeThree, placeTypeThreeImportance))
+    console.log(getPlaceCriteria(placeTypeFour, placeTypeFourImportance))
+
+
+})
+
+function getPlaceCriteria (placeTypeID, placeTypeImportance) {
+    
+    if ( placeTypeID.checked == true ) {
+        
+        let obj = {
+            placeType: placeTypeID.previousElementSibling.id,
+            placeTypeImportance: placeTypeImportance.value
+        }
+
+        return obj
+    }    
+}
+
+
+let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
+
+allPlaceTypeCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        showPlaceTypeImportanceSelector(this)
+    })
+})
+
+
+
+function showPlaceTypeImportanceSelector(checkbox) {
+    let selectId = checkbox.dataset.selectid
+    let select = document.getElementById(selectId)
+    
+    if (checkbox.checked) {
+        select.style.display = 'inline-block'
+    } else {
+        select.style.display = 'none'
+    }
+}
+
+
+
+
+
 
 //api calls
 function getLatLng(address) {
