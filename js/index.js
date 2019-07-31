@@ -192,36 +192,26 @@ const Likes = () => {
 //     }
 //   ]
 
-function calcChunks(criteriaOutputObjs, chunkType) {
-    let highCount = 0
-    let medCount = 0
-    let lowCount = 0
+function calcScoreScale(criteriaOutputObjs) {
+    let highPriority = 0
+    let medPriority = 0
+    let lowPriority = 0
 
     for (i = 0; i < criteriaOutputObjs.length; i++) {
         let importance = criteriaOutputObjs[i].criteriaImportance
 
         if (importance == "high") {
-            highCount ++
+            highPriority ++
         } else if (importance == "med") {
-            medCount ++
+            medPriority ++
         } else if (importance == "low") {
-            lowCount ++
+            lowPriority ++
         }
     }
 
-    let scale = 100 / (10 * highCount + 5 * medCount + 1 * lowCount)
+    let scale = 100 / (10 * highPriority + 5 * medPriority + 1 * lowPriority)           // edit score scaling and ALSO in findAllScores()
 
-    let highChunk = 10 * scale
-    let medChunk = 5 * scale
-    let lowChunk = scale
-
-    if (chunkType == 'high') {
-        return highChunk
-    } else if (chunkType == 'med') {
-        return medChunk
-    } else {
-        return lowChunk
-    }
+    return scale
 }
 
 
@@ -237,19 +227,29 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     } else {
         score = 100
     }
-
+    
     return score
 }
 
 function findAllScores() {
     let totalScore = 0
 
+    let scoreScale = calcScoreScale(criteriaOutputObjs)
+
     for (j = 0; j < criteriaOutputObjs.length; j ++) {
         let criteria = criteriaOutputObjs[j]
         let score = findScore(criteria)     //out of 100
-        let chunk = calcChunks(criteriaOutputObjs, criteria.criteriaImportance)     //also out of 100
+        let priorityScale
 
-        let adjustedScore = score * chunk / 100
+        if (criteria.criteriaImportance == "high") {
+            priorityScale = 10
+        } else if (criteria.criteriaImportance == "med") {      // priority scaling
+            priorityScale = 5
+        } else {
+            priorityScale = 1
+        }
+
+        let adjustedScore = score * scoreScale * priorityScale / 100
 
         totalScore += adjustedScore
         console.log(score, adjustedScore)
