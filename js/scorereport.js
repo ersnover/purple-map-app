@@ -72,6 +72,7 @@ detailScoreContainer.innerHTML = detailScoreArray.join('')
 //parameter score details
 function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
     let formattedType = parameterType.replace('_',' ')
+    let detailParameterModal = document.getElementById('detail-parameter-modal')
     let detailParameterContainer = document.getElementById('detail-parameter-container')
     let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
     
@@ -82,10 +83,10 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
                 <h3>${parameterNumber}</h3>`
 
     detailParameterContainer.innerHTML = content
-
-    //unhide modal
+    detailParameterModal.style.display = 'block'
 }
 
+//add onclick close modal
 
 //style things
 
