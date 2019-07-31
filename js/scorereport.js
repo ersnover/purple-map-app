@@ -19,7 +19,7 @@ class ParameterInfo {
     }
 }
 
-let obj1 = new ParameterInfo('park', 'important', 15, 90)
+let obj1 = new ParameterInfo('park', 'very important', 15, 90)
 let obj2 = new ParameterInfo('bus_stop', 'important', 15, 85)
 let parameterInfoArray = [obj1,obj2]
 let algorithmObject = new AlgorithmObject('123 main st', parameterInfoArray, 98)
@@ -30,45 +30,64 @@ let scoreAddress = algorithmObject['address']
 let score = algorithmObject['score']
 let parameterInfo = algorithmObject['parameterInfo']
 
+function determineImportanceClass(parameterImportance) {
+    if (parameterImportance == 'very important') {
+        return 'very-important'
+    } else if (parameterImportance == 'important') {
+        return 'important'
+    } else if (parameterImportance == 'somewhat important') {
+        return 'somewhat-important'
+    }
+}
 
-//DOM
+//score
 let addressHeader = document.getElementById('address-header')
 addressHeader.innerHTML = `${scoreAddress}`
 let scoreHeader = document.getElementById('score-header')
 scoreHeader.innerHTML = `${score}`
 
-//DOM2
-let detailScoreContainer = document.getElementById('detail-score-container')
 
-//add class "toTitleCase"
+//parameter scores
+let detailScoreContainer = document.getElementById('detail-score-container')
 
 let detailScoreArray =[]
 parameterInfo.forEach(function(parameterObj) { //change the type name
-    function generateDiv(parameterObj) {
-        let type = parameterObj['type']
-        //remove underscores
-        if (parameterObj['importance'] == 'very important') {
-            return `<div class="parameter-container very-important">
-                        <h3>${type}</h3>
-                        <h2>${parameterObj['score']}</h2>
-                    </div>`
-        } else if (parameterObj['importance'] == 'important') {
-            return `<div class="parameter-container important">
-                        <h3>${type}</h3>
-                        <h2>${parameterObj['score']}</h2>
-                    </div>`
-        } else if (parameterObj['importance'] == 'somewhat important') {
-            return `<div class="parameter-container somewhat-important">
-                        <h3>${type}</h3>
-                        <h2>${parameterObj['score']}</h2>
-                    </div>`
-        }
-    }
-    let div = generateDiv(parameterObj)
+    let parameterType = parameterObj['type']
+    let parameterImportance = parameterObj['importance']
+    let parameterNumber = parameterObj['number']
+    let parameterScore = parameterObj['score']
+
+    let importanceClass = determineImportanceClass(parameterImportance)
+    let formattedType = parameterType.replace('_',' ')
+    let div = `<div class="parameter-container ${importanceClass}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
+                    <h3 class="toTitleCase">${formattedType}</h3>
+                    <h2>${parameterScore}</h2>
+                </div>`
+
     detailScoreArray.push(div)
 })
 detailScoreContainer.innerHTML = detailScoreArray.join('')
 
+
+//parameter score details
+function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
+    let formattedType = parameterType.replace('_',' ')
+    let detailParameterContainer = document.getElementById('detail-parameter-container')
+    let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
+    
+    detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
+    let content =  `<h2 class="toTitleCase">${formattedType}</h2>
+                <h1>${parameterScore}</h1>
+                <h3>${parameterImportance}</h3>
+                <h3>${parameterNumber}</h3>`
+
+    detailParameterContainer.innerHTML = content
+
+    //unhide modal
+}
+
+
+//style things
 
 //maybe have visual indicator of importance of each parameter
 //maybe have credit score circle with red to green scale
