@@ -230,10 +230,6 @@ function validateAddress(){
     }
 }
 
-
-
-
-
 // algorithm calculations (will need var names adjusted based on input)
 
 // let criteriaOutputObjs = [
