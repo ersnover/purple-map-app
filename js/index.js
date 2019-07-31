@@ -16,6 +16,8 @@ class CriteriaType {
         this.importance = importance
     }
 }
+
+// should we only create these object if the type is checked?
 const typeObj1 = new CriteriaType('park', 'important')
 const typeObj2 = new CriteriaType('cafe', 'important')
 const typeObj3 = new CriteriaType('bus_station', 'important;')
@@ -76,6 +78,139 @@ addressInput.addEventListener("keypress", event=>{
         validateAddress()
     }
 })
+
+
+
+placeTypes = [
+    {
+        placeDisplayName: 'Restaurants',
+        googleidname: 'restaurant'
+    },
+    {
+        placeDisplayName: 'Parks',
+        googleidname: 'park'
+    },
+    {
+        placeDisplayName: 'Bars',
+        googleidname: 'bar'
+    },
+    {
+        placeDisplayName: 'Schools',
+        googleidname: 'school'
+    },
+    {
+        placeDisplayName: 'Clubs',
+        googleidname: 'club'
+    }
+]
+
+
+const searchCriteriaDiv = document.getElementById('search-criteria-div')
+
+const places = placeTypes.map((place, index) => {
+    const markup = `
+    
+    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
+    <select id="select-${index}" class="importance-selector">
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+    </select> <br>
+    `
+
+    searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
+    console.log(`place-type-${index} select-${index}`)
+
+
+})
+
+
+// Creat a map ? ...to get all of the id's below and create javascript variables for each
+
+// run a for each function to apply the getPlaceCriteria for all of the place criteria
+
+
+
+
+
+// find out how to limit the number of selections
+
+// about the radius input?
+
+// is there an obj/var created for the address input
+
+// id's of the place types
+const placeTypeOne = document.getElementById('place-type-0')
+const placeTypeTwo = document.getElementById('place-type-1')
+const placeTypeThree = document.getElementById('place-type-2')
+const placeTypeFour = document.getElementById('place-type-3')
+
+// id's of importance selector of the place types
+const placeTypeOneImportance = document.getElementById('select-0')
+const placeTypeTwoImportance = document.getElementById('select-1')
+const placeTypeThreeImportance = document.getElementById('select-2')
+const placeTypeFourImportance = document.getElementById('select-3')
+
+const seeResultsButton = document.getElementById('see-results-btn')
+
+seeResultsButton.addEventListener('click', () => {
+
+    getPlaceCriteria(placeTypeOne, placeTypeOneImportance)
+    getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance)
+    getPlaceCriteria(placeTypeThree, placeTypeThreeImportance)
+    getPlaceCriteria(placeTypeFour, placeTypeFourImportance)
+    console.log(searchObjs)
+
+
+})
+
+const searchObjs = []
+
+function getPlaceCriteria (placeTypeID, placeTypeImportance) {
+    
+    if ( placeTypeID.checked == true ) {
+        
+        let obj = {
+            placeType: placeTypeID.previousElementSibling.id,
+            placeTypeImportance: placeTypeImportance.value
+        }
+
+        if (obj) {
+            searchObjs.push(obj)
+        }
+        return obj
+    }    
+
+    
+}
+
+
+
+
+let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
+
+allPlaceTypeCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        showPlaceTypeImportanceSelector(this)
+    })
+})
+
+function showPlaceTypeImportanceSelector(checkbox) {
+    let selectId = checkbox.dataset.selectid
+    let select = document.getElementById(selectId)
+    
+    if (checkbox.checked) {
+        select.style.display = 'inline-block'
+    } else {
+        select.style.display = 'none'
+    }
+}
+
+
+
+
+
 
 //api calls
 function getLatLng(address) {
