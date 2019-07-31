@@ -1,3 +1,21 @@
+class ReportObject {                    // used in building of score report
+    constructor(address, parameterInfoArray, score, scale) {
+        this.address = address
+        this.parameterInfoArray = parameterInfoArray
+        this.score = score
+        this.scale = scale
+    }
+}
+
+class ParameterInfo {
+    constructor(type, importance, number, score, tSC) {
+        this.type = type
+        this.importance = importance
+        this.number = number
+        this.score = score
+        this.totalScoreContribution = tSC
+    }
+}
 const criteriaStats = {     ///// can potentially add radius modifiers to diving locations like grocery stores
 
     restaurant: 
