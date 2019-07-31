@@ -7,6 +7,14 @@ body button {
   cursor: pointer;
 }
 
+h1 {
+  color: #572a7a;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 3.2em;
+  margin-bottom: 10px;
+}
+
 .navBar {
   width: 100vw;
   height: 50px;
@@ -16,6 +24,7 @@ body button {
   display: flex;
   align-items: center;
   position: fixed;
+  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
 }
 .navBar .pageTitle {
   margin-right: auto;
@@ -24,11 +33,17 @@ body button {
 .navBar i {
   margin-right: 20px;
 }
+.navBar i:active {
+  outline: none;
+}
 .navBar button {
   font-size: 27px;
   background: none;
   color: #572a7a;
   border: none;
+}
+.navBar #userButton:focus {
+  outline: none;
 }
 
 #container {
@@ -53,13 +68,6 @@ body button {
   padding: 60px 50px;
   box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
 }
-#addressIntakeDiv h1 {
-  color: #572a7a;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 700;
-  font-size: 3.2em;
-  margin-bottom: 10px;
-}
 #addressIntakeDiv p {
   width: 80%;
   color: #777;
@@ -76,22 +84,6 @@ body button {
 #addressIntakeDiv #addressInput:focus {
   outline: none;
   border: #572a7a 2px solid;
-}
-#addressIntakeDiv #addressIntakeBtn {
-  background-color: #572a7a;
-  color: white;
-  width: 47%;
-  padding: 10px 30px;
-  font-size: 1.5em;
-  border-radius: 15px;
-  margin-top: 10px;
-  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
-}
-#addressIntakeDiv #addressIntakeBtn:focus {
-  outline: none;
-}
-#addressIntakeDiv #addressIntakeBtn:active {
-  transform: translate(0px, 1px);
 }
 
 .toTitleCase {
@@ -136,15 +128,43 @@ body button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10%;
 }
 #loginContainer .pageTitle {
   color: #572a7a;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: 2em;
+  font-size: 3em;
+  margin-bottom: 10%;
 }
 #loginContainer .textItem {
-  width: 80%;
+  width: 65%;
   margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  font-size: 1.2em;
+}
+#loginContainer .textItem:focus {
+  outline: none;
+}
+
+.mainButton {
+  background-color: #572a7a;
+  color: white;
+  width: 47%;
+  padding: 10px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+  margin-top: 10px;
+  box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mainButton:focus {
+  outline: none;
+}
+
+.mainButton:active {
+  transform: translate(0px, 1px);
 }
 
 /*# sourceMappingURL=index.css.map */

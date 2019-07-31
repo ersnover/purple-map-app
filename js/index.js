@@ -281,10 +281,6 @@ btn.onclick = function(){
 
 }
 
-closeBtn.onclick = function() {
-    
-    modal.style.display = "block";
-}
 
 closeBtn.onclick = function(){
     modal.style.display = "none";
