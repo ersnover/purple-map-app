@@ -17,7 +17,6 @@ class CriteriaType {
     }
 }
 
-// should we only create these object if the type is checked?
 const typeObj1 = new CriteriaType('park', 'important')
 const typeObj2 = new CriteriaType('cafe', 'important')
 const typeObj3 = new CriteriaType('bus_station', 'important;')
@@ -80,17 +79,21 @@ addressInput.addEventListener("keypress", event=>{
 })
 
 
+// Get each place type category and populate them onto the search criteria page
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
 placeTypes = Object.keys(criteriaStats)
 
 placeTypes.map((type, index) => {
     
+    const googleId = criteriaStats[type].googleidname
+    const placeDisplayName =criteriaStats[type].placeDisplayName
+
     const markup = `
     
-    <label for="place-type-${index}" id="${criteriaStats[type].googleidname}">${criteriaStats[type].placeDisplayName}</label>
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
-    <select id="select-${index}" class="importance-selector">
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type">${placeDisplayName}</label>
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+    <select  id="select-${index}" class="importance-selector">
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
@@ -98,78 +101,9 @@ placeTypes.map((type, index) => {
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
-})
+})      
 
-
-
-
-
-
-
-
-
-// Creat a map ? ...to get all of the id's below and create javascript variables for each
-
-// run a for each function to apply the getPlaceCriteria for all of the place criteria
-
-
-
-
-
-// find out how to limit the number of selections
-
-// about the radius input?
-
-// is there an obj/var created for the address input
-
-// id's of the place types
-const placeTypeOne = document.getElementById('place-type-0')
-const placeTypeTwo = document.getElementById('place-type-1')
-const placeTypeThree = document.getElementById('place-type-2')
-const placeTypeFour = document.getElementById('place-type-3')
-
-// id's of importance selector of the place types
-const placeTypeOneImportance = document.getElementById('select-0')
-const placeTypeTwoImportance = document.getElementById('select-1')
-const placeTypeThreeImportance = document.getElementById('select-2')
-const placeTypeFourImportance = document.getElementById('select-3')
-
-const seeResultsButton = document.getElementById('see-results-btn')
-
-seeResultsButton.addEventListener('click', () => {
-
-    getPlaceCriteria(placeTypeOne, placeTypeOneImportance)
-    getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance)
-    getPlaceCriteria(placeTypeThree, placeTypeThreeImportance)
-    getPlaceCriteria(placeTypeFour, placeTypeFourImportance)
-    console.log(searchObjs)
-
-
-})
-
-const searchObjs = []
-
-function getPlaceCriteria (placeTypeID, placeTypeImportance) {
-    
-    if ( placeTypeID.checked == true ) {
-        
-        let obj = {
-            placeType: placeTypeID.previousElementSibling.id,
-            placeTypeImportance: placeTypeImportance.value
-        }
-
-        if (obj) {
-            searchObjs.push(obj)
-        }
-        return obj
-    }    
-
-    
-}
-
-
-
-
+// Show importance selector only if place type is checked
 let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
 
 allPlaceTypeCheckboxes.forEach(checkbox => {
@@ -189,8 +123,35 @@ function showPlaceTypeImportanceSelector(checkbox) {
     }
 }
 
+// When user hits see results button they will be directed to their report based on the queries from the criteria objects
+const seeResultsButton = document.getElementById('see-results-btn')
 
+seeResultsButton.addEventListener('click', () => {
 
+    getCriteriaObjs()
+
+})
+
+const criteriaObjs = []
+
+function getCriteriaObjs() {
+    allPlaceTypeCheckboxes.forEach(box => {
+        if(box.checked) {
+            let placeType = box.previousElementSibling.id
+            let selectId = box.dataset.selectid
+            let placeTypeImportance = document.getElementById(selectId).value
+
+            let obj = {
+                placeType: placeType,
+                placeTypeImportance: placeTypeImportance
+            }
+
+            criteriaObjs.push(obj)
+        }
+    })
+    console.log(criteriaObjs)
+    return criteriaObjs
+}
 
 
 
