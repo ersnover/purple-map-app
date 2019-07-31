@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
 <link rel='stylesheet' href='css/index/index.css'>
@@ -26,6 +27,28 @@
                 </button>
         </div>
         
+    </div>
+
+
+    <!--POP UP LOGIN-->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginContainer">
+                    <span class="pageTitle">Welcome to Purple</span>
+
+                            <input type="text" placeholder="email" id="loginEmail" class="textItem">
+                            <input type="password" placeholder="password" id="loginPassword" class="textItem">
+                            <div>
+                                <span class="regText">Don't have an account?</span>
+                                <a href="register.html">Sign up here</a>
+                            </div>
+                        </div>
+                        <button id="loginButton" class="mainButton">Go!</buttton>
+                    </div>
+                </div>
+        </div>
+
     </div>
 
 
@@ -98,6 +121,7 @@
 
 <script src='js/config.js'></script>
 <script src='js/index.js'></script>
+<script src='js/login.js'></script>
 <!-- <script src='js/getapi.js'></script> -->
 </body>
 </html>
