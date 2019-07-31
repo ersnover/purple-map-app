@@ -5,6 +5,12 @@ const confirmPasswordField = document.getElementById('regPassword2')
 
 let usersRef = db.collection('users')
 
+confirmPasswordField.addEventListener('keyup', e => {
+    if (e.keyCode === 13) {
+        regButton.click()
+    }
+})
+
 regButton.addEventListener('click', () => {
     let email = emailField.value
     let password = passwordField.value
@@ -31,5 +37,11 @@ function registerUser(email, password) {
         alert(`Error ${errorCode}\n\n${errorMessage}`)
       });
 
-      window.open("index.html")
+      // redirect on login
+    firebase.auth().onAuthStateChanged(user => {
+
+        if (user) {     //if a user is logged in
+            window.location = "index.html"  //redirects to index.html
+        }
+})
 }

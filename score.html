@@ -1,0 +1,57 @@
+<html>
+<!-- probably remove all of the links and scripts i don't need in here -->
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
+<link rel='stylesheet' href='css/index/index.css'>
+<title>Purp Home</title>
+</head>
+<body>
+    <div id="main-container">
+        <div class="nav-container">
+            <!-- placeholder -->
+        </div>
+        <div class="header-container">
+            <!-- probably change this header -->
+            <h2>Your score report</h1> 
+        </div>
+        <div id="address-container">
+            <!-- dynamically generate address -->
+            <h3>placeholder</h2>
+        </div>
+        <div id="score">
+            <!-- dynamically generate score -->
+            <h1>98</h1>
+        </div>
+        <div id="criteria-results-container">
+            <!-- dynamically generate based on how many parameters are entered -->
+        </div>
+
+    </div>
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg&libraries=places"></script>    
+
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+
+<script>
+// Initialize Cloud Firestore through Firebase
+    firebase.initializeApp({
+        apiKey: "AIzaSyA2L4AY133YKerq5ghhgwQvNZUMzTF4Wpc",
+        authDomain: "etek-1564177445364.firebaseapp.com",
+        projectId: "etek-1564177445364"
+    });
+
+    const db = firebase.firestore();
+
+</script>
+
+
+<script src='js/config.js'></script>
+<script src='js/index.js'></script>
+<script src='scorereport.js'></script>
+</body>
+</html>
