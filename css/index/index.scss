@@ -133,10 +133,11 @@ h1{
         margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
         width: 70%;
-        height: 70vh;
         border-radius: 20px;
+        div{
+            margin: 10px;
+        }
         .close{
             color: #777;
             float: right;
