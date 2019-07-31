@@ -8,6 +8,8 @@ signOutButton.addEventListener('click', () => {
     signOutUser()
 })
 
+const proxy = 'https://cors-anywhere.herokuapp.com/'
+const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
 
 //test data
 class CriteriaType {
@@ -53,13 +55,10 @@ firebase.auth().onAuthStateChanged(user => {
 
 //  sign out function (called from signout button)
 function signOutUser() {
-    firebase.auth().signOut()
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (!user) {     //if a user is logged out, redirect to login
-          window.location = "login.html"
-      }
-    })
+    firebase.auth().signOut().then(function() {
+        window.open("login.html")
+      }).catch(error => {
+      });
 }
 
 let addressInput = document.getElementById("addressInput")
@@ -228,19 +227,11 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
+    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
     return await response.json()
 }
 
-class CriteriaOutput {
-    constructor(type, importance, placeIds) {
-        this.type = type
-        this.importance = importance
-        this.placeIds = placeIds
-    }
-}
-
-async function getPlaces(address, criteriaArray) {
+async function countPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
     .then(function(results) {
         let latitude = results[0].geometry.location.lat()
@@ -251,37 +242,13 @@ async function getPlaces(address, criteriaArray) {
         //insert alert(status) here
     })
 
-    let criteriaOutputObjs = []
-
-    let promises = []
-    let promisesCriteria = []
+    //do i need to make the internal functions here async/await?
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
-        let criteriaImportance = obj['importance']
-        let promise = fetchPlaces(latlng, criteriaType, criteriaImportance)
-        promisesCriteria.push([criteriaType, criteriaImportance])
-        promises.push(promise)
-    })
-
-    Promise.all(promises).then(function(promiseArray) {  
-        //use index loop to call the corresponding values for each promise
-        function pushPlaceIds(json) {
-            let placeIds = []
-                json.results.forEach(function(obj) {
-                    placeIds.push(obj.place_id)
-                })
-            return placeIds
-        }
-        for (let i = 0; i < promises.length; i++) {
-            let criteriaType = promisesCriteria[i][0]
-            let criteriaImportance = promisesCriteria[i][1]
-            let placeIds = pushPlaceIds(promiseArray[i])
-            let criteriaOutputObj = new CriteriaOutput(criteriaType, criteriaImportance, placeIds)
-            criteriaOutputObjs.push(criteriaOutputObj)
-        }
-
-    }).then(function(obj) {
-        return criteriaOutputObjs 
+        fetchPlaces(latlng, criteriaType).then(function(json) {
+            console.log(json) //replace with actual code
+        })
+        //push to db
     })
 }
 //end api calls
@@ -301,9 +268,33 @@ function validateAddress(){
 }
 
 
+//Pop up Login
 
-const Likes = () => {
-    // build likes model
+let modal = document.getElementById("loginModal")
+
+let btn = document.getElementById("userButton")
+
+let closeBtn = document.getElementsByClassName("close")[0];
+
+btn.onclick = function(){
+    modal.style.display = "block";
+
+}
+
+
+closeBtn.onclick = function() {
+    
+    modal.style.display = "block";
+}
+
+closeBtn.onclick = function(){
+    modal.style.display = "none";
+}
+
+window.onclick = function(event){
+    if(event.target == modal){
+        modal.style.display ="none";
+    }
 }
 
 
