@@ -1,12 +1,19 @@
 // user auth stuff
 let usersCollectionRef = db.collection('users')
 let userRef = ""
-
 let activeUserId = ""
 const signOutButton = document.getElementById("signOutButton")
 signOutButton.addEventListener('click', () => {
     signOutUser()
 })
+
+//  sign out function (called from signout button)
+function signOutUser() {
+    firebase.auth().signOut().then(function() {
+        window.open("login.html")
+      }).catch(error => {
+      });
+}
 
 const proxy = 'https://cors-anywhere.herokuapp.com/'
 const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
@@ -53,13 +60,7 @@ firebase.auth().onAuthStateChanged(user => {
     }    
 })
 
-//  sign out function (called from signout button)
-function signOutUser() {
-    firebase.auth().signOut().then(function() {
-        window.open("login.html")
-      }).catch(error => {
-      });
-}
+
 
 let addressInput = document.getElementById("addressInput")
 let addressIntakeBtn = document.getElementById("addressIntakeBtn")
