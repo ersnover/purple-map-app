@@ -23,8 +23,9 @@ h2 {
 
 h3 {
   font-family: "Noto Sans KR", sans-serif;
+  color: #572a7a;
   font-weight: 400;
-  font-size: 2.2em;
+  font-size: 1.8em;
   margin-bottom: 10px;
 }
 
@@ -67,6 +68,23 @@ h3 {
   width: 100%;
 }
 
+.page-section-purple {
+  background-image: linear-gradient(to top, rgba(63, 20, 113, 0.7), rgba(170, 144, 193, 0.7)), url(../../images/image3.jpg);
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+}
+.page-section-purple h3 {
+  font-size: 4.5em;
+  border-bottom: 1px white solid;
+  line-height: 3;
+  color: cornsilk;
+}
+.page-section-purple p {
+  color: white;
+  padding: 50px;
+}
+
 .page-section-flex {
   display: flex;
   justify-content: center;
@@ -100,7 +118,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: purple;
+  background-color: #572a7a;
 }
 
 #container {
@@ -234,6 +252,22 @@ h3 {
   transform: translate(0px, 1px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   transition: 0.2s ease-out;
+}
+
+#nearbyInfo {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  color: #777;
+}
+#nearbyInfo h3 {
+  margin-bottom: 63px;
+}
+#nearbyInfo img {
+  width: 60%;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  margin: 10% 20px;
 }
 
 /*# sourceMappingURL=index.css.map */
