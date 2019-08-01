@@ -202,6 +202,7 @@ h3{
 
 #search-div {
     display: none;
+    position: relative;
 }
 
 
@@ -303,6 +304,8 @@ h3{
 }
 
 
+// BUTTONS
+
 .mainButton {
     background-color: $purple;
         color: white;
@@ -386,6 +389,17 @@ a:hover {
     margin-top: 50px;
 }
 
+.go-back-btn {
+    width: 5%;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    left: 6rem;
+    top: 2.5rem;
+    position: absolute;
+}
+
+
 
 // CHECKBOX STYLING
 
@@ -418,7 +432,7 @@ a:hover {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: rgb(190, 190, 190);
     border-radius: 3px;
   }
   

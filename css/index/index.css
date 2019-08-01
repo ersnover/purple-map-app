@@ -228,6 +228,7 @@ h3 {
 
 #search-div {
   display: none;
+  position: relative;
 }
 
 #search-criteria-div {
@@ -376,6 +377,16 @@ h3 {
   margin-top: 50px;
 }
 
+.go-back-btn {
+  width: 5%;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px;
+  left: 6rem;
+  top: 2.5rem;
+  position: absolute;
+}
+
 /* The container */
 .container {
   display: block;
@@ -405,7 +416,7 @@ h3 {
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: #bebebe;
   border-radius: 3px;
 }
 
