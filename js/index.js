@@ -176,9 +176,7 @@ class CriteriaOutput {
     }
 }
 
-
-
-async function countPlaces(address, criteriaArray) {
+async function getPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
     .then(function(results) {
         let latitude = results[0].geometry.location.lat()
@@ -189,9 +187,14 @@ async function countPlaces(address, criteriaArray) {
         //insert alert(status) here
     })
 
-    //do i need to make the internal functions here async/await?
+    let criteriaOutputObjs = []
+
+    let promises = []
+    let promisesCriteria = []
+    
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
+        
         fetchPlaces(latlng, criteriaType).then(function(json) {
             console.log(json) //replace with actual code
         })
