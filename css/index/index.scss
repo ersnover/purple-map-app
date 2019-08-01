@@ -18,10 +18,23 @@ body {
 //  #5352ed;
 
 h1{
-    color: $purple;
     font-family: $headerFont;
     font-weight: 700;
     font-size: 3.2em;
+    margin-bottom: 10px;
+}
+
+h2{
+    font-family: $headerFont;
+    font-weight: 600;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-family: $headerFont;
+    font-weight: 400;
+    font-size: 2.2em;
     margin-bottom: 10px;
 }
 
@@ -64,15 +77,46 @@ h1{
 }
 
 .page-section-flex {
-    height: 100vh;
-    width: 100%;
+    @extend .page-section;
     display: flex;
     justify-content: center;
     align-items: center;   
 }
 
 .score-container {
-    //set so that it contains 
+    //white box with shadow and outline proportional to outer div
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #999;
+    margin: 0 auto;
+    width: 80%;
+    height: 50vh;
+    padding: 60px 50px;
+    box-shadow: $box-shadow;
+}
+
+#main-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#detail-score-container {
+    //flex for squares inside
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+}
+
+//add in scroll for box overflow
+//copy the modal styling and then make it wider
+
+.parameter-container {
+    //change to gradient
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: purple;
 }
 
 #container{
