@@ -23,7 +23,7 @@ h1 {
   display: flex;
   align-items: center;
   position: fixed;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
 .navBar .pageTitle {
   margin-right: auto;
@@ -68,7 +68,7 @@ h1 {
   width: 50%;
   height: 50vh;
   padding: 60px 50px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
 .indexContent p {
   width: 80%;
@@ -167,7 +167,8 @@ h1 {
   font-size: 1.5em;
   border-radius: 15px;
   margin-top: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  border: none;
 }
 
 .mainButton:focus {
@@ -176,6 +177,8 @@ h1 {
 
 .mainButton:active {
   transform: translate(0px, 1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: 0.2s ease-out;
 }
 
 /*# sourceMappingURL=index.css.map */
