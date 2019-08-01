@@ -31,6 +31,33 @@ h1{
     font-size: 27px;
     background-color:  white;
     display: flex;
+<<<<<<< HEAD
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .navBar .pageTitle {
+    margin-right: auto;
+    margin-left: 15px;
+  }
+  
+  .navBar i {
+    margin-right: 20px;
+  }
+  
+  .navBar button {
+    font-size: 27px;
+    background: none;
+    color: white;
+    border: none;
+  }
+
+  .importance-selector {
+    display: none;
+}
+  /*# sourceMappingURL=index.css.map */
+=======
     align-items: center;
     position: fixed;
     box-shadow: $box-shadow;
@@ -200,3 +227,4 @@ h1{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: .2s ease-out;
 }
+>>>>>>> master
