@@ -185,9 +185,9 @@ h3{
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
 
-    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 50px; /* Firefox */
-    column-gap: 50px;
+    -webkit-column-gap: 70px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 70px; /* Firefox */
+    column-gap: 70px;
 
 
     ul {
@@ -347,7 +347,7 @@ h3{
   
   /* When the checkbox is checked, add a blue background */
   .container input:checked ~ .checkmark {
-    background-color: #572a7a;
+    background-color: $purple;
     border-radius: 3px;
   }
   

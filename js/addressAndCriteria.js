@@ -28,7 +28,7 @@ function validateAddress(){
 // REPLACE DIV
 let addressDiv = document.getElementById("addressIntakeDiv")
 let addressDivParent = addressDiv.parentNode
-let preferencesDiv = document.getElementById("search-criteria-div")
+let preferencesDiv = document.getElementById("search-div")
 
 function replaceDiv(){
     preferencesDiv.style.display = "flex"
@@ -47,8 +47,16 @@ placeTypes.map((type, index) => {
 
     const markup = `
     
-    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type">${placeDisplayName}</label>
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    
+    ${placeDisplayName}
+
     <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+
+    <span class="checkmark"></span>
+
+    </label>
+
     <select  id="select-${index}" class="importance-selector">
         <option value="${highImp}">${highImp}</option>
         <option value="${medImp}">${medImp}</option>
@@ -88,7 +96,7 @@ function getCriteriaObjs() {
 
     allPlaceTypeCheckboxes.forEach(box => {
         if(box.checked) {
-            let placeType = box.previousElementSibling.id
+            let placeType = box.parentElement.id
             let selectId = box.dataset.selectid
             let placeTypeImportance = document.getElementById(selectId).value
 

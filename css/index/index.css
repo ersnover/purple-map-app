@@ -215,10 +215,10 @@ h3 {
   /* Chrome, Safari, Opera */
   /* Firefox */
   column-count: 2;
-  -webkit-column-gap: 50px;
+  -webkit-column-gap: 70px;
   /* Chrome, Safari, Opera */
   /* Firefox */
-  column-gap: 50px;
+  column-gap: 70px;
 }
 
 #search-criteria-div ul {
