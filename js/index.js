@@ -2,7 +2,6 @@ let usersCollectionRef = db.collection('users')
 let userRef = ""
 let activeUserId = ""
 
-
 firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
     if (user) {     //if a user is logged in
