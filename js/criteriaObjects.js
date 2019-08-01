@@ -1,3 +1,7 @@
+const highImp = "Very High Importance"
+const medImp = "Important"
+const lowImp = "Slightly Important"
+
 class ReportObject {                    // used in building of score report
     constructor(address, parameterInfoArray, score, scale) {
         this.address = address
