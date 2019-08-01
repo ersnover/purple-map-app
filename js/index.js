@@ -231,7 +231,7 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-        // getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
+        getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
         userRef.collection("addresses").add({
             address: address
         })
