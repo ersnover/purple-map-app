@@ -96,37 +96,12 @@ goButton.addEventListener('click', () => {
 
     let criteriaArray = [
         {
-            type: "restaurant",
+            type: "school",
         },
         {
             type: "bar",
-        },
-        {
-            type: "park",
-        },
-        {
-            type: "gym",
-        },
-        {
-            type: "atm",
-        },
-        {
-            type: "convenience_store",
-        },
-        {
-            type: "bus_station",
-        },
-        {
-            type: "liquor_store",
-        },
-        {
-            type: "post_office",
-        },
-        {
-            type: "supermarket",
-        },
+        }
     ]
-
     let radiusArray = [1000]        // can enter more radii here
 
 
