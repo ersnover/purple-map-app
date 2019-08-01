@@ -1,7 +1,26 @@
+const highImp = "Very Important"
+const medImp = "Important"
+const lowImp = "Slightly Important"
+// edit importance displays here
+
+class CriteriaInputObj {
+    constructor(type, importance) {
+        this.type = type
+        this.importance = importance
+    }
+}
+class CriteriaOutputObj {
+    constructor(type, importance, placeIds) {
+        this.type = type
+        this.importance = importance
+        this.placeIds = placeIds
+    }
+}
+
 class ReportObject {                    // used in building of score report
-    constructor(address, parameterInfoArray, score, scale) {
+    constructor(address, criteriaInfoArray, score, scale) {
         this.address = address
-        this.parameterInfoArray = parameterInfoArray
+        this.criteriaInfoArray = criteriaInfoArray
         this.score = score
         this.scale = scale
     }
