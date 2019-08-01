@@ -142,7 +142,6 @@ function getCriteriaObjs() {
             criteriaObjs.push(obj)
         }
     })
-    console.log(criteriaObjs)
     return criteriaObjs
 }
 
@@ -218,6 +217,7 @@ async function getPlaces(address, criteriaArray) {
         }
 
     }).then(function(obj) {
+        console.log(criteriaOutputObjs)
         return criteriaOutputObjs 
     })
 }
