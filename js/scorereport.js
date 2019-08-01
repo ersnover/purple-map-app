@@ -21,8 +21,10 @@ class ParameterInfo {
 
 let obj1 = new ParameterInfo('park', 'very important', 15, 90)
 let obj2 = new ParameterInfo('bus_stop', 'important', 15, 85)
-let parameterInfoArray = [obj1,obj2]
-let algorithmObject = new AlgorithmObject('123 main st', parameterInfoArray, 98)
+let obj3 = new ParameterInfo('supermarket', 'somewhat important', 12, 75)
+let obj4 = new ParameterInfo('atm', 'somewhat important', 20, 100)
+let parameterInfoArray = [obj1,obj4,obj2,obj3]
+let algorithmObject = new AlgorithmObject('123 main st, Houston TX', parameterInfoArray, 98)
 
 //end test data
 
@@ -60,7 +62,7 @@ parameterInfo.forEach(function(parameterObj) { //change the type name
     let importanceClass = determineImportanceClass(parameterImportance)
     let formattedType = parameterType.replace('_',' ')
     let detailScoreContainerHeight = detailScoreContainer.clientHeight
-    let divDimension = (detailScoreContainerHeight/3)
+    let divDimension = (detailScoreContainerHeight/1.75)
 
     let div = `<div class="parameter-container ${importanceClass}" style="height:${divDimension}; width:${divDimension}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
                     <h3 class="toTitleCase">${formattedType}</h3>
@@ -86,11 +88,15 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
                 <h3>${parameterNumber}</h3>`
 
     detailParameterContainer.innerHTML = content
+    detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
     detailParameterModal.style.display = 'block'
 }
 
-//add onclick close modal
-
+let detailParameterModal = document.getElementById('detail-parameter-modal')
+let closeBtn = document.getElementsByClassName('close')[0]
+closeBtn.onclick = function(){
+    detailParameterModal.style.display = "none";
+}
 //style things
 
 //maybe have visual indicator of importance of each parameter

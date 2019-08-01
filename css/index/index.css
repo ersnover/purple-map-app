@@ -24,7 +24,7 @@ h2 {
 h3 {
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
-  font-size: 2.2em;
+  font-size: 1.8em;
   margin-bottom: 10px;
 }
 
@@ -79,9 +79,27 @@ h3 {
   border: 1px solid #999;
   margin: 0 auto;
   width: 80%;
-  height: 50vh;
+  height: 60vh;
   padding: 60px 50px;
   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+}
+.score-container h1 {
+  color: #572a7a;
+  font-weight: 700;
+  font-size: 12em;
+  margin-top: 0.3em;
+}
+.score-container h2 {
+  color: grey;
+  font-weight: 350;
+  font-size: 7em;
+  margin-top: 0.5em;
+}
+.score-container h3 {
+  color: grey;
+  font-weight: 250;
+  font-size: 3em;
+  margin-top: 0;
 }
 
 #main-score-container {
@@ -90,17 +108,51 @@ h3 {
   align-items: center;
 }
 
-#detail-score-container {
-  display: flex;
-  justify-content: space-between;
-  height: 80%;
+#second-score-container h3 {
+  font-weight: 400;
+  margin-bottom: 1em;
 }
-
-.parameter-container {
+#second-score-container .header-container {
+  text-align: center;
+}
+#second-score-container #detail-score-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 40vh;
+}
+#second-score-container #detail-score-container .parameter-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  background-color: purple;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  margin: 20px;
+}
+#second-score-container #detail-score-container h2 {
+  font-size: 2.8em;
+  color: white;
+}
+#second-score-container #detail-score-container h3 {
+  font-size: 2.2em;
+  color: white;
+  margin-bottom: 0.5em;
+}
+
+#detail-parameter-importance-bar {
+  height: 2%;
+}
+
+.very-important {
+  background-image: linear-gradient(to top, #19012c, #a785c2);
+}
+
+.important {
+  background-image: linear-gradient(to top, #361054, #c6b0d7);
+}
+
+.somewhat-important {
+  background-image: linear-gradient(to top, #765093, #e5d5ef);
 }
 
 #container {
