@@ -230,25 +230,25 @@ function validateAddress(){
     }
 }
 
-// // algorithm calculations (will need var names adjusted based on input)
-// let address = "1200 richmond"
-// let criteriaOutputObjs = [
-//     {
-//       criteriaType: 'restaurant',
-//       criteriaImportance: 'high',
-//       placeIds: [1,2,3,4,5,5,6,7,9]          please for the love of god don't delete this
-//     },
-//     {
-//       criteriaType: 'park',
-//       criteriaImportance: 'med',
-//       placeIds: [1,2,3]
-//     },
-//     {
-//       criteriaType: 'bar',
-//       criteriaImportance: 'low',
-//       placeIds: [1,4,5,5,6,7,9]
-//     }
-//   ]
+// algorithm calculations (will need var names adjusted based on input)
+let address = "1200 richmond"
+let criteriaOutputObjs = [
+    {
+      criteriaType: 'restaurant',
+      criteriaImportance: 'high',
+      placeIds: [1,2,3,4,5,5,6,7,9]          //please for the love of god don't delete this
+    },
+    {
+      criteriaType: 'park',
+      criteriaImportance: 'med',
+      placeIds: [1,2,3]
+    },
+    {
+      criteriaType: 'bar',
+      criteriaImportance: 'low',
+      placeIds: [1,4,5,5,6,7,9]
+    }
+  ]
 
 function calcScoreScale(criteriaOutputObjs) {
     let highPriority = 0
@@ -313,7 +313,7 @@ function generateScoreObjects(criteriaOutputObjs) {         // runs individual s
 
         totalScore += adjustedScore
         
-        let parameterObj = new ParameterInfo(criteria.CriteriaType, criteria.criteriaImportance, num, score, adjustedScore)
+        let parameterObj = new ParameterInfo(criteria.criteriaType, criteria.criteriaImportance, num, score, adjustedScore)
         parameterInfoArray.push(parameterObj)
         
     }
@@ -323,3 +323,6 @@ function generateScoreObjects(criteriaOutputObjs) {         // runs individual s
 
     return reportObject
 }
+
+console.log(generateScoreObjects(criteriaOutputObjs))
+
