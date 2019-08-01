@@ -121,9 +121,7 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     if (num <= critStatObj.avg) {
         score = 70 * Math.pow((num / critStatObj.avg), 2)
     } else if (num > critStatObj.avg && num <= critStatObj.max) {
-        score = 70 + 30 * num / (critStatObj.max - critStatObj.avg)
-    } else if (num >= critStatObj.max) {
-        score = 100
+        score = 70 + 30 * (num - critStatObj.avg) / (critStatObj.max - critStatObj.avg)
     }
 
     return score

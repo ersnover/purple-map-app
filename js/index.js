@@ -44,7 +44,7 @@ function runAll() {
     getPlaces(address, criteriaInputObjs,results => {
         reportObject = generateScoreObjects(address, results)
 
-        if (userRef == "") {
+        if (!firebase.auth().currentUser) {
             userRef = usersCollectionRef.doc('Guest')
         }
 
@@ -57,9 +57,9 @@ function runAll() {
             score: reportObject.score,
             scale: reportObject.scale
             })
-        .then(
+        .then(() => {
             window.location = "score.html"
-        )
+        })
     })
 }
 
