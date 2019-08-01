@@ -45,6 +45,13 @@ h1 {
   color: #572a7a;
   border: none;
 }
+<<<<<<< HEAD
+
+.importance-selector {
+  display: none;
+}
+/*# sourceMappingURL=index.css.map */
+=======
 .navBar #userButton:focus {
   outline: none;
 }
@@ -171,3 +178,4 @@ h1 {
 }
 
 /*# sourceMappingURL=index.css.map */
+>>>>>>> master
