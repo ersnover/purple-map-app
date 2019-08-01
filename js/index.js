@@ -194,11 +194,31 @@ async function getPlaces(address, criteriaArray) {
     
     criteriaArray.forEach(function(obj) {
         let criteriaType = obj['type']
-        
-        fetchPlaces(latlng, criteriaType).then(function(json) {
-            console.log(json) //replace with actual code
-        })
-        //push to db
+        let criteriaImportance = obj['importance']
+        let promise = fetchPlaces(latlng, criteriaType, criteriaImportance)
+        promisesCriteria.push([criteriaType, criteriaImportance])
+        promises.push(promise)
+    })
+
+    Promise.all(promises).then(function(promiseArray) {  
+        //use index loop to call the corresponding values for each promise
+        function pushPlaceIds(json) {
+            let placeIds = []
+                json.results.forEach(function(obj) {
+                    placeIds.push(obj.place_id)
+                })
+            return placeIds
+        }
+        for (let i = 0; i < promises.length; i++) {
+            let criteriaType = promisesCriteria[i][0]
+            let criteriaImportance = promisesCriteria[i][1]
+            let placeIds = pushPlaceIds(promiseArray[i])
+            let criteriaOutputObj = new CriteriaOutput(criteriaType, criteriaImportance, placeIds)
+            criteriaOutputObjs.push(criteriaOutputObj)
+        }
+
+    }).then(function(obj) {
+        return criteriaOutputObjs 
     })
 }
 //end api calls
