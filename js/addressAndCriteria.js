@@ -63,6 +63,7 @@ placeTypes.map((type, index) => {
 
     const markup = `
     
+    <li>
     <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
     
     ${placeDisplayName}
@@ -77,7 +78,8 @@ placeTypes.map((type, index) => {
         <option value="${highImp}">${highImp}</option>
         <option value="${medImp}">${medImp}</option>
         <option value="${lowImp}">${lowImp}</option>
-    </select> <br>
+    </select>
+    </li>
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
