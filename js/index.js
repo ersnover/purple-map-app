@@ -66,6 +66,14 @@ addressInput.addEventListener("keypress", event=>{
     }
 })
 
+let addressDiv = document.getElementById("addressIntakeDiv")
+let addressDivParent = addressDiv.parentNode
+let preferencesDiv = document.getElementById("search-criteria-div")
+function replaceDiv(){
+    preferencesDiv.style.display = "flex"
+    addressDivParent.replaceChild(preferencesDiv, addressDiv)
+}
+
 
 // const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
@@ -223,10 +231,11 @@ function validateAddress(){
         text.innerHTML = "Enter a valid address."
     }else{
         text.innerHTML =''
-        getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
+        // getPlaces(address, criteriaArray) //actually move this to submit and pull address and criteria from firebase
         userRef.collection("addresses").add({
             address: address
         })
+        replaceDiv()
     }
 }
 

@@ -2,7 +2,7 @@
 
 $purple: #572a7a;
 $gray: #777;
-$box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
+$box-shadow:0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
 body {
@@ -72,7 +72,7 @@ h1{
     align-items: center;            
 }
 
-#addressIntakeDiv {
+.indexContent {
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -92,6 +92,7 @@ h1{
     }
     h1{
         color: $purple;
+        margin-bottom: 5%;
     }
     #addressInput{
         width: 90%;
