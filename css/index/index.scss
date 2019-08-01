@@ -2,7 +2,7 @@
 
 $purple: #572a7a;
 $gray: #777;
-$box-shadow: 10px 10px 20px 2px rgba(0, 0, 0, 0.2);
+$box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
 body {
@@ -18,10 +18,23 @@ body {
 //  #5352ed;
 
 h1{
-    color: $purple;
     font-family: $headerFont;
     font-weight: 700;
     font-size: 3.2em;
+    margin-bottom: 10px;
+}
+
+h2{
+    font-family: $headerFont;
+    font-weight: 600;
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+
+h3{
+    font-family: $headerFont;
+    font-weight: 400;
+    font-size: 2.2em;
     margin-bottom: 10px;
 }
 
@@ -32,33 +45,6 @@ h1{
     font-size: 27px;
     background-color:  white;
     display: flex;
-<<<<<<< HEAD
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  
-  .navBar .pageTitle {
-    margin-right: auto;
-    margin-left: 15px;
-  }
-  
-  .navBar i {
-    margin-right: 20px;
-  }
-  
-  .navBar button {
-    font-size: 27px;
-    background: none;
-    color: white;
-    border: none;
-  }
-
-  .importance-selector {
-    display: none;
-}
-  /*# sourceMappingURL=index.css.map */
-=======
     align-items: center;
     position: fixed;
     box-shadow: $box-shadow;
@@ -86,7 +72,56 @@ h1{
     }
     #userButton:focus{
         outline:none;
+        
     }
+}
+
+.page-section {
+    height: 100vh;
+    width: 100%;
+}
+
+.page-section-flex {
+    @extend .page-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.score-container {
+    //white box with shadow and outline proportional to outer div
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #999;
+    margin: 0 auto;
+    width: 80%;
+    height: 50vh;
+    padding: 60px 50px;
+    box-shadow: $box-shadow;
+}
+
+#main-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#detail-score-container {
+    //flex for squares inside
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+}
+
+//add in scroll for box overflow
+//copy the modal styling and then make it wider
+
+.parameter-container {
+    //change to gradient
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: purple;
 }
 
 #container{
@@ -100,7 +135,7 @@ h1{
     align-items: center;            
 }
 
-#addressIntakeDiv {
+.indexContent {
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -118,6 +153,10 @@ h1{
         color: $gray;
         text-align:center;
     }
+    h1{
+        color: $purple;
+        margin-bottom: 5%;
+    }
     #addressInput{
         width: 90%;
         padding: 15px;
@@ -132,6 +171,10 @@ h1{
         border: $purple 2px solid;
     }
     
+}
+
+#search-criteria-div{
+    display:none;
 }
 
 .toTitleCase{
@@ -154,10 +197,11 @@ h1{
         margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
         width: 70%;
-        height: 70vh;
         border-radius: 20px;
+        div{
+            margin: 10px;
+        }
         .close{
             color: #777;
             float: right;
@@ -207,6 +251,7 @@ h1{
         border-radius: 15px;
         margin-top: 10px;
         box-shadow: $box-shadow;
+        border: none;
 }
 
 .mainButton:focus{
@@ -214,5 +259,6 @@ h1{
 }
 .mainButton:active{
     transform: translate(0px, 1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition: .2s ease-out;
 }
->>>>>>> master

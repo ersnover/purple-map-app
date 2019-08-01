@@ -8,26 +8,45 @@
 <title>Purp Home</title>
 </head>
 <body>
+    <div class="nav-container">
+        <!-- placeholder -->
+    </div>
     <div id="main-container">
-        <div class="nav-container">
-            <!-- placeholder -->
-        </div>
-        <div class="header-container">
-            <!-- probably change this header -->
-            <h2>Your score report</h1> 
-        </div>
-        <div id="address-container">
-            <!-- dynamically generate address -->
-            <h3>placeholder</h2>
-        </div>
-        <div id="score">
-            <!-- dynamically generate score -->
-            <h1>98</h1>
-        </div>
-        <div id="criteria-results-container">
-            <!-- dynamically generate based on how many parameters are entered -->
-        </div>
+        <div class="page-section-flex">
+            <div id="main-score-container" class="score-container">
+                <div class="header-container">
+                    <h2>Score for</h2> 
+                </div>
+                <div id="address-container">
 
+                    <h3 id="address-header"></h3>
+                </div>
+                <div id="score">
+
+                    <h1 id="score-header"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="page-section-flex">
+            <div id="second-score container" class="score-container">
+                <div class="header-container">
+                    <h3>Factors Affecting Your Score:</h3>
+                </div>
+                <div id="detail-score-container">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detail-parameter-modal" class="modal">
+        <div class="modal-content">
+            <div id="detail-parameter-importance-bar">
+                <span class="close">&times;</span>
+            </div>
+            <div id="detail-parameter-container">
+
+            </div>
+        </div>
     </div>
 
 
@@ -51,7 +70,7 @@
 
 
 <script src='js/config.js'></script>
-<script src='js/index.js'></script>
-<script src='scorereport.js'></script>
+<!-- <script src='js/index.js'></script> -->
+<script src='js/scorereport.js'></script>
 </body>
 </html>
