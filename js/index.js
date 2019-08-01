@@ -65,7 +65,7 @@ addressInput.addEventListener("keypress", event=>{
 
 let addressDiv = document.getElementById("addressIntakeDiv")
 let addressDivParent = addressDiv.parentNode
-let preferencesDiv = document.getElementById("search-criteria-div")
+let preferencesDiv = document.getElementById("search-div")
 function replaceDiv(){
     preferencesDiv.style.display = "flex"
     addressDivParent.replaceChild(preferencesDiv, addressDiv)
@@ -83,14 +83,21 @@ placeTypes.map((type, index) => {
     const placeDisplayName =criteriaStats[type].placeDisplayName
 
     const markup = `
+    <li>
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    ${placeDisplayName}
     
-    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type">${placeDisplayName}</label>
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}">
+    <span class="checkmark"></span>
+    </label> 
+    
     <select  id="select-${index}" class="importance-selector">
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
-    </select> <br>
+    </select>
+    </li>
+
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
@@ -120,17 +127,17 @@ function showPlaceTypeImportanceSelector(checkbox) {
 const seeResultsButton = document.getElementById('see-results-btn')
 
 seeResultsButton.addEventListener('click', () => {
-
     getCriteriaObjs()
 
 })
 
-const criteriaObjs = []
 
 function getCriteriaObjs() {
+    const criteriaObjs = []
     allPlaceTypeCheckboxes.forEach(box => {
         if(box.checked) {
-            let placeType = box.previousElementSibling.id
+            let placeType = box.parentElement.id
+            // console.log(box.previousElement)
             let selectId = box.dataset.selectid
             let placeTypeImportance = document.getElementById(selectId).value
 
@@ -142,6 +149,7 @@ function getCriteriaObjs() {
             criteriaObjs.push(obj)
         }
     })
+    console.log(criteriaObjs)
     return criteriaObjs
 }
 
