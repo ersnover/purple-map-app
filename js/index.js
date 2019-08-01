@@ -2,12 +2,6 @@ let usersCollectionRef = db.collection('users')
 let userRef = ""
 let activeUserId = ""
 
-const typeObj1 = new CriteriaType('park', 'important')
-const typeObj2 = new CriteriaType('cafe', 'important')
-const typeObj3 = new CriteriaType('bus_station', 'important;')
-let criteriaArray = [typeObj1, typeObj2, typeObj3]
-//end test data
-
 firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
     if (user) {     //if a user is logged in
@@ -170,9 +164,19 @@ function getLatLng(address) {
 }
 
 async function fetchPlaces(latlng, criteriaType) {
-    let response = await fetch(`${proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${apiKey}`)
+    let response = await fetch(`${config.proxy}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latlng}&radius=1500&type=${criteriaType}&keyword=&key=${config.apiKey}`)
     return await response.json()
 }
+
+class CriteriaOutput {
+    constructor(type, importance, placeIds) {
+        this.type = type
+        this.importance = importance
+        this.placeIds = placeIds
+    }
+}
+
+
 
 async function countPlaces(address, criteriaArray) {
     let latlng = await getLatLng(address)
