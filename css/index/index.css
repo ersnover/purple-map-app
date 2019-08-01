@@ -1,8 +1,10 @@
 body {
-  font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
 }
+
 body button {
   cursor: pointer;
 }
@@ -34,30 +36,41 @@ h3 {
   color: #572a7a;
   font-size: 27px;
   background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
+
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
 }
+
 .navBar #userSpan {
   margin-right: 20px;
 }
+
 .navBar i {
   margin-right: 20px;
 }
+
 .navBar i:active {
   outline: none;
 }
+
 .navBar button {
   font-size: 27px;
   background: none;
   color: #572a7a;
   border: none;
 }
+
 .navBar #userButton:focus {
   outline: none;
 }
@@ -68,9 +81,15 @@ h3 {
 }
 
 .page-section-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .score-container {
@@ -81,7 +100,8 @@ h3 {
   width: 80%;
   height: 60vh;
   padding: 60px 50px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
 .score-container h1 {
   color: #572a7a;
@@ -103,9 +123,16 @@ h3 {
 }
 
 #main-score-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #second-score-container h3 {
@@ -156,36 +183,56 @@ h3 {
 }
 
 #container {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(63, 20, 113, 0.5)), to(rgba(170, 144, 193, 0.5))), url(../../images/mainbackground.jpg);
   background-image: linear-gradient(to top, rgba(63, 20, 113, 0.5), rgba(170, 144, 193, 0.5)), url(../../images/mainbackground.jpg);
   background-size: cover;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .indexContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: white;
   border-radius: 10px;
   margin: 0 auto;
   width: 50%;
   height: 50vh;
   padding: 60px 50px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
+
 .indexContent p {
   width: 80%;
   color: #777;
   text-align: center;
 }
+
 .indexContent h1 {
   color: #572a7a;
   margin-bottom: 5%;
 }
+
 .indexContent #addressInput {
   width: 90%;
   padding: 15px;
@@ -194,6 +241,7 @@ h3 {
   margin: 10px 0;
   font-size: 1.2em;
 }
+
 .indexContent #addressInput:focus {
   outline: none;
   border: #572a7a 2px solid;
@@ -219,6 +267,7 @@ h3 {
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal .modal-content {
   background-color: #fefefe;
   margin: 10% auto;
@@ -227,15 +276,18 @@ h3 {
   width: 70%;
   border-radius: 20px;
 }
+
 .modal .modal-content div {
   margin: 10px;
 }
+
 .modal .modal-content .close {
   color: #777;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
+
 .modal .modal-content .close:hover {
   color: black;
   text-decoration: none;
@@ -243,17 +295,26 @@ h3 {
 }
 
 #loginContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-top: 10%;
 }
+
 #loginContainer .pageTitle {
   color: #572a7a;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 3em;
   margin-bottom: 10%;
 }
+
 #loginContainer .textItem {
   width: 65%;
   margin-bottom: 20px;
@@ -262,6 +323,7 @@ h3 {
   border: 1px solid black;
   font-size: 1.2em;
 }
+
 #loginContainer .textItem:focus {
   outline: none;
 }
@@ -274,7 +336,8 @@ h3 {
   font-size: 1.5em;
   border-radius: 15px;
   margin-top: 10px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   border: none;
 }
 
@@ -283,9 +346,11 @@ h3 {
 }
 
 .mainButton:active {
-  transform: translate(0px, 1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.2s ease-out;
+  -webkit-transform: translate(0px, 1px);
+          transform: translate(0px, 1px);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
 }
-
 /*# sourceMappingURL=index.css.map */
