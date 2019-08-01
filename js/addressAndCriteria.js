@@ -23,17 +23,33 @@ function validateAddress(){
         replaceDiv()
         finalAddress = address
     }
+    console.log(finalAddress)
 }
 
 // REPLACE DIV
 let addressDiv = document.getElementById("addressIntakeDiv")
 let addressDivParent = addressDiv.parentNode
 let preferencesDiv = document.getElementById("search-div")
+const goBackButton = document.getElementById('go-back-btn')
 
 function replaceDiv(){
     preferencesDiv.style.display = "flex"
     addressDivParent.replaceChild(preferencesDiv, addressDiv)
+    goBackButton.addEventListener('click', function() {
+        goBack()
+        console.log('hey')
+    })
 }
+
+
+
+
+function goBack() {
+    preferencesDiv.style.display = "none"
+    // addressDiv.style.display = "block"
+    preferencesDiv.replaceWith(addressDiv)
+}
+
 
 // POPULATE SEARCH CRITERIA FROM CRITERIA STATS OBJECT
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
@@ -105,5 +121,6 @@ function getCriteriaObjs() {
             criteriaInputObjs.push(obj)
         }
     })
+    console.log(criteriaInputObjs)
     return criteriaInputObjs        // array
 }
