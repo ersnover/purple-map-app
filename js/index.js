@@ -1,15 +1,40 @@
-// user auth stuff
 let usersCollectionRef = db.collection('users')
 let userRef = ""
-
 let activeUserId = ""
-const signOutButton = document.getElementById("signOutButton")
-signOutButton.addEventListener('click', () => {
-    signOutUser()
-})
 
-const proxy = 'https://cors-anywhere.herokuapp.com/'
-const apiKey = 'AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg'
+const typeObj1 = new CriteriaType('park', 'important')
+const typeObj2 = new CriteriaType('cafe', 'important')
+const typeObj3 = new CriteriaType('bus_station', 'important;')
+let criteriaArray = [typeObj1, typeObj2, typeObj3]
+//end test data
+
+firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+
+    if (user) {     //if a user is logged in
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+//Might bring this back after we figure out the registration page. TBD.
+        // usersCollectionRef.doc(uid).get()     
+        // .then(snapshot => {
+        //     if (!snapshot.exists) {     //checks whether user is already saved in database
+        //         usersCollectionRef.doc(uid).set({
+        //             email: email,
+        //             uid: uid
+        //         })
+        //     }
+        // })
+        usernameSpan.innerHTML = email
+
+        activeUserId = uid
+
+        userRef = usersCollectionRef.doc(uid)
+    }    
+})
 
 //test data
 class CriteriaType {
@@ -26,40 +51,6 @@ const typeObj3 = new CriteriaType('bus_station', 'important;')
 let criteriaArray = [typeObj1, typeObj2, typeObj3]
 //end test data
 
-//login algorithm
-firebase.auth().onAuthStateChanged(user => {
-
-    if (user) {     //if a user is logged in
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-
-        usersCollectionRef.doc(uid).get()     
-        .then(snapshot => {
-            if (!snapshot.exists) {     //checks whether user is already saved in database
-                usersCollectionRef.doc(uid).set({
-                    email: email,
-                    uid: uid
-                })
-            }
-        })
-
-        activeUserId = uid
-        userRef = usersCollectionRef.doc(uid)
-    }    
-})
-
-//  sign out function (called from signout button)
-function signOutUser() {
-    firebase.auth().signOut().then(function() {
-        window.open("login.html")
-      }).catch(error => {
-      });
-}
 
 let addressInput = document.getElementById("addressInput")
 let addressIntakeBtn = document.getElementById("addressIntakeBtn")
@@ -78,40 +69,30 @@ addressInput.addEventListener("keypress", event=>{
     }
 })
 
+let addressDiv = document.getElementById("addressIntakeDiv")
+let addressDivParent = addressDiv.parentNode
+let preferencesDiv = document.getElementById("search-criteria-div")
+function replaceDiv(){
+    preferencesDiv.style.display = "flex"
+    addressDivParent.replaceChild(preferencesDiv, addressDiv)
+}
 
 
-placeTypes = [
-    {
-        placeDisplayName: 'Restaurants',
-        googleidname: 'restaurant'
-    },
-    {
-        placeDisplayName: 'Parks',
-        googleidname: 'park'
-    },
-    {
-        placeDisplayName: 'Bars',
-        googleidname: 'bar'
-    },
-    {
-        placeDisplayName: 'Schools',
-        googleidname: 'school'
-    },
-    {
-        placeDisplayName: 'Clubs',
-        googleidname: 'club'
-    }
-]
-
-
+// Get each place type category and populate them onto the search criteria page
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
-const places = placeTypes.map((place, index) => {
+placeTypes = Object.keys(criteriaStats)
+
+placeTypes.map((type, index) => {
+    
+    const googleId = criteriaStats[type].googleidname
+    const placeDisplayName =criteriaStats[type].placeDisplayName
+
     const markup = `
     
-    <label for="place-type-${index}" id="${place.googleidname}">${place.placeDisplayName}</label>
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox" data-selectid="select-${index}"> 
-    <select id="select-${index}" class="importance-selector">
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type">${placeDisplayName}</label>
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+    <select  id="select-${index}" class="importance-selector">
         <option value="3">3</option>
         <option value="2">2</option>
         <option value="1">1</option>
@@ -119,74 +100,9 @@ const places = placeTypes.map((place, index) => {
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
-    console.log(`place-type-${index} select-${index}`)
+})      
 
-
-})
-
-
-// Creat a map ? ...to get all of the id's below and create javascript variables for each
-
-// run a for each function to apply the getPlaceCriteria for all of the place criteria
-
-
-
-
-
-// find out how to limit the number of selections
-
-// about the radius input?
-
-// is there an obj/var created for the address input
-
-// id's of the place types
-const placeTypeOne = document.getElementById('place-type-0')
-const placeTypeTwo = document.getElementById('place-type-1')
-const placeTypeThree = document.getElementById('place-type-2')
-const placeTypeFour = document.getElementById('place-type-3')
-
-// id's of importance selector of the place types
-const placeTypeOneImportance = document.getElementById('select-0')
-const placeTypeTwoImportance = document.getElementById('select-1')
-const placeTypeThreeImportance = document.getElementById('select-2')
-const placeTypeFourImportance = document.getElementById('select-3')
-
-const seeResultsButton = document.getElementById('see-results-btn')
-
-seeResultsButton.addEventListener('click', () => {
-
-    getPlaceCriteria(placeTypeOne, placeTypeOneImportance)
-    getPlaceCriteria(placeTypeTwo, placeTypeTwoImportance)
-    getPlaceCriteria(placeTypeThree, placeTypeThreeImportance)
-    getPlaceCriteria(placeTypeFour, placeTypeFourImportance)
-    console.log(searchObjs)
-
-
-})
-
-const searchObjs = []
-
-function getPlaceCriteria (placeTypeID, placeTypeImportance) {
-    
-    if ( placeTypeID.checked == true ) {
-        
-        let obj = {
-            placeType: placeTypeID.previousElementSibling.id,
-            placeTypeImportance: placeTypeImportance.value
-        }
-
-        if (obj) {
-            searchObjs.push(obj)
-        }
-        return obj
-    }    
-
-    
-}
-
-
-
-
+// Show importance selector only if place type is checked
 let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
 
 allPlaceTypeCheckboxes.forEach(checkbox => {
@@ -206,8 +122,35 @@ function showPlaceTypeImportanceSelector(checkbox) {
     }
 }
 
+// When user hits see results button they will be directed to their report based on the queries from the criteria objects
+const seeResultsButton = document.getElementById('see-results-btn')
 
+seeResultsButton.addEventListener('click', () => {
 
+    getCriteriaObjs()
+
+})
+
+const criteriaObjs = []
+
+function getCriteriaObjs() {
+    allPlaceTypeCheckboxes.forEach(box => {
+        if(box.checked) {
+            let placeType = box.previousElementSibling.id
+            let selectId = box.dataset.selectid
+            let placeTypeImportance = document.getElementById(selectId).value
+
+            let obj = {
+                placeType: placeType,
+                placeTypeImportance: placeTypeImportance
+            }
+
+            criteriaObjs.push(obj)
+        }
+    })
+    console.log(criteriaObjs)
+    return criteriaObjs
+}
 
 
 
@@ -264,42 +207,17 @@ function validateAddress(){
         userRef.collection("addresses").add({
             address: address
         })
+        replaceDiv()
     }
 }
 
-
-//Pop up Login
-
-let modal = document.getElementById("loginModal")
-
-let btn = document.getElementById("userButton")
-
-let closeBtn = document.getElementsByClassName("close")[0];
-
-btn.onclick = function(){
-    modal.style.display = "block";
-
-}
-
-
-closeBtn.onclick = function(){
-    modal.style.display = "none";
-}
-
-window.onclick = function(event){
-    if(event.target == modal){
-        modal.style.display ="none";
-    }
-}
-
-
-// algorithm calculations (will need var names adjusted based on input)
-
+// // algorithm calculations (will need var names adjusted based on input)
+// let address = "1200 richmond"
 // let criteriaOutputObjs = [
 //     {
 //       criteriaType: 'restaurant',
 //       criteriaImportance: 'high',
-//       placeIds: [1,2,3,4,5,5,6,7,9]
+//       placeIds: [1,2,3,4,5,5,6,7,9]          please for the love of god don't delete this
 //     },
 //     {
 //       criteriaType: 'park',
@@ -352,13 +270,15 @@ function findScore(criteria) {          // pass in criteriaOutputObject from kel
     return score
 }
 
-function findAllScores() {
+function generateScoreObjects(criteriaOutputObjs) {         // runs individual scores, calculates final score, builds and outputs Score Report object
     let totalScore = 0
+    let parameterInfoArray = []
 
     let scoreScale = calcScoreScale(criteriaOutputObjs)
 
     for (j = 0; j < criteriaOutputObjs.length; j ++) {
         let criteria = criteriaOutputObjs[j]
+        let num = criteriaOutputObjs[j].placeIds.length
         let score = findScore(criteria)     //out of 100
         let priorityScale
 
@@ -373,10 +293,14 @@ function findAllScores() {
         let adjustedScore = score * scoreScale * priorityScale / 100
 
         totalScore += adjustedScore
-        console.log(score, adjustedScore)
-        //updateSearchObject(bunchOfShitIDontWannaFigureOutRightNow)
+        
+        let parameterObj = new ParameterInfo(criteria.CriteriaType, criteria.criteriaImportance, num, score, adjustedScore)
+        parameterInfoArray.push(parameterObj)
+        
     }
+
     totalScore = Math.round(totalScore)
-    console.log(totalScore)
-    return totalScore
+    let reportObject = new ReportObject(address, parameterInfoArray, totalScore, scoreScale)
+
+    return reportObject
 }
