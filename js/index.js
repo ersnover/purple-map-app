@@ -69,6 +69,14 @@ addressInput.addEventListener("keypress", event=>{
     }
 })
 
+let addressDiv = document.getElementById("addressIntakeDiv")
+let addressDivParent = addressDiv.parentNode
+let preferencesDiv = document.getElementById("search-criteria-div")
+function replaceDiv(){
+    preferencesDiv.style.display = "flex"
+    addressDivParent.replaceChild(preferencesDiv, addressDiv)
+}
+
 
 // Get each place type category and populate them onto the search criteria page
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
@@ -199,6 +207,7 @@ function validateAddress(){
         userRef.collection("addresses").add({
             address: address
         })
+        replaceDiv()
     }
 }
 
