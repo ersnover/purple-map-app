@@ -1,16 +1,17 @@
-@import 'mobile', 'midSize', 'desktop';
+@import '_mobile', '_midSize', '_desktop';
 
 $purple: #572a7a;
 $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
+// linear-gradient(to top, rgba(63, 20, 113, 0.50), rgb(170, 144, 193, 0.50))
+
 body {
 
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     margin: 0;
-
     button {
         cursor: pointer;
     }
@@ -40,7 +41,7 @@ h3{
 }
 
 .navBar {
-    width: 100vw;
+    width: 100%;
     height: 50px;
     color: $purple;
     font-size: 27px;
@@ -49,7 +50,7 @@ h3{
     align-items: center;
     position: fixed;
     box-shadow: $box-shadow;
-    z-index: 2;
+    z-index: 100;
 
     .pageTitle {
         margin-right: auto;
@@ -59,7 +60,7 @@ h3{
     #userSpan {
         margin-right: 20px;
         font-size: 20px;
-        color: #777;
+        color: $gray;
     }
 
     i {
@@ -69,7 +70,6 @@ h3{
         outline:none;
     }
     button {
-        font-size: 27px;
         background: none;
         color: $purple;
         border: none;
@@ -93,7 +93,6 @@ h3{
     background-size: cover;
     box-shadow: $box-shadow;
     h3{
-        font-size: 4.5em;
         border-bottom: 1px white solid;
         line-height: 3;
         color:cornsilk;
@@ -121,9 +120,27 @@ h3{
     border: 1px solid #999;
     margin: 0 auto;
     width: 80%;
-    height: 50vh;
+    height: 60vh;
     padding: 60px 50px;
     box-shadow: $box-shadow;
+    h1 {
+        color:$purple;
+        font-weight:700;
+        font-size:12em;
+        margin-top: .3em;
+    }
+    h2 {
+        color:grey;
+        font-weight:350;
+        font-size:7em;
+        margin-top:.5em;
+    }
+    h3 {
+        color: grey;
+        font-weight:250;
+        font-size:3em;
+        margin-top: 0;
+    }
 }
 
 #main-score-container {
@@ -132,28 +149,86 @@ h3{
     align-items: center;
 }
 
-#detail-score-container {
-    //flex for squares inside
-    display: flex;
-    justify-content: space-between;
-    height: 80%;
+#second-score-container {
+    overflow: scroll;
+    h3 {
+        font-weight:400;
+        margin-bottom: 1em;
+    }
+    .header-container{
+        text-align: center;
+    }
+    #detail-score-container {
+        //flex for squares inside
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        height: 50vh;
+        .parameter-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: $box-shadow;
+            margin: 20px;
+        }
+        h2 {
+            font-size:2.8em;
+            color: white;
+        }
+        h3 {
+            font-size:2.2em;
+            color: white;
+            margin-bottom: .4em;
+        }
+    }
 }
 
-//add in scroll for box overflow
-//copy the modal styling and then make it wider
+@media screen and (max-width: 810px) {
+    #second-score-container {
+        h3 {
+            margin-bottom: .4em;
+        }
+    }
+}
 
-.parameter-container {
-    //change to gradient
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $purple;
+
+//add in scroll for box overflow
+//maybe not do containers in the same way and adjust the second container's height to fit whatever is needed for it's content?
+
+#detail-parameter-modal {
+    .modal-content {
+        padding-top: 0;
+    }
+}
+
+#detail-parameter-importance-bar {
+    height: 2%;
+    margin: 0;
+}
+
+#detail-parameter-container {
+    h1 h2 {
+        display:inline-block;
+    }
+    #detail-parameter-score {
+        float: right;
+    }
+}
+
+.very-important {
+    background-image: linear-gradient(to top, #19012c, #a785c2);
+}
+.important {
+    background-image: linear-gradient(to top, #361054, #c6b0d7);
+}
+.somewhat-important {
+    background-image: linear-gradient(to top, #765093, #e5d5ef);
 }
 
 #container{
     
-    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50)),
-                    url(../../images/mainbackground.jpg);
+    
     background-size: cover; 
     height: 100vh; 
     display: flex;
@@ -167,17 +242,10 @@ h3{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    border-radius: 10px;
-    margin: 0 auto;
-    width: 50%;
-    height: 50vh;
-    padding: 60px 50px;
-    box-shadow: $box-shadow;
+    
     
     p{
         width: 80%;
-        color: $gray;
         text-align:center;
     }
     h1{
@@ -337,7 +405,6 @@ h3{
 .mainButton {
     background-color: $purple;
         color: white;
-        width:47%;
         padding: 10px 30px;
         font-size: 1.5em;
         border-radius: 15px;
@@ -363,13 +430,12 @@ h3{
     text-align: center;
     color: #777;
     height:100%;
-    padding: 0 20px;
+    
     h3{
         margin-bottom: 63px;
         margin-top: 0;
     }
     img{
-        width: 60%;
         box-shadow: $box-shadow;
         margin: 30px 20px;
     }
@@ -379,21 +445,16 @@ h3{
     background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
     display:flex;
     justify-content: center;
- 
-    height: 40%;
     .footerContent{
         display:flex;
-        flex-direction:column;
-        width: 30%;
+        flex-direction:column;  
         line-height: 1.4;
     }
 
     p{
         margin-top: 0;
     }
-    h3{
-        margin-bottom: 30px;
-    }
+    
 }
 
 a{
@@ -539,40 +600,40 @@ a:hover {
   }
 
 
-.slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+// .slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
 
-@keyframes slide-right {
-    0% {
-        transform: translateX(-30rem);
-    }
+// @keyframes slide-right {
+//     0% {
+//         transform: translateX(-30rem);
+//     }
 
-    80% {
-        transform: translateX(1rem);
-    }
+//     80% {
+//         transform: translateX(1rem);
+//     }
 
-    100% {
-        transform: translate(0);
-    }
-}
-
-
+//     100% {
+//         transform: translate(0);
+//     }
+// }
 
 
-.slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-@keyframes slide-left {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
 
-    80% {
-        transform: translateX(-1rem);
-    }
+// .slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
+// @keyframes slide-left {
+//     0% {
+//         opacity: 0;
+//         transform: translateX(10rem);
+//     }
+
+//     80% {
+//         transform: translateX(-1rem);
+//     }
+
+//     100% {
+//         opacity: 1;
+//         transform: translate(0);
+//     }
+// }
