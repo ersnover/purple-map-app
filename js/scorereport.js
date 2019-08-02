@@ -1,9 +1,7 @@
 //load info before the rest of the things on the page happen
 let usersCollectionRef = db.collection('users')
-// let userRef = ""
-// let activeUserId = ""
 
-let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {     //if a user is logged in
         var displayName = user.displayName;
@@ -13,35 +11,25 @@ let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP 
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-//Might bring this back after we figure out the registration page. TBD.
-        // usersCollectionRef.doc(uid).get()     
-        // .then(snapshot => {
-        //     if (!snapshot.exists) {     //checks whether user is already saved in database
-        //         usersCollectionRef.doc(uid).set({
-        //             email: email,
-        //             uid: uid
-        //         })
-        //     }
-        // })
-        // usernameSpan.innerHTML = email
 
-        let activeUserId = uid
-        let userRef = usersCollectionRef.doc(uid)
-        let algorithmObjectTest = userRef.collection('searches').doc('currentSearch')
-
-        algorithmObjectTest.get().then(function(obj) {
-            generatePage(obj.data())
-        })
-    }    
+        var userRef = usersCollectionRef.doc(uid)
+    } else {
+        var userRef = usersCollectionRef.doc("Guest")   //if no user, checks "Guest" collection
+    }
+    
+    let algorithmObjectTest = userRef.collection('searches').doc('currentSearch')
+    algorithmObjectTest.get().then(function(obj) {
+        generatePage(obj.data())
+    })
 })
 
 function determineImportanceClass(parameterImportance) {
     if (parameterImportance == highImp) {
-        return 'very-important'
+        return highImp
     } else if (parameterImportance == medImp) {
-        return 'important'
+        return medImp
     } else if (parameterImportance == lowImp) {
-        return 'somewhat-important'
+        return lowImp
     }
 }
 
