@@ -1,3 +1,97 @@
 @media only screen and (max-width: 480px) {
+    p{
+        font-size: 1.2em;
+    }
+    .navBar{
+        #userSpan{
+            display:none;
+        }
+        button{
+            font-size: 20px;
+        }
+    }
+
+    .indexContent{
+        p{
+            color:black;
+        }
+    }
+
+   #container{
+       width:100%;
+       background-image: linear-gradient(to top, rgba(63, 20, 113, 0.90), rgba(170, 144, 193, 0.90)),
+                    url(../../images/mainbackground.jpg);
+       p{
+           color:white;
+       }
+   }
+    .page-section-flex{
+        flex-direction: column;
+        #nearbyInfo{
+            flex-direction: column;
+        }
+    }
+
+    #nearbyInfo{
+        img{
+            width:80%;
+        }
+    }
+    #nearbyContent{
+        h3{
+            font-size:2em;
+        }
+    }
+
+    #footer{
+        flex-direction: column;
+        align-items:center;
+        .footerContent{
+            
+            align-items:center;
+            p{
+                font-size:1em;
+                margin: 0 10px 10px 10px;
+            }
+            h3{
+                margin: 0;
+            }
+        }
+    }
+
+    .footerContent-extra{
+        display:none;
+    }
+
+    .navigation-desktop{
+        display:none;
+    }
+    #expand-nav{
+        margin-bottom: 0;
+        #down{
+            font-size: .5em;
+        }
+    }
+
+   
+    .nav-items{
+        display:none;
+    }
+    .nav-items-expand{
+        display:block;
+        text-align:center;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        
+        a{
+            display:block;
+            font-size: 1.2em;
+        }
+        a:focus{
+            font-weight:700;
+        }
+
+    }
+   
 
 }
