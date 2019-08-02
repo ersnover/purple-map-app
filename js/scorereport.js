@@ -1,98 +1,117 @@
-//test data
+//load info before the rest of the things on the page happen
+let usersCollectionRef = db.collection('users')
+// let userRef = ""
+// let activeUserId = ""
 
-//potentially restructure code so that we have an internal api name to display name conversion for the google nearby place types like 'park'
+let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
-class AlgorithmObject {
-    constructor(address, parameterInfoArray, score) {
-        this.address = address
-        this.parameterInfo = parameterInfoArray
-        this.score = score
-    }
-}
+    if (user) {     //if a user is logged in
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+//Might bring this back after we figure out the registration page. TBD.
+        // usersCollectionRef.doc(uid).get()     
+        // .then(snapshot => {
+        //     if (!snapshot.exists) {     //checks whether user is already saved in database
+        //         usersCollectionRef.doc(uid).set({
+        //             email: email,
+        //             uid: uid
+        //         })
+        //     }
+        // })
+        // usernameSpan.innerHTML = email
 
-class ParameterInfo {
-    constructor(type, importance, number, score) {
-        this.type = type
-        this.importance = importance
-        this.number = number
-        this.score = score
-    }
-}
+        let activeUserId = uid
+        let userRef = usersCollectionRef.doc(uid)
+        let algorithmObjectTest = userRef.collection('searches').doc('currentSearch')
 
-let obj1 = new ParameterInfo('park', 'very important', 15, 90)
-let obj2 = new ParameterInfo('bus_stop', 'important', 15, 85)
-let parameterInfoArray = [obj1,obj2]
-let algorithmObject = new AlgorithmObject('123 main st', parameterInfoArray, 98)
-
-//end test data
-
-let scoreAddress = algorithmObject['address']
-let score = algorithmObject['score']
-let parameterInfo = algorithmObject['parameterInfo']
-
-function determineImportanceClass(parameterImportance) {
-    if (parameterImportance == 'very important') {
-        return 'very-important'
-    } else if (parameterImportance == 'important') {
-        return 'important'
-    } else if (parameterImportance == 'somewhat important') {
-        return 'somewhat-important'
-    }
-}
-
-//score
-let addressHeader = document.getElementById('address-header')
-addressHeader.innerHTML = `${scoreAddress}`
-let scoreHeader = document.getElementById('score-header')
-scoreHeader.innerHTML = `${score}`
-
-
-//parameter scores
-let detailScoreContainer = document.getElementById('detail-score-container')
-
-let detailScoreArray =[]
-parameterInfo.forEach(function(parameterObj) { //change the type name
-    let parameterType = parameterObj['type']
-    let parameterImportance = parameterObj['importance']
-    let parameterNumber = parameterObj['number']
-    let parameterScore = parameterObj['score']
-
-    let importanceClass = determineImportanceClass(parameterImportance)
-    let formattedType = parameterType.replace('_',' ')
-    let detailScoreContainerHeight = detailScoreContainer.clientHeight
-    let divDimension = (detailScoreContainerHeight/3)
-
-    let div = `<div class="parameter-container ${importanceClass}" style="height:${divDimension}; width:${divDimension}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
-                    <h3 class="toTitleCase">${formattedType}</h3>
-                    <h2>${parameterScore}</h2>
-                </div>`
-
-    detailScoreArray.push(div)
+        algorithmObjectTest.get().then(function(obj) {
+            generatePage(obj.data())
+        })
+    }    
 })
-detailScoreContainer.innerHTML = detailScoreArray.join('')
+
+function generatePage(algorithmObject) {
+    let scoreAddress = algorithmObject['address']
+    let appendedScoreAddress = scoreAddress.substring(0,scoreAddress.lastIndexOf(','))
+    let score = algorithmObject['score']
+    let parameterInfo = algorithmObject['criteriaArray']
+
+    function determineImportanceClass(parameterImportance) {
+        if (parameterImportance == 'Very Important') {
+            return 'very-important'
+        } else if (parameterImportance == 'Important') {
+            return 'important'
+        } else if (parameterImportance == 'Slightly Important') {
+            return 'somewhat-important'
+        }
+    }
+
+    //score
+    let addressHeader = document.getElementById('address-header')
+    addressHeader.innerHTML = `${appendedScoreAddress}`
+    let scoreHeader = document.getElementById('score-header')
+    scoreHeader.innerHTML = `${score}`
 
 
-//parameter score details
-function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
-    let formattedType = parameterType.replace('_',' ')
+    //parameter scores
+    let detailScoreContainer = document.getElementById('detail-score-container')
+
+    let detailScoreArray =[]
+    parameterInfo.forEach(function(parameterObj) { //change the type name
+        let parameterType = parameterObj['type']
+        let parameterImportance = parameterObj['importance']
+        let parameterNumber = parameterObj['number']
+        let parameterScore = parameterObj['score']
+
+        let importanceClass = determineImportanceClass(parameterImportance)
+        let formattedType = parameterType.replace('_',' ')
+        let detailScoreContainerHeight = detailScoreContainer.clientHeight
+        let divDimension = (detailScoreContainerHeight/2.25)
+
+        let div = `<div class="parameter-container ${importanceClass}" style="height:${divDimension}; width:${divDimension}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
+                        <h3 class="toTitleCase">${formattedType}</h3>
+                        <h2>${parameterScore}</h2>
+                    </div>`
+
+        detailScoreArray.push(div)
+    })
+    detailScoreContainer.innerHTML = detailScoreArray.join('')
+
+
+    //parameter score details
+    function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
+        let formattedType = parameterType.replace('_',' ')
+        let detailParameterModal = document.getElementById('detail-parameter-modal')
+        let detailParameterContainer = document.getElementById('detail-parameter-container')
+        let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
+        
+        detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
+        let content =  `<div>
+                            <h2 class="toTitleCase">${formattedType}</h2>
+                            <h1 id="detail-parameter-score">${parameterScore}</h1>
+                        </div>
+                        <h3>${parameterImportance}</h3>
+                        <h3>${parameterNumber}</h3>`
+
+        detailParameterContainer.innerHTML = content
+        detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
+        detailParameterModal.style.display = 'block'
+    }
+
     let detailParameterModal = document.getElementById('detail-parameter-modal')
-    let detailParameterContainer = document.getElementById('detail-parameter-container')
-    let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
-    
-    detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
-    let content =  `<h2 class="toTitleCase">${formattedType}</h2>
-                <h1>${parameterScore}</h1>
-                <h3>${parameterImportance}</h3>
-                <h3>${parameterNumber}</h3>`
+    let closeButton = document.getElementsByClassName('close')[0]
+    closeButton.onclick = function(){
+        detailParameterModal.style.display = "none";
+    }
+    //style things
 
-    detailParameterContainer.innerHTML = content
-    detailParameterModal.style.display = 'block'
+    //maybe have visual indicator of importance of each parameter
+    //maybe have credit score circle with red to green scale
+    //would have to add classes to divs accordingly and popualte image accordingly
+
 }
-
-//add onclick close modal
-
-//style things
-
-//maybe have visual indicator of importance of each parameter
-//maybe have credit score circle with red to green scale
-//would have to add classes to divs accordingly and popualte image accordingly

@@ -138,6 +138,7 @@ function generateScoreObjects(address, criteriaOutputObjs) {
         let criteria = criteriaOutputObjs[j]
         let num = criteriaOutputObjs[j].placeIds.length
         let score = findScore(criteria)     // individual score out of 100
+        let roundedScore = Math.round(score)
         let priorityScale
 
         if (criteria.importance == highImp) {
@@ -149,10 +150,10 @@ function generateScoreObjects(address, criteriaOutputObjs) {
         }
 
         let adjustedScore = score * scoreScale * priorityScale / 100    // scales individual score to percentage of total score
-
         totalScore += adjustedScore
+
         
-        let parameterObj = new ParameterInfo(criteria.type, criteria.importance, num, score, adjustedScore)
+        let parameterObj = new ParameterInfo(criteria.type, criteria.importance, num, roundedScore, adjustedScore)
         parameterInfoArray.push(parameterObj)
         
     }
