@@ -422,6 +422,7 @@ a:hover {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    transition: all .2s;
   }
   
   /* Hide the browser's default checkbox */
@@ -515,3 +516,42 @@ a:hover {
   .gen-report-text {
       z-index: 4;
   }
+
+
+.slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-30rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+
+
+
+.slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
