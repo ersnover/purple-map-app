@@ -45,17 +45,52 @@ function determineImportanceClass(parameterImportance) {
     }
 }
 
+function determineScoreColor(score) {
+    if (score > 85) {
+        return 'green'
+    } else if (score > 50 && score < 85) {
+        return 'yellow'
+    } else if (score <= 50) {
+        return 'red'
+    }
+}
+
 function generatePage(algorithmObject) {
     let scoreAddress = algorithmObject['address']
     let appendedScoreAddress = scoreAddress.substring(0,scoreAddress.lastIndexOf(','))
     let score = algorithmObject['score']
+    let scoreColor = determineScoreColor(score)
     let parameterInfo = algorithmObject['criteriaArray']
 
     //score
     let addressHeader = document.getElementById('address-header')
     addressHeader.innerHTML = `${appendedScoreAddress}`
-    let scoreHeader = document.getElementById('score-header')
-    scoreHeader.innerHTML = `${score}`
+    //change this so that it pull sthe score div and then creates the entire div interior and remove the score header thats already in my html file.
+    //set up color variable too
+    let scoreHeader = document.getElementById('score')
+    //add variable for the importance value
+    scoreHeader.innerHTML = `<svg viewBox ="0 0 40 40">
+                                <path
+                                d="M20 4.08449
+                                    a 15.91551 15.91551 0 0 1 0 31.83102
+                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
+                                fill="none"
+                                stroke="#555";
+                                stroke-width="3";
+                            
+                                />
+                                    <path class="circle"
+                                d="M20 4.08449
+                                    a 15.91551 15.91551 0 0 1 0 31.83102
+                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
+                                fill="none"
+                                stroke=${scoreColor};
+                                stroke-width="3";
+                                stroke-dasharray="${score}, 100"
+                                stroke-linecap="round"
+                                />
+                                <text x="12" y="25" class="score"><h1 id="score-header">${score}</h1></text>
+                            </svg>`
 
 
     //parameter scores
@@ -95,18 +130,27 @@ function generatePage(algorithmObject) {
         let formattedType = parameterType.replace('_',' ')
         let detailParameterModal = document.getElementById('detail-parameter-modal')
         let detailParameterContainer = document.getElementById('detail-parameter-container')
-        let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
-        
-        detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
-        let content =  `<div>
-                            <h2 class="toTitleCase">${formattedType}</h2>
-                            <h1 id="detail-parameter-score">${parameterScore}</h1>
+        let disclaimer = ''
+        let formattedParameterNumber = parameterNumber
+        if (parameterNumber == 20) {
+            disclaimer = `<p class="disclaimer">*The maximum number of nearby places per type used for our website is 20. There may be more than 20 ${formattedType}s within 1000 meters.</p>`
+            formattedParameterNumber += '*'
+        }
+        // detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
+        let content =  `<div id="detail-parameter-header">
+                            <span><h2 class="toTitleCase">${formattedType}</h2></span>
+                            <span><h1>${parameterScore}</h1></span>
                         </div>
+                        <h4>Selected level of importance for ${formattedType}s:</h4>
                         <h3>${parameterImportance}</h3>
-                        <h3>${parameterNumber}</h3>`
+                        <h4>Number of ${formattedType}s within 1000 meters:</h4>
+                        <h3>${formattedParameterNumber}</h3>
+                        <h4>More information:</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <img src="images/no-image-available.jpg">
+                        ${disclaimer}`
 
         detailParameterContainer.innerHTML = content
-        detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
         detailParameterModal.style.display = 'block'
     }
 
