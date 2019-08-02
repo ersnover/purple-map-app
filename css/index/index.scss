@@ -5,7 +5,7 @@ $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
-// linear-gradient(to top, rgba(63, 20, 113, 0.50), rgb(170, 144, 193, 0.50))
+// linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50))
 
 body {
 
@@ -313,26 +313,16 @@ h3{
 #search-div {
     display: none;
     position: relative;
+    width: 800px;
 }
 
 
 #search-criteria-div{
 
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2;
-
-    -webkit-column-gap: 50px;
-    -moz-column-gap: 50px;
-    column-gap: 50px;
+    
 
 
-    ul {
-        display: flex;
-        flex-direction: row;  
-        
 
-    }
 
     li {
         list-style: none;
@@ -527,15 +517,7 @@ a:hover {
     margin-top: 50px;
 }
 
-.go-back-btn {
-    width: 5%;
-    font-size: 12px;
-    text-align: center;
-    padding: 5px;
-    left: 6rem;
-    top: 2.5rem;
-    position: absolute;
-}
+
 
 
 
@@ -580,7 +562,7 @@ a:hover {
     background-color: #ccc;
   }
   
-  /* When the checkbox is checked, add a blue background */
+  /* When the checkbox is checked, add a purple background */
   .container input:checked ~ .checkmark {
     background-color: $purple;
     border-radius: 3px;
