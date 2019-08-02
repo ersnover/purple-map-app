@@ -35,21 +35,21 @@ let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP 
     }    
 })
 
+function determineImportanceClass(parameterImportance) {
+    if (parameterImportance == highImp) {
+        return 'very-important'
+    } else if (parameterImportance == medImp) {
+        return 'important'
+    } else if (parameterImportance == lowImp) {
+        return 'somewhat-important'
+    }
+}
+
 function generatePage(algorithmObject) {
     let scoreAddress = algorithmObject['address']
     let appendedScoreAddress = scoreAddress.substring(0,scoreAddress.lastIndexOf(','))
     let score = algorithmObject['score']
     let parameterInfo = algorithmObject['criteriaArray']
-
-    function determineImportanceClass(parameterImportance) {
-        if (parameterImportance == 'Very Important') {
-            return 'very-important'
-        } else if (parameterImportance == 'Important') {
-            return 'important'
-        } else if (parameterImportance == 'Slightly Important') {
-            return 'somewhat-important'
-        }
-    }
 
     //score
     let addressHeader = document.getElementById('address-header')
@@ -82,6 +82,13 @@ function generatePage(algorithmObject) {
     })
     detailScoreContainer.innerHTML = detailScoreArray.join('')
 
+    //style things
+
+    //maybe have visual indicator of importance of each parameter
+    //maybe have credit score circle with red to green scale
+    //would have to add classes to divs accordingly and popualte image accordingly
+
+}
 
     //parameter score details
     function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
@@ -108,10 +115,3 @@ function generatePage(algorithmObject) {
     closeButton.onclick = function(){
         detailParameterModal.style.display = "none";
     }
-    //style things
-
-    //maybe have visual indicator of importance of each parameter
-    //maybe have credit score circle with red to green scale
-    //would have to add classes to divs accordingly and popualte image accordingly
-
-}
