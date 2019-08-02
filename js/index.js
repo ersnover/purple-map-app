@@ -31,21 +31,30 @@ firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variab
     }    
 })
 
-// Program actually running (see results button click)
+const errorMsg = document.getElementById('error-msg')
+
+function showErrorMsg() {
+    errorMsg.style.display = 'block'
+    }
+
+
 const seeResultsButton = document.getElementById('see-results-btn')
 seeResultsButton.addEventListener('click', () => {
     
-    allPlaceTypeCheckboxes.forEach(box => {
-        if(box.checked) {
-            renderLoader(preferencesDiv)
-            runAll()
+    let criteriaInputObjs = getCriteriaObjs()
+
+    if(criteriaInputObjs.length !== 0) {
+        errorMsg.style.display = 'none'
+        renderLoader(preferencesDiv)
+        runAll()
+    } else {
+        showErrorMsg()
     }
-})
 
 function runAll() {
     address = finalAddress
     let criteriaInputObjs = getCriteriaObjs()
-
+    
     getPlaces(address, criteriaInputObjs,results => {
         reportObject = generateScoreObjects(address, results)
 
