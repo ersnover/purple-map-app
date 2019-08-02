@@ -34,6 +34,7 @@ h2{
 
 h3{
     font-family: $headerFont;
+    color: $purple;
     font-weight: 400;
     font-size: 1.8em;
     margin-bottom: 10px;
@@ -57,6 +58,8 @@ h3{
 
     #userSpan {
         margin-right: 20px;
+        font-size: 20px;
+        color: #777;
     }
 
     i {
@@ -80,6 +83,28 @@ h3{
 .page-section {
     height: 100vh;
     width: 100%;
+}
+
+.page-section-purple{
+    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.70), rgba(170, 144, 193, 0.70)),
+                    url(../../images/image3.jpg);
+    height: 100vh; 
+    display: flex;
+    background-size: cover;
+    box-shadow: $box-shadow;
+    h3{
+        font-size: 4.5em;
+        border-bottom: 1px white solid;
+        line-height: 3;
+        color:cornsilk;
+        
+    }
+    p{
+        color:white;
+        padding: 50px;
+        font-size: 1.2em;
+    }
+                    
 }
 
 .page-section-flex {
@@ -204,13 +229,14 @@ h3{
 
 #container{
     
-    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.5), rgba(170, 144, 193, 0.5)),
+    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50)),
                     url(../../images/mainbackground.jpg);
     background-size: cover; 
     height: 100vh; 
     display: flex;
     justify-content: center;
-    align-items: center;            
+    align-items: center;     
+    margin-bottom:20px;       
 }
 
 .indexContent {
@@ -251,9 +277,52 @@ h3{
     
 }
 
-#search-criteria-div{
-    display:none;
+
+#search-div {
+    display: none;
+    position: relative;
 }
+
+
+#search-criteria-div{
+
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 50px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 50px; /* Firefox */
+    column-gap: 50px;
+
+
+    ul {
+        display: flex;
+        flex-direction: row;  
+        
+
+    }
+
+    li {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    select {
+        margin-left: 10px;
+        height: 30px;
+        // border-color: $purple;
+        border: 2px solid $purple;
+        border-radius: 2px;
+        background-color: #eee;
+        font-size: 16px;
+    }
+}
+
+.importance-selector {
+    display: none;
+}
+
 
 .toTitleCase{
     text-transform: capitalize;
@@ -320,6 +389,8 @@ h3{
 }
 
 
+// BUTTONS
+
 .mainButton {
     background-color: $purple;
         color: white;
@@ -328,6 +399,7 @@ h3{
         font-size: 1.5em;
         border-radius: 15px;
         margin-top: 10px;
+        margin-bottom: 30px;
         box-shadow: $box-shadow;
         border: none;
 }
@@ -339,4 +411,225 @@ h3{
     transform: translate(0px, 1px);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: .2s ease-out;
+}
+
+
+#nearbyInfo {
+    display:flex;
+    align-items:center;
+    text-align: center;
+    color: #777;
+    height:100%;
+    padding: 0 20px;
+    h3{
+        margin-bottom: 63px;
+        margin-top: 0;
+    }
+    img{
+        width: 60%;
+        box-shadow: $box-shadow;
+        margin: 30px 20px;
+    }
+}
+
+#footer{
+    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
+    display:flex;
+    justify-content: center;
+ 
+    height: 40%;
+    .footerContent{
+        display:flex;
+        flex-direction:column;
+        width: 30%;
+        line-height: 1.4;
+    }
+
+    p{
+        margin-top: 0;
+    }
+    h3{
+        margin-bottom: 30px;
+    }
+}
+
+a{
+    text-decoration:none;
+    color: black;
+}
+
+a:hover {
+    color: $purple;
+}
+
+.socialicon{
+    width: 30px;
+}
+
+#iconsDiv{
+    display:flex;
+}
+.see-results-btn {
+    width: 40%;
+    margin-top: 50px;
+}
+
+.go-back-btn {
+    width: 5%;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    left: 6rem;
+    top: 2.5rem;
+    position: absolute;
+}
+
+
+
+// CHECKBOX STYLING
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: all .2s;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(190, 190, 190);
+    border-radius: 3px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: $purple;
+    border-radius: 3px;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid $purple;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+    position: absolute;
+    left: 48%;
+    top: 35%;
+    z-index: 3;
+}
+
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.397); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .gen-report-text {
+      z-index: 4;
+  }
+
+
+.slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-30rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+
+
+
+.slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

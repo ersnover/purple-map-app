@@ -23,16 +23,28 @@ function validateAddress(){
         replaceDiv()
         finalAddress = address
     }
+    console.log(finalAddress)
 }
 
 // REPLACE DIV
 let addressDiv = document.getElementById("addressIntakeDiv")
 let addressDivParent = addressDiv.parentNode
-let preferencesDiv = document.getElementById("search-criteria-div")
+let preferencesDiv = document.getElementById("search-div")
+const goBackButton = document.getElementById('go-back-btn')
 
 function replaceDiv(){
     preferencesDiv.style.display = "flex"
     addressDivParent.replaceChild(preferencesDiv, addressDiv)
+    goBackButton.addEventListener('click', function() {
+        goBack()
+        console.log('hey')
+    })
+}
+
+function goBack() {
+    preferencesDiv.style.display = "none"
+    preferencesDiv.replaceWith(addressDiv)
+    addressDiv.classList.add('slide-right')
 }
 
 // POPULATE SEARCH CRITERIA FROM CRITERIA STATS OBJECT
@@ -47,13 +59,23 @@ placeTypes.map((type, index) => {
 
     const markup = `
     
-    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type">${placeDisplayName}</label>
+    <li>
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    
+    ${placeDisplayName}
+
     <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+
+    <span class="checkmark"></span>
+
+    </label>
+
     <select  id="select-${index}" class="importance-selector">
         <option value="${highImp}">${highImp}</option>
         <option value="${medImp}">${medImp}</option>
         <option value="${lowImp}">${lowImp}</option>
-    </select> <br>
+    </select>
+    </li>
     `
 
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
@@ -88,7 +110,7 @@ function getCriteriaObjs() {
 
     allPlaceTypeCheckboxes.forEach(box => {
         if(box.checked) {
-            let placeType = box.previousElementSibling.id
+            let placeType = box.parentElement.id
             let selectId = box.dataset.selectid
             let placeTypeImportance = document.getElementById(selectId).value
 
@@ -98,4 +120,17 @@ function getCriteriaObjs() {
         }
     })
     return criteriaInputObjs        // array
+}
+
+function renderLoader(parent) {
+    
+    const loader = `
+    <div id="overlay"><div class="loader">
+    </div></div>
+    <h2 class='gen-report-text'>Generating your report!<h2>
+    
+    `
+    
+    parent.insertAdjacentHTML('beforeend', loader)
+    document.getElementById("overlay").style.display = "block";
 }
