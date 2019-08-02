@@ -67,7 +67,7 @@ function runAll() {
         userRef.collection('searches').doc('currentSearch').set(
             {
             address: reportObject.address,
-            criteriaArray: criteriaArray,
+            criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
             score: reportObject.score,
             scale: reportObject.scale
             })
@@ -77,7 +77,7 @@ function runAll() {
     })
 }
 
-function buildCritArray(crits) {
+function buildCritArray(crits) {    // converts criteria custom objects to explicit json object for firestore save
 
     let critArray = []
 
@@ -96,3 +96,11 @@ function buildCritArray(crits) {
 
     return critArray
 }})
+
+
+//USER PROFILE NAV
+
+const userNameButton = document.getElementById('userSpan')
+userNameButton.addEventListener('click', () => {
+    window.location = "userPage.html"
+})

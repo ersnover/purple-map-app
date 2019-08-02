@@ -1,19 +1,32 @@
 <html>
-<!-- probably remove all of the links and scripts i don't need in here -->
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
 <link rel='stylesheet' href='css/userPage/userPage.css'>
-<title>Purp Home</title>
+<title>Purp - My Profile</title>
 </head>
 <body>
 
 
+<div class="topDiv">
+<div id="profileInfoDiv">
+    <img id="profileImg" url="">
+    <span id="userFullNameSpan"></span>
+    <span id="userEmailSpan"></span>
+    <button id="editProfileButton">Edit Profile</button>
+</div>
+<div id="defaultCriteriaContainer">
+    <h3>Default Search Preferences</h3>
+    <div id="defaultCriteriaList"></div>
+    <button id="updateDefaultsButton" disabled="true">Update Defaults</button>
+</div>
+</div>
 
-
-
-
+<div class="savedSearchesContainer">
+    <h2>My Saved Searches</h2>
+    <div class="savedSearchesDiv"></div>
+</div>
 
 
 
@@ -35,6 +48,7 @@
 
     const db = firebase.firestore();
 
-</script>   
+</script>
+<script src="js/criteriaObjects.js"></script>
 <script src="js/userPage.js"></script>
 </body>

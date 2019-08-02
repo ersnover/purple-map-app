@@ -63,6 +63,11 @@ h3{
         color: $gray;
     }
 
+    #userSpan:hover {
+        cursor: pointer;
+        color: purple;
+    }
+
     i {
         margin-right: 20px;
     }
