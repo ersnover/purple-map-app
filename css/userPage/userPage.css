@@ -30,7 +30,9 @@
      object-fit: cover;
 }
 
-.topDiv #defaultCriteriaDiv #defaultCriteriaList {
+.topDiv #defaultCriteriaContainer {
+  width: calc(100vw - 400px);
+  margin-right: 10vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,8 +40,37 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topDiv #defaultCriteriaContainer #defaultCriteriaList {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.topDiv #defaultCriteriaContainer #defaultCriteriaList .defaultCriteriaDiv {
+  width: 100%;
+  border-bottom: 1px solid purple;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.topDiv #defaultCriteriaContainer select {
+  margin-left: auto;
 }
 /*# sourceMappingURL=userPage.css.map */
