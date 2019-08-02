@@ -9,7 +9,7 @@ const savedSearchesDiv = document.getElementById('savedSearchesDiv')
 
 function populateUserPage(userObj) {
     profilePic.setAttribute('src', userObj.profileURL)
-    fullNameSpan.innerHTML = userObj.firstName
+    fullNameSpan.innerHTML = userObj.firstName + " " + userObj.lastName
     emailSpan.innerHTML = userObj.email
 }
 
