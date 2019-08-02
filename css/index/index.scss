@@ -374,6 +374,7 @@ h3{
         font-family: $headerFont;
         font-size: 3em;
         margin-bottom: 10%;
+        text-align: center;
     }
     .textItem{
         width:65%;
@@ -434,7 +435,7 @@ h3{
 #footer{
     background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
     display:flex;
-    justify-content: center;
+    
     .footerContent{
         display:flex;
         flex-direction:column;  
@@ -590,40 +591,46 @@ a:hover {
   }
 
 
-// .slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+.fab{
+    font-size: 2em;
+    margin: 10px; 
+}
 
 
-// @keyframes slide-right {
-//     0% {
-//         transform: translateX(-30rem);
-//     }
-
-//     80% {
-//         transform: translateX(1rem);
-//     }
-
-//     100% {
-//         transform: translate(0);
-//     }
-// }
+.slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
 
+@keyframes slide-right {
+    0% {
+        transform: translateX(-30rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
 
 
-// .slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-// @keyframes slide-left {
-//     0% {
-//         opacity: 0;
-//         transform: translateX(10rem);
-//     }
 
-//     80% {
-//         transform: translateX(-1rem);
-//     }
+.slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-//     100% {
-//         opacity: 1;
-//         transform: translate(0);
-//     }
-// }
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
