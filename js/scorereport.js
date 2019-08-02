@@ -75,7 +75,7 @@ function generatePage(algorithmObject) {
                                     a 15.91551 15.91551 0 0 1 0 31.83102
                                     a 15.91551 15.91551 0 0 1 0 -31.83102"
                                 fill="none"
-                                stroke="#555";
+                                stroke="white";
                                 stroke-width="3";
                             
                                 />
@@ -84,7 +84,7 @@ function generatePage(algorithmObject) {
                                     a 15.91551 15.91551 0 0 1 0 31.83102
                                     a 15.91551 15.91551 0 0 1 0 -31.83102"
                                 fill="none"
-                                stroke=${scoreColor};
+                                stroke="${scoreColor}";
                                 stroke-width="3";
                                 stroke-dasharray="${score}, 100"
                                 stroke-linecap="round"
