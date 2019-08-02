@@ -31,20 +31,30 @@ firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variab
     }    
 })
 
+const errorMsg = document.getElementById('error-msg')
+
+function showErrorMsg() {
+    errorMsg.style.display = 'block'
+    }
+
+
 const seeResultsButton = document.getElementById('see-results-btn')
 seeResultsButton.addEventListener('click', () => {
     
-    allPlaceTypeCheckboxes.forEach(box => {
-        if(box.checked) {
-            renderLoader(preferencesDiv)
-            runAll()
+    let criteriaInputObjs = getCriteriaObjs()
+
+    if(criteriaInputObjs.length !== 0) {
+        errorMsg.style.display = 'none'
+        renderLoader(preferencesDiv)
+        runAll()
+    } else {
+        showErrorMsg()
     }
-})
 
 function runAll() {
     address = finalAddress
     let criteriaInputObjs = getCriteriaObjs()
-
+    
     getPlaces(address, criteriaInputObjs,results => {
         reportObject = generateScoreObjects(address, results)
 
@@ -57,7 +67,7 @@ function runAll() {
         userRef.collection('searches').doc('currentSearch').set(
             {
             address: reportObject.address,
-            criteriaArray: criteriaArray,
+            criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
             score: reportObject.score,
             scale: reportObject.scale
             })
@@ -67,7 +77,7 @@ function runAll() {
     })
 }
 
-function buildCritArray(crits) {
+function buildCritArray(crits) {    // converts criteria custom objects to explicit json object for firestore save
 
     let critArray = []
 
@@ -86,3 +96,11 @@ function buildCritArray(crits) {
 
     return critArray
 }})
+
+
+//USER PROFILE NAV
+
+const userNameButton = document.getElementById('userSpan')
+userNameButton.addEventListener('click', () => {
+    window.location = "userPage.html"
+})
