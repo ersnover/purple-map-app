@@ -29,12 +29,12 @@
         </div>
     </div>
 
-    <div class="page-section">
+    <div class="page-section-flex">
         <div id="nearbyInfo">
             <img src="images/image1.jpg">
             <div id="nearbyContent">
                 <h3>Nearby Places</h3>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed reiciendis asperiores aliquid mollitia ipsum, perspiciatis eligendi dicta aperiam ea nulla commodi voluptatem delectus omnis minus nam, itaque quibusdam quis. Illo.
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed reiciendis asperiores aliquid mollitia ipsum, perspiciatis eligendi dicta aperiam ea nulla commodi voluptatem delectus omnis minus nam, itaque quibusdam quis. Illo.</p>
             </div>
         </div>
     </div> 
@@ -42,7 +42,7 @@
     <div class="page-section-purple">
             <div id="nearbyInfo">
                 <div id="nearbyContent">
-                    <h3>Our Team</h3>
+                    <h3 id="teamFont">Our Team</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed reiciendis asperiores aliquid mollitia ipsum, perspiciatis eligendi dicta aperiam ea nulla commodi voluptatem delectus omnis minus nam, itaque quibusdam quis. Illo.</p>
                 </div>
             </div>
@@ -57,14 +57,25 @@
                 </div>   
 
         </div>
-        <div class="footerContent">
+        <div class="navigation-desktop">
             <h3>Navigation</h3>
             <a href="#">About us</a>
             <a href="#">Team</a>
             <a href="#">Site Map</a>
             <a href="#"> Contact Us</a>
         </div>
-        <div class="footerContent">
+                <div class="navigation-mobile">
+                        <h3 id ="expand-nav">Navigation</h3>
+                        <div class="nav-items">
+                            <a href="#">About us</a>
+                            <a href="#">Team</a>
+                            <a href="#">Site Map</a>
+                            <a href="#"> Contact Us</a>
+                        </div>
+                </div>
+            
+        </div>
+        <div class="footerContent-extra">
             <h3>Purp</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum praesentium ad laborum laboriosam quibusdam inventore nihil possimus facilis quia, doloribus mollitia placeat reiciendis commodi sint ab impedit, quisquam laudantium adipisci.</p>
         </div>
@@ -129,6 +140,7 @@
 
 </script>
 
+<script src='js/mobileNav.js'></script>
 <script src='js/criteriaObjects.js'></script>
 <script src='js/config.js'></script>
 <script src='js/login.js'></script>
