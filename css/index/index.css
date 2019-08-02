@@ -243,12 +243,8 @@ h3 {
 
 #search-criteria-div {
   -webkit-column-count: 2;
-  /* Chrome, Safari, Opera */
-  /* Firefox */
   column-count: 2;
   -webkit-column-gap: 50px;
-  /* Chrome, Safari, Opera */
-  /* Firefox */
   column-gap: 50px;
 }
 
@@ -286,14 +282,23 @@ h3 {
   display: none;
 }
 
+.alert-box {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  -webkit-transition: all 3s ease-in-out;
+  transition: all 3s ease-in-out;
+  z-index: 4;
+  position: absolute;
+  top: 80%;
+}
+
 #error-msg {
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-  color: #D63301;
-  background-color: #FFCCBA;
-  border: 1px solid;
-  margin: 10px 0px;
-  padding: 15px 10px 15px 50px;
+  display: none;
 }
 
 .toTitleCase {
