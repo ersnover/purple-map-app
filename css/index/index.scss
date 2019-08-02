@@ -59,6 +59,11 @@ h3{
     .pageTitle {
         margin-right: auto;
         margin-left: 15px;
+        color: $purple;
+    }
+
+    .pageTitle:hover {
+        color: #8d6aa8;
     }
 
     #userSpan {
@@ -69,7 +74,7 @@ h3{
 
     #userSpan:hover {
         cursor: pointer;
-        color: purple;
+        color: $purple;
     }
 
     i {

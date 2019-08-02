@@ -273,18 +273,20 @@ h3 {
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
+  color: #572a7a;
+}
+.navBar .pageTitle:hover {
+  color: #8d6aa8;
 }
 .navBar #userSpan {
   margin-right: 20px;
   font-size: 20px;
   color: #777;
 }
-
 .navBar #userSpan:hover {
   cursor: pointer;
-  color: purple;
+  color: #572a7a;
 }
-
 .navBar i {
   margin-right: 20px;
 }
@@ -504,16 +506,10 @@ h3 {
 
 #search-criteria-div {
   -webkit-column-count: 2;
-  column-count: 2;
-  -webkit-column-gap: 50px;
-  /* Chrome, Safari, Opera */
   -moz-column-count: 2;
-  /* Firefox */
   column-count: 2;
   -webkit-column-gap: 50px;
-  /* Chrome, Safari, Opera */
   -moz-column-gap: 50px;
-  /* Firefox */
   column-gap: 50px;
 }
 #search-criteria-div ul {
@@ -546,7 +542,6 @@ h3 {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
-  -webkit-transition: all 3s ease-in-out;
   transition: all 3s ease-in-out;
   z-index: 4;
   position: absolute;

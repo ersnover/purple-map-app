@@ -1,7 +1,6 @@
 //load info before the rest of the things on the page happen
 let usersCollectionRef = db.collection('users')
-// let userRef = ""
-// let activeUserId = ""
+const usernameSpan = document.getElementById('userSpan')
 
 let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
@@ -23,7 +22,7 @@ let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP 
         //         })
         //     }
         // })
-        // usernameSpan.innerHTML = email
+        usernameSpan.innerHTML = email
 
         let activeUserId = uid
         let userRef = usersCollectionRef.doc(uid)
