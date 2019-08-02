@@ -67,18 +67,18 @@ const criteriaStats = {     ///// can potentially add radius modifiers to diving
         avg: 6.88,
         max: 20
     },
-    atm:
-    {
-        googleidname: "atm",
-        placeDisplayName: "ATMs",
-        avg: 9.64,
-        max: 20
-    },
     convenience_store:
     {
         googleidname: "convenience_store",
         placeDisplayName: "Convenience Stores",
         avg: 4.92,
+        max: 20
+    },
+    atm:
+    {
+        googleidname: "atm",
+        placeDisplayName: "ATMs",
+        avg: 9.64,
         max: 20
     },
     bus_station:

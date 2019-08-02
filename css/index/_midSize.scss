@@ -12,6 +12,11 @@ $headerFont: 'Noto Sans KR', sans-serif;
         }
     }
 
+    h1 {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
     #container{
         background-image: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50)),
                     url(../../images/mainbackground.jpg);
@@ -75,6 +80,31 @@ $headerFont: 'Noto Sans KR', sans-serif;
     .navigation-mobile{
         display: none;
         
+    }
+
+    #search-criteria-div{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    
+        -webkit-column-gap: 50px;
+        -moz-column-gap: 50px;
+        column-gap: 50px;
+
+        ul {
+            display: flex;
+            flex-direction: row;  
+        }
+    }
+
+    #go-back-btn {
+        width: 15%;
+        font-size: 15px;
+        text-align: center;
+        padding: 5px;
+        left: 6rem;
+        top: 2.5rem;
+        position: absolute;
     }
    
 }

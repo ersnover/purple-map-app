@@ -1,4 +1,4 @@
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
     p{
         font-size: 1.2em;
     }
@@ -92,6 +92,24 @@
         }
 
     }
+
+
+    #search-criteria-div{
+        margin-top: 150px;
+    }
+
+
+    #go-back-btn {
+        width: 20%;
+        height: 80px;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px;
+        left: .8rem;
+        top: 40px;
+        position: absolute;
+    }
    
+
 
 }
