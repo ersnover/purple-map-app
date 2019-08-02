@@ -1,0 +1,46 @@
+@import 'mobile', 'midSize', 'desktop';
+
+.topDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    #profileInfoDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        #profileImg {
+            height: 300px;
+            width: 300px;
+            object-fit: cover;
+        }
+    }
+   
+    #defaultCriteriaContainer {
+        width: calc(100vw - 400px);
+        margin-right: 10vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #defaultCriteriaList {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .defaultCriteriaDiv {
+                width: 100%;
+                border-bottom: 1px solid purple;
+                display: flex;
+                justify-content: flex-start;
+            }
+        }
+
+        select {
+            margin-left: auto;
+        }
+    }
+}
+
