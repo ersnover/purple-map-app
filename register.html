@@ -7,23 +7,49 @@
 </head>
 <body>
 
-<div id="regContainer">
-    <span class="pageTitle">Create your Purple account</span>
-    <div id="regLower">
-        <div id="regFields">
-            <span class="regLabel">Email: </span>
-            <input type="text" placeholder="email" id="regEmail">
-            <span class="regLabel">Password: </span><input type="password" placeholder="password" id="regPassword">
-            <span class="regLabel">Re-enter Password: </span><input type="password" placeholder="password" id="regPassword2">
+
+
+<div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop>
+        <source src="images/city.mp4" type="video/mp4">
+        <!-- <source src="img/video.webm" type="video/webm"> -->
+        Your browser is not supported!
+    </video>
+</div>
+
+<form autocomplete="on">
+<div class="regContainer">
+    <h1 class="pageTitle">Create your Purple account</h1>
+    <div class="regLower">
+        <div class="regFields">
+            
+            <label class="regLabel">Email: </label>
+            <input type="text" placeholder="Email" id="regEmail" name="email" autocomplete="email" required>
+
+            <label class="regLabel">First Name: </label>
+            <input type="text" placeholder="First Name" id="regFirstName" required>
+
+            <label class="regLabel">Last Name: </label>
+            <input type="text" placeholder="Last Name" id="regLastName" required>
+
+            <label class="regLabel">Password: </label>
+            <input type="password" placeholder="Password" id="regPassword"  name="password" autocomplete="password" required>
+
+            <label class="regLabel">Re-enter Password: </label>
+            <input type="password" placeholder="Password" id="regPassword2"   name="password" autocomplete="password" required>
+    
+            <button id="regButton" class="mainButton">Register</button>
+            
             <div id="loginLink">
-                <span class="regText">Already registered?</span>
-                <a href="login.html">Log in</a>
+                <label class="regText">Already registered?</label>
+                <a href="login.html">Log in here</a>
             </div>
+
         </div>
-        <button id="regButton">Register</buttton>
     </div>
 
 </div>
+</form>
 
 
 

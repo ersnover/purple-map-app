@@ -2,23 +2,33 @@
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/login/login.css'>
+<link rel='stylesheet' href='css/register/register.css'>
 <title>PurMA Login</title>
 </head>
 <body>
 
-<div id="loginContainer">
-    <span class="pageTitle">Welcome to Purple</span>
-    <div id="loginLower">
-        <div id="loginFields">
+<div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop>
+        <source src="images/city.mp4" type="video/mp4">
+        <!-- <source src="img/video.webm" type="video/webm"> -->
+        Your browser is not supported!
+    </video>
+</div>
+
+<div class="regContainer" id="login-container">
+    <h1 class="pageTitle">Welcome to Purple</h1>
+    <div class="regLower">
+        <div class="regFields">
+
             <input type="text" placeholder="email" id="loginEmail">
             <input type="password" placeholder="password" id="loginPassword">
+
+            <button id="loginButton" class="mainButton">Go!</button>
             <div>
                 <span class="regText">Don't have an account?</span>
                 <a href="register.html">Sign up here</a>
             </div>
         </div>
-        <button id="loginButton" class="mainButton">Go!</buttton>
     </div>
 </div>
 
