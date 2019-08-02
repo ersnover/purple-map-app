@@ -126,6 +126,7 @@ h3{
 }
 
 #second-score-container {
+    overflow: scroll;
     h3 {
         font-weight:400;
         margin-bottom: 1em;
@@ -138,7 +139,7 @@ h3{
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        height: 40vh;
+        height: 50vh;
         .parameter-container {
             display: flex;
             flex-direction: column;
@@ -154,19 +155,41 @@ h3{
         h3 {
             font-size:2.2em;
             color: white;
-            margin-bottom: .5em;
+            margin-bottom: .4em;
+        }
+    }
+}
+
+@media screen and (max-width: 810px) {
+    #second-score-container {
+        h3 {
+            margin-bottom: .4em;
         }
     }
 }
 
 
-
 //add in scroll for box overflow
 //maybe not do containers in the same way and adjust the second container's height to fit whatever is needed for it's content?
 
+#detail-parameter-modal {
+    .modal-content {
+        padding-top: 0;
+    }
+}
 
 #detail-parameter-importance-bar {
     height: 2%;
+    margin: 0;
+}
+
+#detail-parameter-container {
+    h1 h2 {
+        display:inline-block;
+    }
+    #detail-parameter-score {
+        float: right;
+    }
 }
 
 .very-important {

@@ -62,7 +62,7 @@ parameterInfo.forEach(function(parameterObj) { //change the type name
     let importanceClass = determineImportanceClass(parameterImportance)
     let formattedType = parameterType.replace('_',' ')
     let detailScoreContainerHeight = detailScoreContainer.clientHeight
-    let divDimension = (detailScoreContainerHeight/1.75)
+    let divDimension = (detailScoreContainerHeight/2.25)
 
     let div = `<div class="parameter-container ${importanceClass}" style="height:${divDimension}; width:${divDimension}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
                     <h3 class="toTitleCase">${formattedType}</h3>
@@ -82,10 +82,12 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
     let detailParameterImportanceBar = document.getElementById('detail-parameter-importance-bar')
     
     detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
-    let content =  `<h2 class="toTitleCase">${formattedType}</h2>
-                <h1>${parameterScore}</h1>
-                <h3>${parameterImportance}</h3>
-                <h3>${parameterNumber}</h3>`
+    let content =  `<div>
+                        <h2 class="toTitleCase">${formattedType}</h2>
+                        <h1 id="detail-parameter-score">${parameterScore}</h1>
+                    </div>
+                    <h3>${parameterImportance}</h3>
+                    <h3>${parameterNumber}</h3>`
 
     detailParameterContainer.innerHTML = content
     detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
