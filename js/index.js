@@ -31,7 +31,6 @@ firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variab
     }    
 })
 
-
 const seeResultsButton = document.getElementById('see-results-btn')
 seeResultsButton.addEventListener('click', () => {
     

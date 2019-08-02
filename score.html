@@ -2,15 +2,20 @@
 <!-- probably remove all of the links and scripts i don't need in here -->
 <head>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:700&display=swap" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap' rel='stylesheet'>
 <script src="https://kit.fontawesome.com/a30afdad7d.js"></script>   <!--icons library-->
 <link rel='stylesheet' href='css/index/index.css'>
 <title>Purp Home</title>
 </head>
 <body>
-    <div class="nav-container">
-        <!-- placeholder -->
-    </div>
+    <nav class="navBar">
+        <span class="pageTitle">Purp</span>
+        <span id="userSpan" class="pageTitle"></span>
+        <button id="userButton"><i class="fas fa-user"></i></button>
+        <button id="signOutButton"><i class="fas fa-sign-out-alt"></i></button>
+
+    </nav>
     <div id="main-container">
         <div class="page-section-flex">
             <div id="main-score-container" class="score-container">
@@ -28,7 +33,7 @@
             </div>
         </div>
         <div class="page-section-flex">
-            <div id="second-score container" class="score-container">
+            <div id="second-score-container" class="score-container">
                 <div class="header-container">
                     <h3>Factors Affecting Your Score:</h3>
                 </div>
@@ -70,6 +75,7 @@
 
 
 <script src='js/config.js'></script>
+<!-- <script src='js/login.js'></script> -->
 <!-- <script src='js/index.js'></script> -->
 <script src='js/scorereport.js'></script>
 </body>
