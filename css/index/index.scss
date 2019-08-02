@@ -18,6 +18,10 @@ body {
 }
 //  #5352ed;
 
+.purple-body {
+    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
+}
+
 h1{
     font-family: $headerFont;
     font-weight: 700;
@@ -90,6 +94,13 @@ h3{
     width: 100%;
 }
 
+.page-section-flex {
+    @extend .page-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
 .page-section-purple{
     background-image: linear-gradient(to top, rgba(63, 20, 113, 0.70), rgba(170, 144, 193, 0.70)),
                     url(../../images/image3.jpg);
@@ -111,12 +122,7 @@ h3{
                     
 }
 
-.page-section-flex {
-    @extend .page-section;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-}
+
 
 .score-container {
     //white box with shadow and outline proportional to outer div
@@ -201,12 +207,6 @@ h3{
 //add in scroll for box overflow
 //maybe not do containers in the same way and adjust the second container's height to fit whatever is needed for it's content?
 
-#detail-parameter-modal {
-    .modal-content {
-        padding-top: 0;
-    }
-}
-
 #detail-parameter-importance-bar {
     height: 2%;
     margin: 0;
@@ -216,8 +216,44 @@ h3{
     h1 h2 {
         display:inline-block;
     }
-    #detail-parameter-score {
-        float: right;
+    img {
+        width: 100%;
+    }
+    #detail-parameter-header {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+    }
+}
+
+.modal-content {
+    h1 {
+        color:$purple;
+    }
+    h2 {
+        color:grey;
+    }
+    h3 {
+        color: $purple;
+        font-size: 1.5em;
+        font-weight: 1000;
+        margin: 0;
+    }
+    h4 {
+        color: grey;
+        font-size: 1.5em;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+    p {
+        margin-top: .25em;
+        margin-bottom: 1em;
+    }
+    .disclaimer {
+        color: grey;
+        font-size: .75em;
+        font-style: italic;
+        margin-top: 1em;
     }
 }
 
@@ -389,6 +425,7 @@ h3{
         font-family: $headerFont;
         font-size: 3em;
         margin-bottom: 10%;
+        text-align: center;
     }
     .textItem{
         width:65%;
@@ -447,9 +484,8 @@ h3{
 }
 
 #footer{
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
     display:flex;
-    justify-content: center;
+    
     .footerContent{
         display:flex;
         flex-direction:column;  
@@ -460,6 +496,14 @@ h3{
         margin-top: 0;
     }
     
+}
+
+.main-footer {
+    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
+}
+
+.score-footer {
+    background-color: white;
 }
 
 a{
@@ -605,40 +649,46 @@ a:hover {
   }
 
 
-// .slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
+.fab{
+    font-size: 2em;
+    margin: 10px; 
+}
 
 
-// @keyframes slide-right {
-//     0% {
-//         transform: translateX(-30rem);
-//     }
-
-//     80% {
-//         transform: translateX(1rem);
-//     }
-
-//     100% {
-//         transform: translate(0);
-//     }
-// }
+.slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
 
+@keyframes slide-right {
+    0% {
+        transform: translateX(-30rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
 
 
-// .slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-// @keyframes slide-left {
-//     0% {
-//         opacity: 0;
-//         transform: translateX(10rem);
-//     }
 
-//     80% {
-//         transform: translateX(-1rem);
-//     }
+.slide-left{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
 
-//     100% {
-//         opacity: 1;
-//         transform: translate(0);
-//     }
-// }
+@keyframes slide-left {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
