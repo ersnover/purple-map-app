@@ -44,6 +44,7 @@ function replaceDiv(){
 function goBack() {
     preferencesDiv.style.display = "none"
     preferencesDiv.replaceWith(addressDiv)
+    addressDiv.classList.add('slide-right')
 }
 
 // POPULATE SEARCH CRITERIA FROM CRITERIA STATS OBJECT
