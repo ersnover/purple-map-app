@@ -38,7 +38,9 @@ h3 {
   display: flex;
   align-items: center;
   position: fixed;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  z-index: 2;
 }
 .navBar .pageTitle {
   margin-right: auto;
@@ -302,6 +304,16 @@ h3 {
   display: none;
 }
 
+#error-msg {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  color: #D63301;
+  background-color: #FFCCBA;
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+}
+
 .toTitleCase {
   text-transform: capitalize;
 }
@@ -323,8 +335,10 @@ h3 {
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 70%;
-  border-radius: 20px;
+  width: 40%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
 .modal .modal-content div {
   margin: 10px;
@@ -373,13 +387,9 @@ h3 {
   font-size: 1.5em;
   border-radius: 15px;
   margin-top: 10px;
-<<<<<<< HEAD
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
-=======
   margin-bottom: 30px;
   -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
->>>>>>> master
   border: none;
 }
 
@@ -388,14 +398,6 @@ h3 {
 }
 
 .mainButton:active {
-<<<<<<< HEAD
-  transform: translate(0px, 1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.2s ease-out;
-}
-
-/*# sourceMappingURL=index.css.map */
-=======
   -webkit-transform: translate(0px, 1px);
           transform: translate(0px, 1px);
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -581,23 +583,16 @@ a:hover {
 
 #overlay {
   position: fixed;
-  /* Sit on top of the page content */
   display: none;
-  /* Hidden by default */
   width: 100%;
-  /* Full width (cover the whole page) */
   height: 100%;
-  /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.397);
-  /* Black background with opacity */
   z-index: 2;
-  /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer;
-  /* Add a pointer on hover */
 }
 
 @-webkit-keyframes spin {
@@ -700,4 +695,3 @@ a:hover {
   }
 }
 /*# sourceMappingURL=index.css.map */
->>>>>>> master

@@ -17,7 +17,7 @@ addressInput.addEventListener("keypress", event=>{
 function validateAddress(){
     let address = addressInput.value
     if(addressRegEx.test(address) == false){
-        text.innerHTML = "Enter a valid address."
+        text.innerHTML = "Please enter a valid address."
     }else{
         text.innerHTML =''
         replaceDiv()
@@ -41,9 +41,8 @@ function replaceDiv(){
 }
 
 function goBack() {
-    preferencesDiv.style.display = "none"
     preferencesDiv.replaceWith(addressDiv)
-    addressDiv.classList.add('slide-right')
+    // addressDiv.classList.add('slide-right')
 }
 
 // POPULATE SEARCH CRITERIA FROM CRITERIA STATS OBJECT
@@ -63,7 +62,7 @@ placeTypes.map((type, index) => {
     
     ${placeDisplayName}
 
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}"> 
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}" required> 
 
     <span class="checkmark"></span>
 

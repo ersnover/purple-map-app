@@ -33,8 +33,12 @@ firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variab
 
 const seeResultsButton = document.getElementById('see-results-btn')
 seeResultsButton.addEventListener('click', () => {
-    renderLoader(preferencesDiv)
-    runAll()
+    
+    allPlaceTypeCheckboxes.forEach(box => {
+        if(box.checked) {
+            renderLoader(preferencesDiv)
+            runAll()
+    }
 })
 
 function runAll() {
@@ -81,4 +85,4 @@ function buildCritArray(crits) {
     })
 
     return critArray
-}
+}})
