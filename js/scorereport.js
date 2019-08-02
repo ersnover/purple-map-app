@@ -62,6 +62,12 @@ function generatePage(algorithmObject) {
     let scoreColor = determineScoreColor(score)
     let parameterInfo = algorithmObject['criteriaArray']
 
+    let boxSize = 80
+    let radius = 15.91551
+    let diameter = radius / 2
+    let xVal = boxSize/2
+    let yVal = boxSize - (diameter/2)
+
     //score
     let addressHeader = document.getElementById('address-header')
     addressHeader.innerHTML = `${appendedScoreAddress}`
@@ -69,20 +75,19 @@ function generatePage(algorithmObject) {
     //set up color variable too
     let scoreHeader = document.getElementById('score')
     //add variable for the importance value
-    scoreHeader.innerHTML = `<svg viewBox ="0 0 40 40">
+    scoreHeader.innerHTML = `<svg viewBox ="0 0 ${boxSize} ${boxSize}">
                                 <path
-                                d="M20 4.08449
-                                    a 15.91551 15.91551 0 0 1 0 31.83102
-                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
+                                d="M${xVal} ${yVal}
+                                    a ${radius} ${radius} 0 0 1 0 ${diameter}
+                                    a ${radius} ${radius} 0 0 1 0 -${diameter}"
                                 fill="none"
-                                stroke="white";
+                                stroke="#555";
                                 stroke-width="3";
-                            
                                 />
                                     <path class="circle"
-                                d="M20 4.08449
-                                    a 15.91551 15.91551 0 0 1 0 31.83102
-                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
+                                d="M${xVal} ${yVal}
+                                    a ${radius} ${radius} 0 0 1 0 ${diameter}
+                                    a ${radius} ${radius} 0 0 1 0 -${diameter}"
                                 fill="none"
                                 stroke="${scoreColor}";
                                 stroke-width="3";
@@ -90,7 +95,7 @@ function generatePage(algorithmObject) {
                                 stroke-linecap="round"
                                 />
                                 <text x="12" y="25" class="score"><h1 id="score-header">${score}</h1></text>
-                            </svg>`
+                             </svg>`
 
 
     //parameter scores
