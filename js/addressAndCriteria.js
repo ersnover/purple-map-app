@@ -23,7 +23,6 @@ function validateAddress(){
         replaceDiv()
         finalAddress = address
     }
-    console.log(finalAddress)
 }
 
 // REPLACE DIV
