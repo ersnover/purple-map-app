@@ -7,30 +7,23 @@ const emailSpan = document.getElementById("userEmailSpan")
 const defaultSearchPrefsContainer = document.getElementById('defaultCriteriaList')
 const savedSearchesDiv = document.getElementById('savedSearchesDiv')
 
-function populateUserPage(displayName, email, photoURL, uid) {
-    profilePic.setAttribute('src', photoURL)
-    fullNameSpan.innerHTML = displayName
-    emailSpan.innerHTML = email
+function populateUserPage(userObj) {
+    profilePic.setAttribute('src', userObj.profileURL)
+    fullNameSpan.innerHTML = userObj.firstName + " " + userObj.lastName
+    emailSpan.innerHTML = userObj.email
 }
 
-firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE - variable names will be used lower in script
     
     if (user) {     //if a user is logged in
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-
-        displayName = "Eric Snover"
-        photoURL = "./images/profilePic.jpg"
 
         const usersCollectionRef = db.collection('users')
-        const userRef = usersCollectionRef.doc(uid)
-
-        populateUserPage(displayName, email, photoURL, uid)
+        const userRef = usersCollectionRef.doc(user.uid)
+        
+        userRef.get().then(function(obj) {
+            userProfile = obj.data()
+            populateUserPage(userProfile)
+        })
 
     } else {
         window.location = "login.html"

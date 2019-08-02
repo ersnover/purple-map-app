@@ -8,7 +8,7 @@
 <link rel='stylesheet' href='css/index/index.css'>
 <title>Purp Home</title>
 </head>
-<body>
+<body class="purple-body">
     <nav class="navBar">
         <span class="pageTitle">Purp</span>
         <span id="userSpan" class="pageTitle"></span>
@@ -28,7 +28,6 @@
                 </div>
                 <div id="score">
 
-                    <h1 id="score-header"></h1>
                 </div>
             </div>
         </div>
@@ -45,15 +44,44 @@
     </div>
     <div id="detail-parameter-modal" class="modal">
         <div class="modal-content">
-            <div id="detail-parameter-importance-bar">
-                <span class="close">&times;</span>
-            </div>
+            <span class="close">&times;</span>
             <div id="detail-parameter-container">
 
             </div>
         </div>
     </div>
+    <footer id="footer">
+        <div class="footerContent">
+                <h3>Follow us</h3>
+                <div id="iconsDiv">
+                    <img src="images/fbicon.png" class="socialicon">
+                    <img src="images/IG.png" class="socialicon">
+                </div>   
 
+        </div>
+        <div class="navigation-desktop">
+            <h3>Navigation</h3>
+            <a href="#">About us</a>
+            <a href="#">Team</a>
+            <a href="#">Site Map</a>
+            <a href="#"> Contact Us</a>
+        </div>
+                <div class="navigation-mobile">
+                        <h3 id ="expand-nav">Navigation</h3>
+                        <div class="nav-items">
+                            <a href="#">About us</a>
+                            <a href="#">Team</a>
+                            <a href="#">Site Map</a>
+                            <a href="#"> Contact Us</a>
+                        </div>
+                </div>
+            
+        </div>
+        <div class="footerContent-extra">
+            <h3>Purp</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum praesentium ad laborum laboriosam quibusdam inventore nihil possimus facilis quia, doloribus mollitia placeat reiciendis commodi sint ab impedit, quisquam laudantium adipisci.</p>
+        </div>
+    </footer>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0pSQy9ruAU0odyeOJDsdoPf6Pfsn4gFg&libraries=places"></script>    
 
@@ -75,7 +103,7 @@
 
 
 <script src='js/config.js'></script>
-<!-- <script src='js/login.js'></script> -->
+<script src='js/criteriaObjects.js'></script>
 <!-- <script src='js/index.js'></script> -->
 <script src='js/scorereport.js'></script>
 </body>
