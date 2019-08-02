@@ -41,15 +41,10 @@ function replaceDiv(){
     })
 }
 
-
-
-
 function goBack() {
     preferencesDiv.style.display = "none"
-    // addressDiv.style.display = "block"
     preferencesDiv.replaceWith(addressDiv)
 }
-
 
 // POPULATE SEARCH CRITERIA FROM CRITERIA STATS OBJECT
 const searchCriteriaDiv = document.getElementById('search-criteria-div')
@@ -123,6 +118,18 @@ function getCriteriaObjs() {
             criteriaInputObjs.push(obj)
         }
     })
-    console.log(criteriaInputObjs)
     return criteriaInputObjs        // array
+}
+
+function renderLoader(parent) {
+    
+    const loader = `
+    <div id="overlay"><div class="loader">
+    </div></div>
+    <h2 class='gen-report-text'>Generating your report!<h2>
+    
+    `
+    
+    parent.insertAdjacentHTML('beforeend', loader)
+    document.getElementById("overlay").style.display = "block";
 }
