@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,UAAU;CAqB1B;;AAxBD,AAKI,OALG,CAKH,eAAe,CAAC;EACZ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,UAAU;CAO1B;;AAfL,AAUQ,OAVD,CAKH,eAAe,CAKX,WAAW,CAAC;EACR,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,KAAK;CACpB;;AAdT,AAkBQ,OAlBD,CAiBH,mBAAmB,CACf,oBAAoB,CAAC;EACjB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,QAAQ;CACxB",
+    "sources": [
+        "userPage.scss",
+        "_mobile.scss",
+        "_midSize.scss",
+        "_desktop.scss"
+    ],
+    "names": [],
+    "file": "userPage.css"
+}

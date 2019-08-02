@@ -1,0 +1,28 @@
+@import 'mobile', 'midSize', 'desktop';
+
+.topDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    #profileInfoDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        #profileImg {
+            height: 300px;
+            width: 300px;
+            object-fit: cover;
+        }
+    }
+   
+    #defaultCriteriaDiv {
+        #defaultCriteriaList {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+}
+

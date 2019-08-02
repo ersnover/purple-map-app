@@ -2,6 +2,11 @@
 
 //potentially restructure code so that we have an internal api name to display name conversion for the google nearby place types like 'park'
 
+var user = firebase.auth().currentUser
+console.log(user)
+
+
+
 class AlgorithmObject {
     constructor(address, parameterInfoArray, score) {
         this.address = address
