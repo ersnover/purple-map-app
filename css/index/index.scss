@@ -49,6 +49,7 @@ h3{
     align-items: center;
     position: fixed;
     box-shadow: $box-shadow;
+    z-index: 2;
 
     .pageTitle {
         margin-right: auto;
