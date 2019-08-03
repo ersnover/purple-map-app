@@ -115,7 +115,8 @@ $headerFont: 'Noto Sans KR', sans-serif;
         }
 
     .loader {
-        left: 48%;
+        position: absolute;
+        left: 44%;
         top: 35%;
     }
    
