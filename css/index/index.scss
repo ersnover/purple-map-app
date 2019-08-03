@@ -732,9 +732,8 @@ a:hover {
 
 .svg-color{
     fill: none;
-    
     stroke-width: 6px;
-    animation: fill 3s ease-out;
+    animation: fill 5s ease-in-out;
     animation-fill-mode: forwards;
     // stroke-linecap: round;
 }
