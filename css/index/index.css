@@ -91,13 +91,13 @@
   }
 
   #go-back-btn {
-    width: 20%;
-    height: 80px;
-    font-size: 20px;
+    width: 30%;
+    height: 40px;
+    font-size: 15px;
     text-align: center;
     padding: 5px;
     left: 0.8rem;
-    top: 40px;
+    top: 70px;
     position: absolute;
   }
 
@@ -106,6 +106,18 @@
   }
   .modal-content .textItem {
     width: 100%;
+  }
+
+  .loader {
+    left: 42%;
+    top: 40%;
+  }
+
+  .gen-report-text {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 500px;
+    font-size: 38px;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
@@ -210,6 +222,10 @@
   .modal-content .textItem {
     width: 65%;
   }
+  .modal-content .loader {
+    left: 48%;
+    top: 35%;
+  }
 }
 @media only screen and (min-width: 1000px) {
   .mainButton {
@@ -307,9 +323,15 @@
 
   .modal-content {
     width: 40%;
+    position: relative;
+    top: -20;
   }
   .modal-content .textItem {
     width: 65%;
+  }
+  .modal-content .loader {
+    left: 48%;
+    top: 35%;
   }
 }
 body {
@@ -715,8 +737,6 @@ a:hover {
   height: 50px;
   animation: spin 1.5s linear infinite;
   position: absolute;
-  left: 48%;
-  top: 35%;
   z-index: 3;
 }
 

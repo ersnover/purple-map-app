@@ -178,11 +178,6 @@ h3{
 
 #search-criteria-div{
 
-    
-
-
-
-
     li {
         list-style: none;
         display: flex;
@@ -192,7 +187,6 @@ h3{
     select {
         margin-left: 10px;
         height: 30px;
-        // border-color: $purple;
         border: 2px solid $purple;
         border-radius: 2px;
         background-color: #eee;
@@ -460,8 +454,6 @@ a:hover {
     height: 50px;
     animation: spin 1.5s linear infinite;
     position: absolute;
-    left: 48%;
-    top: 35%;
     z-index: 3;
 }
 

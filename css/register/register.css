@@ -2,6 +2,41 @@
 @media only screen and (max-width: 480px) {
 =======
 @media only screen and (max-width: 580px) {
+<<<<<<< HEAD
+  body {
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .regContainer {
+    overflow-x: hidden;
+  }
+  input {
+    width: 340px;
+    margin: 0 auto;
+  }
+  label {
+    margin-left: 30px;
+  }
+  span {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+  .regContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .regContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+=======
+>>>>>>> master
 >>>>>>> master
   p {
     font-size: 1.2em;
@@ -99,15 +134,28 @@
     margin-top: 150px;
   }
   #go-back-btn {
-    width: 20%;
-    height: 80px;
-    font-size: 20px;
+    width: 30%;
+    height: 40px;
+    font-size: 15px;
     text-align: center;
     padding: 5px;
     left: .8rem;
-    top: 40px;
+    top: 70px;
     position: absolute;
   }
+<<<<<<< HEAD
+  .loader {
+    left: 42%;
+    top: 40%;
+  }
+  .gen-report-text {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 500px;
+    font-size: 38px;
+  }
+=======
+>>>>>>> master
 >>>>>>> master
 }
 
@@ -218,6 +266,13 @@
     top: 2.5rem;
     position: absolute;
   }
+<<<<<<< HEAD
+  .loader {
+    left: 48%;
+    top: 35%;
+  }
+=======
+>>>>>>> master
 >>>>>>> master
 }
 
@@ -327,6 +382,13 @@
     top: 2.5rem;
     position: absolute;
   }
+<<<<<<< HEAD
+  .loader {
+    left: 48%;
+    top: 35%;
+  }
+=======
+>>>>>>> master
 >>>>>>> master
 }
 
@@ -1039,23 +1101,22 @@ a:hover {
   -webkit-animation: spin 1.5s linear infinite;
           animation: spin 1.5s linear infinite;
   position: absolute;
-  left: 48%;
-  top: 35%;
   z-index: 3;
 }
 
 #overlay {
   position: absolute;
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
-  top: -20px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.397);
+  background-color: white;
   z-index: 2;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 @-webkit-keyframes spin {
@@ -1191,14 +1252,14 @@ body button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 600px;
   margin: 0 auto;
-  margin-top: 10vh;
   background-color: white;
   -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   padding: 60px 50px;
   border-radius: 10px;
+  -webkit-transform: translateY(5%);
+          transform: translateY(5%);
 }
 
 .regContainer .pageTitle {
