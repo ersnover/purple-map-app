@@ -101,16 +101,27 @@
 
 
     #go-back-btn {
-        width: 20%;
-        height: 80px;
-        font-size: 20px;
+        width: 30%;
+        height: 40px;
+        font-size: 15px;
         text-align: center;
         padding: 5px;
         left: .8rem;
-        top: 40px;
+        top: 70px;
         position: absolute;
+    }
+
+    .loader {     
+        left: 42%;
+        top: 40%;
     }
    
 
+    .gen-report-text {
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 500px;
+        font-size: 38px;
+    }
 
 }
