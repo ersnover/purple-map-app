@@ -989,7 +989,6 @@ a:hover {
 
 .svg-color {
   fill: none;
-  stroke: green;
   stroke-width: 6px;
   animation: fill 3s ease-out;
   animation-fill-mode: forwards;
