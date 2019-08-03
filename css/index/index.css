@@ -201,6 +201,15 @@
     top: 2.5rem;
     position: absolute;
   }
+
+  .modal-content {
+    width: 60%;
+    position: relative;
+    top: -20;
+  }
+  .modal-content .textItem {
+    width: 65%;
+  }
 }
 @media only screen and (min-width: 1000px) {
   .mainButton {
@@ -499,7 +508,7 @@ h3 {
   height: 100%;
   overflow: auto;
   background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .modal .modal-content {
   background-color: #fefefe;

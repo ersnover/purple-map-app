@@ -109,6 +109,8 @@ $headerFont: 'Noto Sans KR', sans-serif;
 
     .modal-content{
         width: 40%;
+        position: relative;
+        top: -20;
         .textItem{
             width:65%;
         }
