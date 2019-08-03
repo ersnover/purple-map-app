@@ -231,7 +231,8 @@
     width: 65%;
   }
   .modal-content .loader {
-    left: 48%;
+    position: absolute;
+    left: 44%;
     top: 35%;
   }
 }
@@ -550,6 +551,10 @@ h3 {
   color: #777;
 }
 
+#search-criteria-div {
+  position: relative;
+}
+
 #search-criteria-div li {
   list-style: none;
   display: -webkit-box;
@@ -854,6 +859,8 @@ a:hover {
           animation: spin 1.5s linear infinite;
   position: absolute;
   z-index: 3;
+  left: 44%;
+  top: 35%;
 }
 
 #overlay {

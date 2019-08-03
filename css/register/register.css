@@ -40,6 +40,32 @@ body button {
   cursor: pointer;
 }
 
+.mainButton {
+  background-color: #572a7a;
+  color: white;
+  padding: 10px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  border: none;
+}
+
+.mainButton:focus {
+  outline: none;
+}
+
+.mainButton:active {
+  -webkit-transform: translate(0px, 1px);
+          transform: translate(0px, 1px);
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
 .regContainer {
   color: #572a7a;
   display: -webkit-box;
