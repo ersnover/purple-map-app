@@ -67,30 +67,23 @@ function generatePage(algorithmObject) {
     addressHeader.innerHTML = `${appendedScoreAddress}`
     //change this so that it pull sthe score div and then creates the entire div interior and remove the score header thats already in my html file.
     //set up color variable too
-    let scoreHeader = document.getElementById('score')
+    // let mainScoreContainer = document.getElementById('main-score-container')
+
+    // let boxSize = 40
+    // let radius = 15.91551
+    // let diameter = 31.83102
+    // let xVal = boxSize/2
+    // let yVal = boxSize-31.83102
+    // yVal = yVal/2
+
+    let svgColor = document.getElementsByClassName("svg-color")[0]
+    let scoreHeader = document.getElementsByClassName("score-header")[0]
+    svgColor.style.strokeDasharray = `${score}, 100`
+    svgColor.style.stroke = `${scoreColor}`
+    
+    scoreHeader.innerHTML=`${score}`
     //add variable for the importance value
-    scoreHeader.innerHTML = `<svg viewBox ="0 0 40 40">
-                                <path
-                                d="M20 4.08449
-                                    a 15.91551 15.91551 0 0 1 0 31.83102
-                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
-                                fill="none"
-                                stroke="white";
-                                stroke-width="3";
-                            
-                                />
-                                    <path class="circle"
-                                d="M20 4.08449
-                                    a 15.91551 15.91551 0 0 1 0 31.83102
-                                    a 15.91551 15.91551 0 0 1 0 -31.83102"
-                                fill="none"
-                                stroke="${scoreColor}";
-                                stroke-width="3";
-                                stroke-dasharray="${score}, 100"
-                                stroke-linecap="round"
-                                />
-                                <text x="12" y="25" class="score"><h1 id="score-header">${score}</h1></text>
-                            </svg>`
+
 
 
     //parameter scores
