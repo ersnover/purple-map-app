@@ -36,20 +36,37 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
 
 const defaultContainer = document.getElementById('defaultCriteriaList')
 
-let criterias = Object.keys(criteriaStats)
-criterias.forEach(key => {
-    let criteria = criteriaStats[key]
-    let criteriaDiv = `<div class="defaultCriteriaDiv" id="${criteria.googleidname}DefaultDiv">
-                            <input type="checkbox" id="${criteria.googleidname}DefaultCheckbox" class="defaultCriteriaCheckbox" data-selectorid="${criteria.googleidname}DefaultSelect" data-criteriatype="${criteria.googleidname}">
-                            <span class="defaultCriteriaSpan">${criteria.placeDisplayName}</span>
-                            <select id="${criteria.googleidname}DefaultSelect" class="defaultImportanceSelect" style="display: none">
-                                <option value="${highImp}">${highImp}</option>
-                                <option value="${medImp}">${medImp}</option>
-                                <option value="${lowImp}">${lowImp}</option>
-                            </select>
-                        </div>`
+placeTypes = Object.keys(criteriaStats)
+
+placeTypes.map((type, index) => {
+    
+    const googleId = criteriaStats[type].googleidname
+    const placeDisplayName =criteriaStats[type].placeDisplayName
+
+    const criteriaDiv = `
+    
+    <li>
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    
+    ${placeDisplayName}
+
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectorid="select-${index}" required> 
+
+    <span class="checkmark"></span>
+
+    </label>
+
+    <select  id="select-${index}" class="importance-selector">
+        <option value="${highImp}">${highImp}</option>
+        <option value="${medImp}">${medImp}</option>
+        <option value="${lowImp}">${lowImp}</option>
+    </select>
+    </li>
+    `
+
     defaultContainer.insertAdjacentHTML('beforeend',criteriaDiv)
 })
+
 
 
 // SAVE DEFAULT SEARCH CRITERIA TO DATABASE
@@ -58,6 +75,7 @@ const updateDefaultsButton = document.getElementById('updateDefaultsButton')
 
 defaultCriteriaCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
+        console.log('hey')
         updateDefaultsButton.innerHTML = "Update Defaults"
         updateDefaultsButton.disabled = false       // enables update button once new criteria have been selected
         displaySelector(event.target)

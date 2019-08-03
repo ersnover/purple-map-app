@@ -2,7 +2,7 @@
 
 body {
     // background-color: white;
-    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50));
+    background-image: $purple-gradient;
     font-family: 'Roboto', sans-serif;
     
     button {
