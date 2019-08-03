@@ -102,6 +102,12 @@
     top: 70px;
     position: absolute;
   }
+  .modal-content {
+    height: 100vh;
+  }
+  .modal-content .textItem {
+    width: 100%;
+  }
   .loader {
     left: 42%;
     top: 40%;
@@ -216,7 +222,15 @@
     top: 2.5rem;
     position: absolute;
   }
-  .loader {
+  .modal-content {
+    width: 60%;
+    position: relative;
+    top: -20;
+  }
+  .modal-content .textItem {
+    width: 65%;
+  }
+  .modal-content .loader {
     left: 48%;
     top: 35%;
   }
@@ -326,7 +340,15 @@
     top: 2.5rem;
     position: absolute;
   }
-  .loader {
+  .modal-content {
+    width: 40%;
+    position: relative;
+    top: -20;
+  }
+  .modal-content .textItem {
+    width: 65%;
+  }
+  .modal-content .loader {
     left: 48%;
     top: 35%;
   }
@@ -581,7 +603,7 @@ h3 {
   height: 100%;
   overflow: auto;
   background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal .modal-content {
@@ -589,7 +611,6 @@ h3 {
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%;
   border-radius: 10px;
   -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
@@ -635,7 +656,6 @@ h3 {
 }
 
 #loginContainer .textItem {
-  width: 65%;
   margin-bottom: 20px;
   border-radius: 10px;
   padding: 20px;
