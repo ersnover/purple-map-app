@@ -1,4 +1,36 @@
 @media only screen and (max-width: 580px) {
+  body {
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .regContainer {
+    overflow-x: hidden;
+  }
+  input {
+    width: 340px;
+    margin: 0 auto;
+  }
+  label {
+    margin-left: 30px;
+  }
+  span {
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+  .regContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .regContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 580px) {
   p {
     font-size: 1.2em;
   }
@@ -997,16 +1029,17 @@ a:hover {
 
 #overlay {
   position: absolute;
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
-  top: -20px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.397);
+  background-color: white;
   z-index: 2;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 @-webkit-keyframes spin {
@@ -1136,7 +1169,6 @@ body button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 600px;
   margin: 0 auto;
   margin-top: 10vh;
   background-color: white;

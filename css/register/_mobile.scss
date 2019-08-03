@@ -1,3 +1,23 @@
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
 
+
+    body {
+        align-content: center;
+    }
+
+    .regContainer {
+        overflow-x: hidden;
+    }
+
+    input {
+        width: 340px;
+        margin: 0 auto;
+    }
+
+    label {
+        margin-left: 30px;
+    }
+    span {
+        margin-left: 20px;
+    }
 }
