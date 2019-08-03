@@ -123,8 +123,10 @@ function getCriteriaObjs() {
 function renderLoader(parent) {
     
     const loader = `
-    <div id="overlay"><div class="loader">
-    </div></div>
+    <div id="overlay">
+        <div class="loader">
+        </div>
+    </div>
     <h2 class='gen-report-text'>Generating your report!<h2>
     
     `

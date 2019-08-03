@@ -134,6 +134,16 @@
     top: 40px;
     position: absolute;
   }
+  .loader {
+    left: 42%;
+    top: 40%;
+  }
+  .gen-report-text {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 500px;
+    font-size: 38px;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
@@ -237,6 +247,10 @@
     left: 6rem;
     top: 2.5rem;
     position: absolute;
+  }
+  .loader {
+    left: 48%;
+    top: 35%;
   }
 }
 
@@ -343,6 +357,10 @@
     left: 6rem;
     top: 2.5rem;
     position: absolute;
+  }
+  .loader {
+    left: 48%;
+    top: 35%;
   }
 }
 
@@ -1022,8 +1040,6 @@ a:hover {
   -webkit-animation: spin 1.5s linear infinite;
           animation: spin 1.5s linear infinite;
   position: absolute;
-  left: 48%;
-  top: 35%;
   z-index: 3;
 }
 
