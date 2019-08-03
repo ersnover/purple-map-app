@@ -107,8 +107,16 @@ $headerFont: 'Noto Sans KR', sans-serif;
         position: absolute;
     }
 
+    .modal-content{
+        width: 40%;
+        position: relative;
+        top: -20;
+        .textItem{
+            width:65%;
+        }
     .loader {
         left: 48%;
         top: 35%;
     }
+}
 }

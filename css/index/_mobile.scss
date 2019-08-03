@@ -110,6 +110,12 @@
         top: 70px;
         position: absolute;
     }
+  .modal-content{
+    height: 100vh;
+    .textItem{
+        width:100%;
+    }
+  } 
 
     .loader {     
         left: 42%;
