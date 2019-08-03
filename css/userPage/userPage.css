@@ -547,6 +547,10 @@ h3 {
   width: 800px;
 }
 
+#search-div span {
+  color: #777;
+}
+
 #search-criteria-div {
   position: relative;
 }
@@ -855,7 +859,7 @@ a:hover {
           animation: spin 1.5s linear infinite;
   position: absolute;
   z-index: 3;
-  left: 48%;
+  left: 44%;
   top: 35%;
 }
 
