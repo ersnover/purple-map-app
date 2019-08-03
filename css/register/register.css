@@ -1170,12 +1170,13 @@ body button {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 auto;
-  margin-top: 10vh;
   background-color: white;
   -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   padding: 60px 50px;
   border-radius: 10px;
+  -webkit-transform: translateY(5%);
+          transform: translateY(5%);
 }
 
 .regContainer .pageTitle {
