@@ -128,7 +128,6 @@ function renderLoader(parent) {
     <h2 class='gen-report-text'>Generating your report!<h2>
     
     `
-    
     parent.insertAdjacentHTML('beforeend', loader)
     document.getElementById("overlay").style.display = "block";
 }

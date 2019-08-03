@@ -1,9 +1,10 @@
-@import 'mobile', 'midSize', 'desktop';
+@import 'mobile', 'midSize', 'desktop', '../index/index.scss';
 
 .topDiv {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    margin: 60px;
 
     #profileInfoDiv {
         display: flex;
@@ -14,6 +15,13 @@
             height: 300px;
             width: 300px;
             object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid $purple;
+            box-shadow: $box-shadow;
+        }
+
+        #editProfileButton {
+            font-size: 12px;
         }
     }
    
@@ -29,10 +37,11 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            margin-left: 150px;
 
             .defaultCriteriaDiv {
                 width: 100%;
-                border-bottom: 1px solid purple;
+                // border-bottom: 1px solid purple;
                 display: flex;
                 justify-content: flex-start;
             }
@@ -40,7 +49,25 @@
 
         select {
             margin-left: auto;
+            margin-left: 10px;
+            height: 30px;
+            // border-color: $purple;
+            border: 2px solid $purple;
+            border-radius: 2px;
+            background-color: #eee;
+            font-size: 16px;
+        }
+
+
+        li {
+            list-style: none;
+            width: 800px;
+            display: flex;
+            flex-direction: row;
         }
     }
 }
 
+.savedSearchesContainer {
+    margin-left: 100px;
+}

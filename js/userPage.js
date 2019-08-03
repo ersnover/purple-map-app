@@ -7,30 +7,23 @@ const emailSpan = document.getElementById("userEmailSpan")
 const defaultSearchPrefsContainer = document.getElementById('defaultCriteriaList')
 const savedSearchesDiv = document.getElementById('savedSearchesDiv')
 
-function populateUserPage(displayName, email, photoURL, uid) {
-    profilePic.setAttribute('src', photoURL)
-    fullNameSpan.innerHTML = displayName
-    emailSpan.innerHTML = email
+function populateUserPage(userObj) {
+    profilePic.setAttribute('src', userObj.profileURL)
+    fullNameSpan.innerHTML = userObj.firstName + " " + userObj.lastName
+    emailSpan.innerHTML = userObj.email
 }
 
-firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE - variable names will be used lower in script
     
     if (user) {     //if a user is logged in
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
-
-        displayName = "Eric Snover"
-        photoURL = "./images/profilePic.jpg"
 
         const usersCollectionRef = db.collection('users')
-        const userRef = usersCollectionRef.doc(uid)
-
-        populateUserPage(displayName, email, photoURL, uid)
+        const userRef = usersCollectionRef.doc(user.uid)
+        
+        userRef.get().then(function(obj) {
+            userProfile = obj.data()
+            populateUserPage(userProfile)
+        })
 
     } else {
         window.location = "login.html"
@@ -43,20 +36,37 @@ firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variab
 
 const defaultContainer = document.getElementById('defaultCriteriaList')
 
-let criterias = Object.keys(criteriaStats)
-criterias.forEach(key => {
-    let criteria = criteriaStats[key]
-    let criteriaDiv = `<div class="defaultCriteriaDiv" id="${criteria.googleidname}DefaultDiv">
-                            <input type="checkbox" id="${criteria.googleidname}DefaultCheckbox" class="defaultCriteriaCheckbox" data-selectorid="${criteria.googleidname}DefaultSelect" data-criteriatype="${criteria.googleidname}">
-                            <span class="defaultCriteriaSpan">${criteria.placeDisplayName}</span>
-                            <select id="${criteria.googleidname}DefaultSelect" class="defaultImportanceSelect" style="display: none">
-                                <option value="${highImp}">${highImp}</option>
-                                <option value="${medImp}">${medImp}</option>
-                                <option value="${lowImp}">${lowImp}</option>
-                            </select>
-                        </div>`
+placeTypes = Object.keys(criteriaStats)
+
+placeTypes.map((type, index) => {
+    
+    const googleId = criteriaStats[type].googleidname
+    const placeDisplayName =criteriaStats[type].placeDisplayName
+
+    const criteriaDiv = `
+    
+    <li>
+    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    
+    ${placeDisplayName}
+
+    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectorid="select-${index}" required> 
+
+    <span class="checkmark"></span>
+
+    </label>
+
+    <select  id="select-${index}" class="importance-selector">
+        <option value="${highImp}">${highImp}</option>
+        <option value="${medImp}">${medImp}</option>
+        <option value="${lowImp}">${lowImp}</option>
+    </select>
+    </li>
+    `
+
     defaultContainer.insertAdjacentHTML('beforeend',criteriaDiv)
 })
+
 
 
 // SAVE DEFAULT SEARCH CRITERIA TO DATABASE
@@ -65,6 +75,7 @@ const updateDefaultsButton = document.getElementById('updateDefaultsButton')
 
 defaultCriteriaCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
+        console.log('hey')
         updateDefaultsButton.innerHTML = "Update Defaults"
         updateDefaultsButton.disabled = false       // enables update button once new criteria have been selected
         displaySelector(event.target)
