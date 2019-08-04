@@ -1,0 +1,33 @@
+@media only screen and (max-width: 580px) {
+
+    #footer{
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        .footerContent{
+            
+            align-items:center;
+            p{
+                font-size:1em;
+                margin: 0 10px 10px 10px;
+            }
+            h3{
+                margin: 0;
+            }
+        }
+    }
+
+    .footerContent-extra{
+        display:none;
+    }
+
+    .navigation-desktop{
+        display:none;
+    }
+    #expand-nav{
+        margin-bottom: 0;
+        #down{
+            font-size: .5em;
+        }
+    }
+}

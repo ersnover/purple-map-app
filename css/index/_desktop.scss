@@ -46,26 +46,7 @@ $headerFont: 'Noto Sans KR', sans-serif;
     }
     
 
-    #footer{
-        text-align:center;
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 30px;
-        .footerContent{
-            width: 30%;
-        }
-        h3{
-            margin-bottom: 10px;
-        }
-        .footerContent-extra{
-            width:30%;
-            display: flex;
-            flex-direction: column;
-        }
-        #iconsDiv{
-            justify-content: center;
-        }
-    }
+
 
     .navigation-desktop{
         width: 30%;

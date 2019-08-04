@@ -37,37 +37,6 @@
     font-size: 2em;
   }
 
-  #footer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  #footer .footerContent {
-    align-items: center;
-  }
-  #footer .footerContent p {
-    font-size: 1em;
-    margin: 0 10px 10px 10px;
-  }
-  #footer .footerContent h3 {
-    margin: 0;
-  }
-
-  .footerContent-extra {
-    display: none;
-  }
-
-  .navigation-desktop {
-    display: none;
-  }
-
-  #expand-nav {
-    margin-bottom: 0;
-  }
-  #expand-nav #down {
-    font-size: 0.5em;
-  }
-
   .nav-items {
     display: none;
   }
@@ -90,17 +59,6 @@
     margin-top: 150px;
   }
 
-  #go-back-btn {
-    width: 30%;
-    height: 40px;
-    font-size: 15px;
-    text-align: center;
-    padding: 5px;
-    left: 0.8rem;
-    top: 70px;
-    position: absolute;
-  }
-
   .modal-content {
     height: 100vh;
   }
@@ -121,10 +79,6 @@
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
-  .mainButton {
-    width: 47%;
-  }
-
   .navBar button {
     font-size: 27px;
   }
@@ -204,16 +158,6 @@
     flex-direction: row;
   }
 
-  #go-back-btn {
-    width: 15%;
-    font-size: 15px;
-    text-align: center;
-    padding: 5px;
-    left: 6rem;
-    top: 2.5rem;
-    position: absolute;
-  }
-
   .modal-content {
     width: 60%;
     position: relative;
@@ -263,27 +207,6 @@
 
   .page-section-purple h3 {
     font-size: 4.5em;
-  }
-
-  #footer {
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 30px;
-  }
-  #footer .footerContent {
-    width: 30%;
-  }
-  #footer h3 {
-    margin-bottom: 10px;
-  }
-  #footer .footerContent-extra {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-  }
-  #footer #iconsDiv {
-    justify-content: center;
   }
 
   .navigation-desktop {
@@ -350,6 +273,566 @@
     box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   }
 }
+.purple-body {
+  background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
+}
+
+.score-container {
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #999;
+  margin: 0 auto;
+  width: 80%;
+  height: 65%;
+  padding: 60px 50px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+}
+.score-container h1 {
+  color: #572a7a;
+  font-weight: 700;
+  font-size: 7em;
+  margin-top: 0.3em;
+}
+.score-container h2 {
+  color: grey;
+  font-weight: 350;
+  font-size: 4em;
+  margin-top: 0.5em;
+}
+.score-container h3 {
+  color: grey;
+  font-weight: 250;
+  font-size: 3em;
+  margin-top: 0;
+}
+
+#main-score-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6em;
+  margin-bottom: 2em;
+}
+#main-score-container .header-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -60;
+}
+#main-score-container h2 {
+  font-size: 7em;
+  text-align: center;
+  margin-top: 0;
+}
+#main-score-container #address-container {
+  text-align: center;
+  position: relative;
+  top: -50;
+}
+
+#second-score-container {
+  overflow: scroll;
+  max-height: 500px;
+}
+#second-score-container h3 {
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+#second-score-container .header-container {
+  text-align: center;
+}
+#second-score-container #detail-score-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 50vh;
+}
+#second-score-container #detail-score-container .parameter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  margin: 20px;
+}
+#second-score-container #detail-score-container h2 {
+  font-size: 2.8em;
+  color: white;
+}
+#second-score-container #detail-score-container h3 {
+  font-size: 2.2em;
+  color: white;
+  margin-bottom: 0.4em;
+}
+
+.score-header {
+  fill: #572a7a;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+@media screen and (max-width: 810px) {
+  #second-score-container h3 {
+    margin-bottom: 0.4em;
+  }
+}
+#detail-parameter-importance-bar {
+  height: 2%;
+  margin: 0;
+}
+
+#detail-parameter-container h1 h2 {
+  display: inline-block;
+}
+#detail-parameter-container img {
+  width: 100%;
+}
+#detail-parameter-container #detail-parameter-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.modal-content h1 {
+  color: #572a7a;
+}
+.modal-content h2 {
+  color: grey;
+}
+.modal-content h3 {
+  color: #572a7a;
+  font-size: 1.5em;
+  font-weight: 1000;
+  margin: 0;
+}
+.modal-content h4 {
+  color: grey;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.modal-content p {
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+}
+.modal-content .disclaimer {
+  color: grey;
+  font-size: 0.75em;
+  font-style: italic;
+  margin-top: 1em;
+}
+
+.very-important {
+  background-image: linear-gradient(to top, #19012c, #a785c2);
+}
+
+.important {
+  background-image: linear-gradient(to top, #361054, #c6b0d7);
+}
+
+.somewhat-important {
+  background-image: linear-gradient(to top, #765093, #e5d5ef);
+}
+
+.svg-score {
+  width: 70%;
+  max-height: 400px;
+  margin: 0 auto;
+}
+
+#score {
+  display: flex;
+  position: relative;
+  top: -50;
+  width: 35%;
+  margin: 0 auto;
+}
+
+.svg-bg {
+  fill: none;
+  stroke: #dfdfdf;
+  stroke-width: 5px;
+}
+
+.svg-color {
+  fill: none;
+  stroke-width: 6px;
+  animation: fill 5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fill {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes fill {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.score-circle-container {
+  max-height: 300px;
+}
+
+.score-footer {
+  background-color: white;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+}
+.modal .modal-content div {
+  margin: 10px;
+}
+.modal .modal-content .close {
+  color: #777;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal .modal-content .close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+#loginContainer .pageTitle {
+  color: #572a7a;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 3em;
+  margin-bottom: 10%;
+  text-align: center;
+}
+#loginContainer .textItem {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  font-size: 1.2em;
+}
+#loginContainer .textItem:focus {
+  outline: none;
+}
+
+#search-div {
+  display: none;
+  position: relative;
+  width: 800px;
+}
+#search-div span {
+  color: #777;
+}
+
+#search-criteria-div {
+  position: relative;
+}
+#search-criteria-div li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+#search-criteria-div select {
+  margin-left: 10px;
+  height: 30px;
+  border: 2px solid #572a7a;
+  border-radius: 2px;
+  background-color: #eee;
+  font-size: 16px;
+}
+
+.importance-selector {
+  display: none;
+}
+
+.alert-box {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  transition: all 3s ease-in-out;
+  z-index: 4;
+  position: absolute;
+  top: 80%;
+}
+
+#error-msg {
+  display: none;
+}
+
+.toTitleCase {
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 580px) {
+  #footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #footer .footerContent {
+    align-items: center;
+  }
+  #footer .footerContent p {
+    font-size: 1em;
+    margin: 0 10px 10px 10px;
+  }
+  #footer .footerContent h3 {
+    margin: 0;
+  }
+
+  .footerContent-extra {
+    display: none;
+  }
+
+  .navigation-desktop {
+    display: none;
+  }
+
+  #expand-nav {
+    margin-bottom: 0;
+  }
+  #expand-nav #down {
+    font-size: 0.5em;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  #footer {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
+  #footer .footerContent {
+    width: 30%;
+  }
+  #footer h3 {
+    margin-bottom: 10px;
+  }
+  #footer .footerContent-extra {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+  }
+  #footer #iconsDiv {
+    justify-content: center;
+  }
+}
+#footer {
+  display: flex;
+}
+#footer .footerContent {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+#footer p {
+  margin-top: 0;
+}
+
+.main-footer {
+  background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
+}
+
+.socialicon {
+  width: 30px;
+}
+
+#iconsDiv {
+  display: flex;
+}
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #bebebe;
+  border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a purple background */
+.container input:checked ~ .checkmark {
+  background-color: #572a7a;
+  border-radius: 3px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*mobile*/
+@media only screen and (max-width: 580px) {
+  #go-back-btn {
+    width: 30%;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    left: 0.8rem;
+    top: 70px;
+    position: absolute;
+  }
+}
+/*midsize*/
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+  .mainButton {
+    width: 47%;
+  }
+
+  #go-back-btn {
+    width: 15%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    left: 6rem;
+    top: 2.5rem;
+    position: absolute;
+  }
+}
+.mainButton {
+  background-color: #572a7a;
+  color: white;
+  padding: 10px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  border: none;
+}
+.mainButton:focus {
+  outline: none;
+}
+.mainButton:active {
+  transform: translate(0px, 1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: 0.2s ease-out;
+}
+
+.see-results-btn {
+  width: 40%;
+  margin-top: 50px;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #572a7a;
+  width: 50px;
+  height: 50px;
+  animation: spin 1.5s linear infinite;
+  position: absolute;
+  z-index: 3;
+  left: 44%;
+  top: 35%;
+}
+
+#overlay {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 2;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.gen-report-text {
+  z-index: 4;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -425,6 +908,15 @@ h3 {
   outline: none;
 }
 
+#container {
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .page-section, .page-section-flex {
   height: 100vh;
   width: 100%;
@@ -496,137 +988,6 @@ h3 {
   border: #572a7a 2px solid;
 }
 
-#search-div {
-  display: none;
-  position: relative;
-  width: 800px;
-}
-#search-div span {
-  color: #777;
-}
-
-#search-criteria-div {
-  position: relative;
-}
-#search-criteria-div li {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-}
-#search-criteria-div select {
-  margin-left: 10px;
-  height: 30px;
-  border: 2px solid #572a7a;
-  border-radius: 2px;
-  background-color: #eee;
-  font-size: 16px;
-}
-
-.importance-selector {
-  display: none;
-}
-
-.alert-box {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-  transition: all 3s ease-in-out;
-  z-index: 4;
-  position: absolute;
-  top: 80%;
-}
-
-#error-msg {
-  display: none;
-}
-
-.toTitleCase {
-  text-transform: capitalize;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.modal .modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  border-radius: 10px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
-}
-.modal .modal-content div {
-  margin: 10px;
-}
-.modal .modal-content .close {
-  color: #777;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-.modal .modal-content .close:hover {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#loginContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10%;
-}
-#loginContainer .pageTitle {
-  color: #572a7a;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 3em;
-  margin-bottom: 10%;
-  text-align: center;
-}
-#loginContainer .textItem {
-  margin-bottom: 20px;
-  border-radius: 10px;
-  padding: 20px;
-  border: 1px solid black;
-  font-size: 1.2em;
-}
-#loginContainer .textItem:focus {
-  outline: none;
-}
-
-.mainButton {
-  background-color: #572a7a;
-  color: white;
-  padding: 10px 30px;
-  font-size: 1.5em;
-  border-radius: 15px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
-  border: none;
-}
-.mainButton:focus {
-  outline: none;
-}
-.mainButton:active {
-  transform: translate(0px, 1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: 0.2s ease-out;
-}
-
 #nearbyInfo {
   display: flex;
   align-items: center;
@@ -643,24 +1004,22 @@ h3 {
   margin: 30px 20px;
 }
 
-#footer {
+.team-section {
+  background-image: linear-gradient(to top, rgba(63, 20, 113, 0.7), rgba(170, 144, 193, 0.7)), url(../../images/image3.jpg);
+  height: 100vh;
   display: flex;
+  background-size: cover;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
 }
-#footer .footerContent {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.4;
+.team-section h3 {
+  border-bottom: 1px white solid;
+  line-height: 3;
+  color: cornsilk;
 }
-#footer p {
-  margin-top: 0;
-}
-
-.main-footer {
-  background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
-}
-
-.score-footer {
-  background-color: white;
+.team-section p {
+  color: white;
+  padding: 50px;
+  font-size: 1.2em;
 }
 
 a {
@@ -672,134 +1031,12 @@ a:hover {
   color: #572a7a;
 }
 
-.socialicon {
-  width: 30px;
-}
-
-#iconsDiv {
-  display: flex;
-}
-
-.see-results-btn {
-  width: 40%;
-  margin-top: 50px;
-}
-
-/* The container */
-.container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  transition: all 0.2s;
-}
-
-/* Hide the browser's default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #bebebe;
-  border-radius: 3px;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a purple background */
-.container input:checked ~ .checkmark {
-  background-color: #572a7a;
-  border-radius: 3px;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.loader {
-  border: 10px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 10px solid #572a7a;
-  width: 50px;
-  height: 50px;
-  animation: spin 1.5s linear infinite;
-  position: absolute;
-  z-index: 3;
-  left: 44%;
-  top: 35%;
-}
-
-#overlay {
-  position: absolute;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 2;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.gen-report-text {
-  z-index: 4;
-}
-
 .fab {
   font-size: 2em;
   margin: 10px;
 }
 
+/***SLIDE RIGHT**/
 .slide-right {
   animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
