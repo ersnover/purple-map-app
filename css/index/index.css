@@ -987,7 +987,8 @@ a:hover {
 /***SLIDE RIGHT**/
 .slide-right {
   animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-#loginContainer .textItem {
+}
+  #loginContainer .textItem {
   height: 50px;
   font-size: 20px;
   color: black;
