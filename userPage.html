@@ -9,7 +9,19 @@
 <body>
 
 
+    <nav class="navBar">
+        <a href="/index.html"class="pageTitle">Purp</a>
+
+        <span id="userSpan" class="pageTitle"></span>
+
+        <button id="userButton"><i class="fas fa-user"></i></button>
+        
+        <button id="signOutButton"><i class="fas fa-sign-out-alt"></i></button>
+
+    </nav>
+    
 <div class="topDiv">
+
 <div id="profileInfoDiv">
     <img id="profileImg" url="">
     <span id="userFullNameSpan"></span>
@@ -18,7 +30,8 @@
 </div>
 
 <div id="defaultCriteriaContainer">
-    <h3>Default Search Preferences</h3>
+            
+    <button onclick="window.location.href='index.html'" class="mainButton">New Report</button>
     <ul id="defaultCriteriaList"></ul>
     <button id="updateDefaultsButton" disabled="true" class="mainButton">Update Defaults</button>
 </div>
@@ -51,5 +64,6 @@
 
 </script>
 <script src="js/criteriaObjects.js"></script>
+<script src="js/login.js"></script>
 <script src="js/userPage.js"></script>
 </body>

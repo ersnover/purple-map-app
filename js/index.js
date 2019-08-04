@@ -44,11 +44,13 @@ seeResultsButton.addEventListener('click', () => {
     let criteriaInputObjs = getCriteriaObjs()
 
     if(criteriaInputObjs.length !== 0) {
-        errorMsg.style.display = 'none'
         renderLoader(preferencesDiv)
         runAll()
     } else {
         showErrorMsg()
+        setInterval(() => {
+            errorMsg.style.display = 'none'
+        }, 2000)
     }
 
 function runAll() {
