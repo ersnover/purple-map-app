@@ -57,12 +57,7 @@ function generatePage(algorithmObject) {
     //set up color variable too
     // let mainScoreContainer = document.getElementById('main-score-container')
 
-    // let boxSize = 40
-    // let radius = 15.91551
-    // let diameter = 31.83102
-    // let xVal = boxSize/2
-    // let yVal = boxSize-31.83102
-    // yVal = yVal/2
+
 
     let svgColor = document.getElementsByClassName("svg-color")[0]
     let scoreHeader = document.getElementsByClassName("score-header")[0]
