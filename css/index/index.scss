@@ -1,10 +1,11 @@
-@import '_mobile', '_midSize', '_desktop', '../scorePage/scorePage';
+@import '_mobile', '_midSize', '_desktop', '../scorePage/scorePage', '../login/login.scss', 
+'../searchCriteria/searchCriteria','../footer/footer', '../extra/checkbox', 
+'../extra/buttons', '../extra/loading.scss' ;
 
 $purple: #572a7a;
 $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
-
 $purple-gradient: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50));
 $div-border-radius: 20px; 
 
@@ -16,11 +17,6 @@ body {
     button {
         cursor: pointer;
     }
-}
-//  #5352ed;
-
-.purple-body {
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
 }
 
 h1{
@@ -90,6 +86,15 @@ h3{
     }
 }
 
+#container{
+    background-size: cover; 
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    margin-bottom:20px;       
+}
+
 .page-section {
     height: 100vh;
     width: 100%;
@@ -102,48 +107,11 @@ h3{
     align-items: center;   
 }
 
-.page-section-purple{
-    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.70), rgba(170, 144, 193, 0.70)),
-                    url(../../images/image3.jpg);
-    height: 100vh; 
-    display: flex;
-    background-size: cover;
-    box-shadow: $box-shadow;
-    h3{
-        border-bottom: 1px white solid;
-        line-height: 3;
-        color:cornsilk;
-        
-    }
-    p{
-        color:white;
-        padding: 50px;
-        font-size: 1.2em;
-    }
-                    
-}
-
-
-
-
-#container{
-    
-    
-    background-size: cover; 
-    height: 100vh; 
-    display: flex;
-    justify-content: center;
-    align-items: center;     
-    margin-bottom:20px;       
-}
-
 .indexContent {
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    
     p{
         width: 80%;
         text-align:center;
@@ -168,152 +136,6 @@ h3{
     
 }
 
-
-#search-div {
-    display: none;
-    position: relative;
-    width: 800px;
-
-    span {
-        color: $gray;
-    }
-}
-
-
-#search-criteria-div{
-    position: relative;
-
-    li {
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    select {
-        margin-left: 10px;
-        height: 30px;
-        border: 2px solid $purple;
-        border-radius: 2px;
-        background-color: #eee;
-        font-size: 16px;
-    }
-}
-
-.importance-selector {
-    display: none;
-}
-
-.alert-box {
-	padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;  
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    transition: all 3s ease-in-out;
-    z-index: 4;
-    position: absolute;
-    top: 80%;
-}
-
-
-#error-msg {
-    display: none;
-}
-
-
-.toTitleCase{
-    text-transform: capitalize;
-}
-
-.modal{
-    display: none;
-    position: fixed;
-    z-index:1;
-    left:0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0, 0, 0, 0.7);
-    .modal-content{
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        
-        border-radius: 10px;
-        box-shadow: $box-shadow;
-        div{
-            margin: 10px;
-        }
-        .close{
-            color: #777;
-            float: right;
-            font-size:28px;
-            font-weight: bold;
-        }
-        .close:hover{
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    }
-}
-
-#loginContainer{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10%;
-    .pageTitle{
-        color: $purple;
-        font-family: $headerFont;
-        font-size: 3em;
-        margin-bottom: 10%;
-        text-align: center;
-    }
-    .textItem{
-        margin-bottom:20px;
-        border-radius: 10px;
-        padding: 20px;
-        border: 1px solid black;
-        font-size:1.2em;
-    }
-    .textItem:focus{
-        outline: none;
-    }
-   
-}
-
-
-// BUTTONS
-
-.mainButton {
-    background-color: $purple;
-    color: white;
-    padding: 10px 30px;
-    font-size: 1.5em;
-    border-radius: 15px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    box-shadow: $box-shadow;
-    border: none;
-
-    &:focus{
-        outline:none;
-    }
-
-    &:active{
-        transform: translate(0px, 1px);
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        transition: .2s ease-out;
-    }
-}
-
-
 #nearbyInfo {
     display:flex;
     align-items:center;
@@ -331,28 +153,28 @@ h3{
     }
 }
 
-#footer{
-    display:flex;
-    
-    .footerContent{
-        display:flex;
-        flex-direction:column;  
-        line-height: 1.4;
-    }
 
+.team-section{
+    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.70), rgba(170, 144, 193, 0.70)),
+                    url(../../images/image3.jpg);
+    height: 100vh; 
+    display: flex;
+    background-size: cover;
+    box-shadow: $box-shadow;
+    h3{
+        border-bottom: 1px white solid;
+        line-height: 3;
+        color:cornsilk;
+        
+    }
     p{
-        margin-top: 0;
+        color:white;
+        padding: 50px;
+        font-size: 1.2em;
     }
-    
+                    
 }
 
-.main-footer {
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
-}
-
-.score-footer {
-    background-color: white;
-}
 
 a{
     text-decoration:none;
@@ -363,137 +185,16 @@ a:hover {
     color: $purple;
 }
 
-.socialicon{
-    width: 30px;
-}
-
-#iconsDiv{
-    display:flex;
-}
-.see-results-btn {
-    width: 40%;
-    margin-top: 50px;
-}
-
-
-
-
-
-// CHECKBOX STYLING
-
-/* The container */
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transition: all .2s;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: rgb(190, 190, 190);
-    border-radius: 3px;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a purple background */
-  .container input:checked ~ .checkmark {
-    background-color: $purple;
-    border-radius: 3px;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-
-.loader {
-    border: 10px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 10px solid $purple;
-    width: 50px;
-    height: 50px;
-    animation: spin 1.5s linear infinite;
-    position: absolute;
-    z-index: 3;
-    left: 44%;
-    top: 35%;
-}
-
-#overlay {
-    position: absolute;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(255, 255, 255);
-    z-index: 2;
-    cursor: pointer;
-    border-radius: $div-border-radius
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  .gen-report-text {
-      z-index: 4;
-  }
-
 
 .fab{
     font-size: 2em;
     margin: 10px; 
 }
+
+
+
+
+/***SLIDE RIGHT**/
 
 
 .slide-right{animation:slide-right .7s cubic-bezier(.215,.61,.355,1.000) both}
@@ -539,14 +240,3 @@ a:hover {
     display:flex;
     flex-direction: column;
 }
-
-
-
-
-
-
-
-
-//make the viewbox and x and y coordinates bigger
-
-//edited page-section flex

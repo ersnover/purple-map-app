@@ -1,0 +1,58 @@
+/*mobile*/
+@media only screen and (max-width: 580px) {
+#go-back-btn {
+    width: 30%;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    left: .8rem;
+    top: 70px;
+    position: absolute;
+}
+}
+
+
+/*midsize*/
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+    .mainButton {
+        width:47%;
+    }
+    #go-back-btn {
+        width: 15%;
+        font-size: 15px;
+        text-align: center;
+        padding: 5px;
+        left: 6rem;
+        top: 2.5rem;
+        position: absolute;
+    }
+}
+
+
+.mainButton {
+    background-color: $purple;
+    color: white;
+    padding: 10px 30px;
+    font-size: 1.5em;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: $box-shadow;
+    border: none;
+
+    &:focus{
+        outline:none;
+    }
+
+    &:active{
+        transform: translate(0px, 1px);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        transition: .2s ease-out;
+    }
+}
+
+.see-results-btn {
+    width: 40%;
+    margin-top: 50px;
+}

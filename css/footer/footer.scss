@@ -1,0 +1,27 @@
+@import '_mobile', '_desktop';
+
+#footer{
+    display:flex;
+    .footerContent{
+        display:flex;
+        flex-direction:column;  
+        line-height: 1.4;
+    }
+
+    p{
+        margin-top: 0;
+    }
+    
+}
+
+.main-footer {
+    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
+}
+.socialicon{
+    width: 30px;
+}
+
+#iconsDiv{
+    display:flex;
+}
+

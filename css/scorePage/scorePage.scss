@@ -3,6 +3,12 @@ $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
+
+.purple-body {
+    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
+}
+
+
 .score-container {
     //white box with shadow and outline proportional to outer div
     background-color: white;
@@ -218,4 +224,8 @@ $headerFont: 'Noto Sans KR', sans-serif;
 
 .score-circle-container{
     max-height: 300px;
+}
+
+.score-footer {
+    background-color: white;
 }
