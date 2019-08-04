@@ -52,7 +52,15 @@ let closeBtn = document.getElementsByClassName("close")[0];
 
 if (userBtn) {
     userBtn.onclick = function(){
-        modal.style.display = "block";
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                window.location = "userpage.html"
+            } else {
+                modal.style.display = "block"
+            }
+        })
+
+        
     }
 }
 
