@@ -1,0 +1,109 @@
+@media only screen and (max-width: 580px) {
+  #footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #footer .footerContent {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #footer .footerContent p {
+    font-size: 1em;
+    margin: 0 10px 10px 10px;
+  }
+  #footer .footerContent h3 {
+    margin: 0;
+  }
+  .footerContent-extra {
+    display: none;
+  }
+  .navigation-desktop {
+    display: none;
+  }
+  #expand-nav {
+    margin-bottom: 0;
+  }
+  #expand-nav #down {
+    font-size: .5em;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #footer {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding-bottom: 30px;
+  }
+  #footer .footerContent {
+    width: 30%;
+  }
+  #footer h3 {
+    margin-bottom: 10px;
+  }
+  #footer .footerContent-extra {
+    width: 30%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #footer #iconsDiv {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#footer .footerContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  line-height: 1.4;
+}
+
+#footer p {
+  margin-top: 0;
+}
+
+.main-footer {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(253, 251, 251, 0.7)), to(rgba(170, 144, 193, 0.3)));
+  background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
+}
+
+.socialicon {
+  width: 30px;
+}
+
+#iconsDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=footer.css.map */
