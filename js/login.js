@@ -4,39 +4,45 @@ const loginPasswordField = document.getElementById('loginPassword')
 
 const usernameSpan = document.getElementById('userSpan')
 
-loginPasswordField.addEventListener('keyup', e => {
-    if (e.keyCode === 13) {
-        loginButton.click()
-    }
-})
+if (loginPasswordField) {
+    loginPasswordField.addEventListener('keyup', e => {
+        if (e.keyCode === 13) {
+            loginButton.click()
+        }
+    })
+    
+}
 
 //login button
-loginButton.addEventListener('click', () => {
-    let email = loginEmailField.value
-    let password = loginPasswordField.value
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert(`Error ${errorCode}\n\n${errorMessage}`)
-    })
-    .then(() => {
-        if (window.location !== "index.html") {
-            window.location = "index.html"
-        }
-    })
-
-    firebase.auth().onAuthStateChanged(user => {    //triggers when user state changes, clears fields and hides modal
-        if (user) {
-            loginEmailField.value = ""
-            loginPasswordField.value = ""
-            if (modal) {
-                modal.style.display = "none"
+if (loginButton) {
+    loginButton.addEventListener('click', () => {
+        let email = loginEmailField.value
+        let password = loginPasswordField.value
+    
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch(error => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(`Error ${errorCode}\n\n${errorMessage}`)
+        })
+        .then(() => {
+            if (window.location !== "index.html") {
+                window.location = "index.html"
             }
-        }
+        })
+    
+        firebase.auth().onAuthStateChanged(user => {    //triggers when user state changes, clears fields and hides modal
+            if (user) {
+                loginEmailField.value = ""
+                loginPasswordField.value = ""
+                if (modal) {
+                    modal.style.display = "none"
+                }
+            }
+        })
     })
-})
+}
+
 
 //MODAL
 
@@ -75,7 +81,7 @@ if (signOutButton) {
         firebase.auth().onAuthStateChanged(user => {
             if (!user) {                            //sign out clears username span and brings up modal
                 usernameSpan.innerHTML = ""
-                modal.style.display = "block";
+                window.location = "index.html"
             }
         })
     })

@@ -89,8 +89,8 @@ firebase.auth().onAuthStateChanged(function(user) {
             let userProfile = obj.data()
             if (userProfile.defaultSearchCriteria != null) {
                 populateCriteriaFromDefaults(userProfile.defaultSearchCriteria)
+                document.getElementById('defaultsLoadedSpan').innerHTML = "Loaded custom search preferences"
             }
-            document.getElementById('defaultsLoadedSpan').innerHTML = "Loaded custom search preferences"
         })
     }
 })
