@@ -547,6 +547,10 @@ h3 {
   width: 800px;
 }
 
+#search-div span {
+  color: #777;
+}
+
 #search-criteria-div {
   position: relative;
 }
@@ -1223,10 +1227,16 @@ a:hover {
 
 .svg-color {
   fill: none;
-  stroke: green;
   stroke-width: 6px;
+  animation: fill 5s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
+@keyframes fill {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .score-circle-container {
   max-height: 300px;
 }

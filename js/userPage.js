@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
         const userRef = usersCollectionRef.doc(user.uid)
         
         userRef.get().then(function(obj) {
-            userProfile = obj.data()
+            let userProfile = obj.data()
             populateUserPage(userProfile)
         })
 
@@ -38,7 +38,7 @@ const defaultContainer = document.getElementById('defaultCriteriaList')
 
 placeTypes = Object.keys(criteriaStats)
 
-placeTypes.map((type, index) => {
+placeTypes.map((type) => {
     
     const googleId = criteriaStats[type].googleidname
     const placeDisplayName =criteriaStats[type].placeDisplayName
@@ -46,17 +46,17 @@ placeTypes.map((type, index) => {
     const criteriaDiv = `
     
     <li>
-    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    <label for="${googleId}Checkbox" class="place-type container">
     
     ${placeDisplayName}
 
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectorid="select-${index}" required> 
+    <input type="checkbox" name="${googleId}Checkbox" id="${googleId}Checkbox" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectorid="${googleId}"> 
 
     <span class="checkmark"></span>
 
     </label>
 
-    <select  id="select-${index}" class="importance-selector">
+    <select  id="${googleId}" class="importance-selector">
         <option value="${highImp}">${highImp}</option>
         <option value="${medImp}">${medImp}</option>
         <option value="${lowImp}">${lowImp}</option>
@@ -75,7 +75,6 @@ const updateDefaultsButton = document.getElementById('updateDefaultsButton')
 
 defaultCriteriaCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
-        console.log('hey')
         updateDefaultsButton.innerHTML = "Update Defaults"
         updateDefaultsButton.disabled = false       // enables update button once new criteria have been selected
         displaySelector(event.target)
@@ -108,10 +107,9 @@ function updateDefaultSearchCriteria(userRef) {
 
     defaultCriteriaCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
-            let criteriaType = checkbox.dataset.criteriatype
+            let criteriaType = checkbox.dataset.selectorid
 
-            let selectorId = checkbox.dataset.selectorid
-            let selector = document.getElementById(selectorId)
+            let selector = document.getElementById(criteriaType)
             let criteriaImportance = selector.value
 
             let obj = {

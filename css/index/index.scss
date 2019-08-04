@@ -173,6 +173,10 @@ h3{
     display: none;
     position: relative;
     width: 800px;
+
+    span {
+        color: $gray;
+    }
 }
 
 
@@ -736,11 +740,17 @@ a:hover {
 
 .svg-color{
     fill: none;
-    stroke:green;
     stroke-width: 6px;
+    animation: fill 5s ease-in-out;
+    animation-fill-mode: forwards;
     // stroke-linecap: round;
 }
 
+@keyframes fill {
+    to{
+        stroke-dashoffset: 0;
+    }
+}
 .score-circle-container{
     max-height: 300px;
 }

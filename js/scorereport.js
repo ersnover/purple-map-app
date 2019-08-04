@@ -66,10 +66,17 @@ function generatePage(algorithmObject) {
 
     let svgColor = document.getElementsByClassName("svg-color")[0]
     let scoreHeader = document.getElementsByClassName("score-header")[0]
+    
+    
+    svgColor.style.strokeDashoffset = `${score}`
     svgColor.style.strokeDasharray = `${score}, 100`
     svgColor.style.stroke = `${scoreColor}`
+   
     
     scoreHeader.innerHTML=`${score}`
+    
+ 
+
     //add variable for the importance value
 
 
