@@ -1,5 +1,6 @@
 //load info before the rest of the things on the page happen
 let usersCollectionRef = db.collection('users')
+const usernameSpan = document.getElementById('userSpan')
 
 firebase.auth().onAuthStateChanged(function(user) {
 

@@ -414,6 +414,10 @@ h3 {
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
+  color: #572a7a;
+}
+.navBar .pageTitle:hover {
+  color: #8d6aa8;
 }
 
 .navBar #userSpan {
@@ -421,12 +425,10 @@ h3 {
   font-size: 20px;
   color: #777;
 }
-
 .navBar #userSpan:hover {
   cursor: pointer;
-  color: purple;
+  color: #572a7a;
 }
-
 .navBar i {
   margin-right: 20px;
 }
@@ -587,7 +589,6 @@ h3 {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
-  -webkit-transition: all 3s ease-in-out;
   transition: all 3s ease-in-out;
   z-index: 4;
   position: absolute;
