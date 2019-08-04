@@ -1,10 +1,18 @@
 @import 'mobile', 'midSize', 'desktop', '../index/index.scss';
 
+.navBar {
+    margin-top: -100px;
+}
+
 .topDiv {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 60px;
+    margin-left: 60px;
+    margin-top: 100px;
+
+
+
 
     #profileInfoDiv {
         display: flex;
@@ -12,8 +20,6 @@
         align-items: flex-start;
 
         #profileImg {
-            height: 300px;
-            width: 300px;
             object-fit: cover;
             border-radius: 50%;
             border: 5px solid $purple;
