@@ -1,8 +1,37 @@
 @media only screen and (min-width: 1000px) {
-    
+    .navBar {
+        margin-top: -100px;
+    }
+    .topDiv{
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-left: 60px;
+        margin-top: 100px;
+    }
+
+    #profileInfoDiv{
+        align-items: flex-start;
+    }
+    #defaultCriteriaContainer {
+        width: calc(100vw - 400px);
+        margin-right: 10vw;
+        align-items: center;
+    }
     .topDiv #profileInfoDiv #profileImg {
         height: 300px;
         width: 300px;
+    }
+
+    .topDiv #defaultCriteriaContainer #defaultCriteriaList{
+        margin-left: 150px;
+    }
+
+    li{
+        width: 800px;
+    }
+
+    .savedSearchesContainer {
+        margin-left: 100px;
     }
 
 }

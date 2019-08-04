@@ -987,20 +987,6 @@ a:hover {
 /***SLIDE RIGHT**/
 .slide-right {
   animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-#loginContainer .textItem {
-  height: 50px;
-  font-size: 20px;
-  color: black;
-  padding: 10px;
-  border: 2px solid #572a7a;
-  border-radius: 5px;
-  background: none;
-  margin-bottom: 18px;
-}
-
-.very-important {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#19012c), to(#a785c2));
-  background-image: linear-gradient(to top, #19012c, #a785c2);
 }
 
 @keyframes slide-right {
@@ -1036,28 +1022,4 @@ a:hover {
   flex-direction: column;
 }
 
-.svg-color {
-  fill: none;
-  stroke-width: 6px;
-  -webkit-animation: fill 5s ease-in-out;
-          animation: fill 5s ease-in-out;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes fill {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fill {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.score-circle-container {
-  max-height: 300px;
-}
 /*# sourceMappingURL=index.css.map */
