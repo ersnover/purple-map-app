@@ -3,9 +3,6 @@ $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
-    .mainButton {
-        width:47%;
-    }
     .navBar{
         button{
             font-size: 27px;
@@ -97,15 +94,7 @@ $headerFont: 'Noto Sans KR', sans-serif;
         }
     }
 
-    #go-back-btn {
-        width: 15%;
-        font-size: 15px;
-        text-align: center;
-        padding: 5px;
-        left: 6rem;
-        top: 2.5rem;
-        position: absolute;
-    }
+    
     .modal-content{
         width: 60%;
         position: relative;

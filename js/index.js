@@ -44,11 +44,13 @@ seeResultsButton.addEventListener('click', () => {
     let criteriaInputObjs = getCriteriaObjs()
 
     if(criteriaInputObjs.length !== 0) {
-        errorMsg.style.display = 'none'
         renderLoader(preferencesDiv)
         runAll()
     } else {
         showErrorMsg()
+        setInterval(() => {
+            errorMsg.style.display = 'none'
+        }, 2000)
     }
 
 function runAll() {
@@ -60,23 +62,25 @@ function runAll() {
 
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
+                userRef = userRef
             } else {
                 userRef = usersCollectionRef.doc('Guest')
             }
+
+            userRef.collection('searches').doc('currentSearch').set(
+                {
+                address: reportObject.address,
+                criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
+                score: reportObject.score,
+                scale: reportObject.scale
+                })
+                .then(() => {
+                window.location = "score.html"
+            })
         })
 
         let criteriaArray = buildCritArray(reportObject.criteriaInfoArray)
 
-        userRef.collection('searches').doc('currentSearch').set(
-            {
-            address: reportObject.address,
-            criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
-            score: reportObject.score,
-            scale: reportObject.scale
-            })
-        .then(() => {
-            window.location = "score.html"
-        })
     })
 }
 

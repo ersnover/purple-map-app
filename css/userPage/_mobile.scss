@@ -1,0 +1,30 @@
+@media only screen and (max-width: 580px) {
+
+
+    
+    .topDiv #defaultCriteriaContainer {
+        position: absolute;
+        top: 800px;
+        margin-left: 100px;
+    }
+
+    .topDiv #profileInfoDiv #profileImg {
+        width: 600px;
+        height: 600px;
+    }
+
+    .savedSearchesContainer {
+        top: 1500px;
+        position: absolute;
+    }
+
+
+    .topDiv #profileInfoDiv {
+        font-size: 30px;
+    }
+
+    .new-report-btn {
+        position: absolute;
+        margin: -900 0 0 600;
+    }
+}
