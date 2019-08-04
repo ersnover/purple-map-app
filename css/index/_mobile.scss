@@ -1,4 +1,4 @@
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
     p{
         font-size: 1.2em;
     }
@@ -93,6 +93,41 @@
         }
 
     }
+
+
+    #search-criteria-div{
+        margin-top: 150px;
+    }
+
+
+    #go-back-btn {
+        width: 30%;
+        height: 40px;
+        font-size: 15px;
+        text-align: center;
+        padding: 5px;
+        left: .8rem;
+        top: 70px;
+        position: absolute;
+    }
+  .modal-content{
+    height: 100vh;
+    .textItem{
+        width:100%;
+    }
+  } 
+
+    .loader {     
+        left: 42%;
+        top: 40%;
+    }
    
+
+    .gen-report-text {
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 500px;
+        font-size: 38px;
+    }
 
 }

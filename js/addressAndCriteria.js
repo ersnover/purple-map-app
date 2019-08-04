@@ -50,7 +50,7 @@ const searchCriteriaDiv = document.getElementById('search-criteria-div')
 
 placeTypes = Object.keys(criteriaStats)
 
-placeTypes.map((type, index) => {
+placeTypes.map((type) => {
     
     const googleId = criteriaStats[type].googleidname
     const placeDisplayName =criteriaStats[type].placeDisplayName
@@ -58,17 +58,17 @@ placeTypes.map((type, index) => {
     const markup = `
     
     <li>
-    <label for="place-type-${index}" data-place = "${googleId}" id="${googleId}" class="place-type container">
+    <label for="${googleId}Checkbox" class="place-type container">
     
     ${placeDisplayName}
 
-    <input type="checkbox" name="place-type-${index}" id="place-type-${index}" class="place-type-checkbox"  data-selectid="select-${index}" required> 
+    <input type="checkbox" name="${googleId}Checkbox" id="${googleId}Checkbox" class="place-type-checkbox"  data-selectid="${googleId}" required> 
 
     <span class="checkmark"></span>
 
     </label>
 
-    <select  id="select-${index}" class="importance-selector">
+    <select  id="${googleId}" class="importance-selector">
         <option value="${highImp}">${highImp}</option>
         <option value="${medImp}">${medImp}</option>
         <option value="${lowImp}">${lowImp}</option>
@@ -79,8 +79,39 @@ placeTypes.map((type, index) => {
     searchCriteriaDiv.insertAdjacentHTML('beforeend', markup)
 })
 
+let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')  //moved this up so i could use the array for my defaults function -es
+
+// check for default criteria in database
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        let userRef = db.collection('users').doc(user.uid)
+        userRef.get().then(function(obj) {
+            let userProfile = obj.data()
+            if (userProfile.defaultSearchCriteria != null) {
+                populateCriteriaFromDefaults(userProfile.defaultSearchCriteria)
+            }
+            document.getElementById('defaultsLoadedSpan').innerHTML = "Loaded custom search preferences"
+        })
+    }
+})
+
+function populateCriteriaFromDefaults(defaultCriteriaObjs) {
+    defaultCriteriaObjs.forEach(critObj => {
+        let criteriaType = critObj.type
+        let criteriaImportance = critObj.importance
+
+        let checkbox = document.getElementById(`${criteriaType}Checkbox`)
+        let select = document.getElementById(checkbox.dataset.selectid)
+
+        checkbox.setAttribute('checked', 'true')
+        select.value = criteriaImportance
+        select.style.display = 'inline-block'
+    })
+}
+
+
 // Show importance selector only if place type is checked
-let allPlaceTypeCheckboxes = document.querySelectorAll('.place-type-checkbox')
+
 
 allPlaceTypeCheckboxes.forEach(checkbox => {
     checkbox.addEventListener('change', function () {
@@ -108,9 +139,8 @@ function getCriteriaObjs() {
 
     allPlaceTypeCheckboxes.forEach(box => {
         if(box.checked) {
-            let placeType = box.parentElement.id
-            let selectId = box.dataset.selectid
-            let placeTypeImportance = document.getElementById(selectId).value
+            let placeType = box.dataset.selectid
+            let placeTypeImportance = document.getElementById(placeType).value
 
             let obj = new CriteriaInputObj(placeType, placeTypeImportance)
 
@@ -123,12 +153,13 @@ function getCriteriaObjs() {
 function renderLoader(parent) {
     
     const loader = `
-    <div id="overlay"><div class="loader">
-    </div></div>
+    <div id="overlay">
+        <div class="loader">
+        </div>
+    </div>
     <h2 class='gen-report-text'>Generating your report!<h2>
     
     `
-    
     parent.insertAdjacentHTML('beforeend', loader)
     document.getElementById("overlay").style.display = "block";
 }

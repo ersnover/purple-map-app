@@ -80,5 +80,43 @@ $headerFont: 'Noto Sans KR', sans-serif;
         display: none;
         
     }
+
+    #search-criteria-div{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    
+        -webkit-column-gap: 50px;
+        -moz-column-gap: 50px;
+        column-gap: 50px;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
+    }
    
+
+    #go-back-btn {
+        width: 5%;
+        font-size: 15px;
+        text-align: center;
+        padding: 5px;
+        left: 6rem;
+        top: 2.5rem;
+        position: absolute;
+    }
+
+    .modal-content{
+        width: 40%;
+        position: relative;
+        top: -20;
+        .textItem{
+            width:65%;
+        }
+    .loader {
+        left: 48%;
+        top: 35%;
+    }
+}
 }

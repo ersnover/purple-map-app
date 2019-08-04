@@ -42,8 +42,7 @@ function registerUser(email, password, first, last) {
                 lastName: last,
                 email: email,
                 uid: user.uid,
-                profileURL: "./images/profilePic.jpg",
-                defaultSearchCriteria: []
+                profileURL: "./images/profilePic.jpg"
             }).then(function() {
                 window.location = "index.html"
             })

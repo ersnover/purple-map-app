@@ -1,9 +1,7 @@
 //load info before the rest of the things on the page happen
 let usersCollectionRef = db.collection('users')
-// let userRef = ""
-// let activeUserId = ""
 
-let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {     //if a user is logged in
         var displayName = user.displayName;
@@ -13,35 +11,25 @@ let userRefPromise = firebase.auth().onAuthStateChanged(user => {        //KEEP 
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-//Might bring this back after we figure out the registration page. TBD.
-        // usersCollectionRef.doc(uid).get()     
-        // .then(snapshot => {
-        //     if (!snapshot.exists) {     //checks whether user is already saved in database
-        //         usersCollectionRef.doc(uid).set({
-        //             email: email,
-        //             uid: uid
-        //         })
-        //     }
-        // })
-        // usernameSpan.innerHTML = email
 
-        let activeUserId = uid
-        let userRef = usersCollectionRef.doc(uid)
-        let algorithmObjectTest = userRef.collection('searches').doc('currentSearch')
-
-        algorithmObjectTest.get().then(function(obj) {
-            generatePage(obj.data())
-        })
-    }    
+        var userRef = usersCollectionRef.doc(uid)
+    } else {
+        var userRef = usersCollectionRef.doc("Guest")   //if no user, checks "Guest" collection
+    }
+    
+    let algorithmObjectTest = userRef.collection('searches').doc('currentSearch')
+    algorithmObjectTest.get().then(function(obj) {
+        generatePage(obj.data())
+    })
 })
 
 function determineImportanceClass(parameterImportance) {
     if (parameterImportance == highImp) {
-        return 'very-important'
+        return highImp
     } else if (parameterImportance == medImp) {
-        return 'important'
+        return medImp
     } else if (parameterImportance == lowImp) {
-        return 'somewhat-important'
+        return lowImp
     }
 }
 
@@ -73,29 +61,29 @@ function generatePage(algorithmObject) {
     addressHeader.innerHTML = `${appendedScoreAddress}`
     //change this so that it pull sthe score div and then creates the entire div interior and remove the score header thats already in my html file.
     //set up color variable too
-    let scoreHeader = document.getElementById('score')
+    // let mainScoreContainer = document.getElementById('main-score-container')
+
+    // let boxSize = 40
+    // let radius = 15.91551
+    // let diameter = 31.83102
+    // let xVal = boxSize/2
+    // let yVal = boxSize-31.83102
+    // yVal = yVal/2
+
+    let svgColor = document.getElementsByClassName("svg-color")[0]
+    let scoreHeader = document.getElementsByClassName("score-header")[0]
+    
+    
+    svgColor.style.strokeDashoffset = `${score}`
+    svgColor.style.strokeDasharray = `${score}, 100`
+    svgColor.style.stroke = `${scoreColor}`
+   
+    
+    scoreHeader.innerHTML=`${score}`
+    
+ 
+
     //add variable for the importance value
-    scoreHeader.innerHTML = `<svg viewBox ="0 0 ${boxSize} ${boxSize}">
-                                <path
-                                d="M${xVal} ${yVal}
-                                    a ${radius} ${radius} 0 0 1 0 ${diameter}
-                                    a ${radius} ${radius} 0 0 1 0 -${diameter}"
-                                fill="none"
-                                stroke="#555";
-                                stroke-width="3";
-                                />
-                                    <path class="circle"
-                                d="M${xVal} ${yVal}
-                                    a ${radius} ${radius} 0 0 1 0 ${diameter}
-                                    a ${radius} ${radius} 0 0 1 0 -${diameter}"
-                                fill="none"
-                                stroke="${scoreColor}";
-                                stroke-width="3";
-                                stroke-dasharray="${score}, 100"
-                                stroke-linecap="round"
-                                />
-                                <text x="12" y="25" class="score"><h1 id="score-header">${score}</h1></text>
-                             </svg>`
 
 
     //parameter scores

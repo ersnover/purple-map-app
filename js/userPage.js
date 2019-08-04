@@ -9,7 +9,7 @@ const savedSearchesDiv = document.getElementById('savedSearchesDiv')
 
 function populateUserPage(userObj) {
     profilePic.setAttribute('src', userObj.profileURL)
-    fullNameSpan.innerHTML = userObj.firstName
+    fullNameSpan.innerHTML = userObj.firstName + " " + userObj.lastName
     emailSpan.innerHTML = userObj.email
 }
 
@@ -21,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
         const userRef = usersCollectionRef.doc(user.uid)
         
         userRef.get().then(function(obj) {
-            userProfile = obj.data()
+            let userProfile = obj.data()
             populateUserPage(userProfile)
         })
 
@@ -36,20 +36,37 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
 
 const defaultContainer = document.getElementById('defaultCriteriaList')
 
-let criterias = Object.keys(criteriaStats)
-criterias.forEach(key => {
-    let criteria = criteriaStats[key]
-    let criteriaDiv = `<div class="defaultCriteriaDiv" id="${criteria.googleidname}DefaultDiv">
-                            <input type="checkbox" id="${criteria.googleidname}DefaultCheckbox" class="defaultCriteriaCheckbox" data-selectorid="${criteria.googleidname}DefaultSelect" data-criteriatype="${criteria.googleidname}">
-                            <span class="defaultCriteriaSpan">${criteria.placeDisplayName}</span>
-                            <select id="${criteria.googleidname}DefaultSelect" class="defaultImportanceSelect" style="display: none">
-                                <option value="${highImp}">${highImp}</option>
-                                <option value="${medImp}">${medImp}</option>
-                                <option value="${lowImp}">${lowImp}</option>
-                            </select>
-                        </div>`
+placeTypes = Object.keys(criteriaStats)
+
+placeTypes.map((type) => {
+    
+    const googleId = criteriaStats[type].googleidname
+    const placeDisplayName =criteriaStats[type].placeDisplayName
+
+    const criteriaDiv = `
+    
+    <li>
+    <label for="${googleId}Checkbox" class="place-type container">
+    
+    ${placeDisplayName}
+
+    <input type="checkbox" name="${googleId}Checkbox" id="${googleId}Checkbox" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectorid="${googleId}"> 
+
+    <span class="checkmark"></span>
+
+    </label>
+
+    <select  id="${googleId}" class="importance-selector">
+        <option value="${highImp}">${highImp}</option>
+        <option value="${medImp}">${medImp}</option>
+        <option value="${lowImp}">${lowImp}</option>
+    </select>
+    </li>
+    `
+
     defaultContainer.insertAdjacentHTML('beforeend',criteriaDiv)
 })
+
 
 
 // SAVE DEFAULT SEARCH CRITERIA TO DATABASE
@@ -90,10 +107,9 @@ function updateDefaultSearchCriteria(userRef) {
 
     defaultCriteriaCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
-            let criteriaType = checkbox.dataset.criteriatype
+            let criteriaType = checkbox.dataset.selectorid
 
-            let selectorId = checkbox.dataset.selectorid
-            let selector = document.getElementById(selectorId)
+            let selector = document.getElementById(criteriaType)
             let criteriaImportance = selector.value
 
             let obj = {

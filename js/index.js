@@ -3,7 +3,7 @@ let userRef = ""
 let activeUserId = ""
 var finalAddress = ""
 
-firebase.auth().onAuthStateChanged(user => {        //KEEP ON THIS PAGE - variable names will be used lower in script
+firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE - variable names will be used lower in script
 
     if (user) {     //if a user is logged in
         var displayName = user.displayName;
@@ -58,9 +58,12 @@ function runAll() {
     getPlaces(address, criteriaInputObjs,results => {
         reportObject = generateScoreObjects(address, results)
 
-        if (!firebase.auth().currentUser) {
-            userRef = usersCollectionRef.doc('Guest')
-        }
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+            } else {
+                userRef = usersCollectionRef.doc('Guest')
+            }
+        })
 
         let criteriaArray = buildCritArray(reportObject.criteriaInfoArray)
 
