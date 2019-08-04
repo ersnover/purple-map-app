@@ -59,17 +59,6 @@
     margin-top: 150px;
   }
 
-  #go-back-btn {
-    width: 30%;
-    height: 40px;
-    font-size: 15px;
-    text-align: center;
-    padding: 5px;
-    left: 0.8rem;
-    top: 70px;
-    position: absolute;
-  }
-
   .modal-content {
     height: 100vh;
   }
@@ -90,10 +79,6 @@
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
-  .mainButton {
-    width: 47%;
-  }
-
   .navBar button {
     font-size: 27px;
   }
@@ -171,16 +156,6 @@
   #search-criteria-div ul {
     display: flex;
     flex-direction: row;
-  }
-
-  #go-back-btn {
-    width: 15%;
-    font-size: 15px;
-    text-align: center;
-    padding: 5px;
-    left: 6rem;
-    top: 2.5rem;
-    position: absolute;
   }
 
   .modal-content {
@@ -749,6 +724,35 @@
   transform: rotate(45deg);
 }
 
+/*mobile*/
+@media only screen and (max-width: 580px) {
+  #go-back-btn {
+    width: 30%;
+    height: 40px;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    left: 0.8rem;
+    top: 70px;
+    position: absolute;
+  }
+}
+/*midsize*/
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+  .mainButton {
+    width: 47%;
+  }
+
+  #go-back-btn {
+    width: 15%;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    left: 6rem;
+    top: 2.5rem;
+    position: absolute;
+  }
+}
 .mainButton {
   background-color: #572a7a;
   color: white;
