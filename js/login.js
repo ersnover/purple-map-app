@@ -54,7 +54,7 @@ if (userBtn) {
     userBtn.onclick = function(){
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                window.location = "userpage.html"
+                window.location = "userPage.html"
             } else {
                 modal.style.display = "block"
             }
