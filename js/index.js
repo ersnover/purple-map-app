@@ -62,7 +62,6 @@ function runAll() {
 
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                userRef = userRef
             } else {
                 userRef = usersCollectionRef.doc('Guest')
             }
