@@ -19,10 +19,6 @@ body {
 }
 //  #5352ed;
 
-.purple-body {
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
-}
-
 h1{
     font-family: $headerFont;
     font-weight: 700;
@@ -105,6 +101,12 @@ h3{
     display: flex;
     justify-content: center;
     align-items: center;   
+}
+
+.unrestricted-section {
+    height: auto;
+    padding-top: 2vh;
+    padding-bottom: 10vh;
 }
 
 .page-section-purple{
@@ -551,41 +553,38 @@ a:hover {
 
 
 
-
+//maybe let this be the same ason the rest of the css
+//or if not, still change the main score so that the top is h1
+//add margin for the score
 .score-container {
-    //white box with shadow and outline proportional to outer div
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #999;
-    margin: 0 auto;
-    width: 80%;
-    height: 65%;
-    padding: 60px 50px;
-    box-shadow: $box-shadow;
     h1 {
-        color:$purple;
+        color:grey;
         font-weight:700;
-        font-size:7em;
-        margin-top: .3em;
+        font-size:5em;
+        // margin-top: .3em;
+        margin-bottom: 0;
+        text-align: center;
     }
     h2 {
         color:grey;
         font-weight:350;
-        font-size: 4em;
+        // font-size: 4em;
         margin-top:.5em;
+        text-align: center;
     }
     h3 {
-        color: grey;
+        color:grey;
         font-weight:250;
-        font-size:3em;
+        // font-size:3em;
         margin-top: 0;
+        text-align: center;
     }
 }
 
 #main-score-container {
     display: flex;
     flex-direction: column;
-    // align-items: center;
+    justify-content: center;
     margin-top: 6em;
     margin-bottom:2em;
     .header-container{
@@ -595,22 +594,16 @@ a:hover {
         position: relative;
         top: -60;
     }
-    h2{
-        font-size:7em;
-        text-align:center;
-        margin-top: 0
-    }
     #address-container{
         text-align:center;
         position: relative;
+        margin-bottom: 1em;
         top: -50
     }
     
 }
 
 #second-score-container {
-    overflow: scroll;
-    max-height: 500px;
     h3 {
         font-weight:400;
         margin-bottom: 1em;
@@ -633,11 +626,9 @@ a:hover {
             margin: 20px;
         }
         h2 {
-            font-size:2.8em;
             color: white;
         }
         h3 {
-            font-size:2.2em;
             color: white;
             margin-bottom: .4em;
         }
