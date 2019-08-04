@@ -62,23 +62,25 @@ function runAll() {
 
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
+                userRef = userRef
             } else {
                 userRef = usersCollectionRef.doc('Guest')
             }
+
+            userRef.collection('searches').doc('currentSearch').set(
+                {
+                address: reportObject.address,
+                criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
+                score: reportObject.score,
+                scale: reportObject.scale
+                })
+                .then(() => {
+                window.location = "score.html"
+            })
         })
 
         let criteriaArray = buildCritArray(reportObject.criteriaInfoArray)
 
-        userRef.collection('searches').doc('currentSearch').set(
-            {
-            address: reportObject.address,
-            criteriaArray: criteriaArray,       // converts report obj to be firestore compatible
-            score: reportObject.score,
-            scale: reportObject.scale
-            })
-        .then(() => {
-            window.location = "score.html"
-        })
     })
 }
 

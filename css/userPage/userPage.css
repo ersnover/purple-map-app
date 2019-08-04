@@ -15,6 +15,10 @@
   .topDiv #profileInfoDiv {
     font-size: 30px;
   }
+  .new-report-btn {
+    position: absolute;
+    margin: -900 0 0 600;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
@@ -36,7 +40,7 @@
     font-size: 1.2em;
   }
   .navBar #userSpan {
-    font-size: 2px;
+    display: none;
   }
   .navBar button {
     font-size: 20px;
@@ -1221,6 +1225,17 @@ a:hover {
   margin-top: 1em;
 }
 
+#loginContainer .textItem {
+  height: 50px;
+  font-size: 20px;
+  color: black;
+  padding: 10px;
+  border: 2px solid #572a7a;
+  border-radius: 5px;
+  background: none;
+  margin-bottom: 18px;
+}
+
 .very-important {
   background-image: -webkit-gradient(linear, left bottom, left top, from(#19012c), to(#a785c2));
   background-image: linear-gradient(to top, #19012c, #a785c2);
@@ -1260,8 +1275,23 @@ a:hover {
 
 .svg-color {
   fill: none;
-  stroke: green;
   stroke-width: 6px;
+  -webkit-animation: fill 5s ease-in-out;
+          animation: fill 5s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fill {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fill {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .score-circle-container {

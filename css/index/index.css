@@ -3,7 +3,7 @@
     font-size: 1.2em;
   }
   .navBar #userSpan {
-    font-size: 2px;
+    display: none;
   }
   .navBar button {
     font-size: 20px;
