@@ -188,7 +188,7 @@ function buildFavSearchDiv(searchObj, id) {
     let div = `<div id="${id}" class="savedSearchDiv">
                     <span class="savedSearchScore" style="color: ${scoreColor}">${score}</span>
                     <div class="savedSearchTextDiv">
-                        <button class="addressText" onclick="pullScorePage()">${address}</button>
+                        <button class="addressText" onclick="pullScorePage(this)">${address}</button>
                         <div class="savedSearchCriteriaDiv">
                             ${criteriaSpans}
                         </div>
