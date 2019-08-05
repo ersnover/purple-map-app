@@ -1,48 +1,46 @@
+@import '_mobile.scss', '_midSize.scss', '_desktop.scss';
+
 $purple: #572a7a;
 $gray: #777;
 $box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
 $headerFont: 'Noto Sans KR', sans-serif;
 
 
-.purple-body {
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
-}
-
-
 .score-container {
-    //white box with shadow and outline proportional to outer div
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #999;
-    margin: 0 auto;
-    width: 80%;
-    height: 65%;
-    padding: 60px 50px;
-    box-shadow: $box-shadow;
+
     h1 {
-        color:$purple;
+        color:grey;
         font-weight:700;
-        font-size:7em;
-        margin-top: .3em;
+        font-size:5em;
+        // margin-top: .3em;
+        margin-bottom: 0;
+        text-align: center;
     }
     h2 {
         color:grey;
         font-weight:350;
-        font-size: 4em;
+        // font-size: 4em;
         margin-top:.5em;
+        text-align: center;
     }
     h3 {
-        color: grey;
+        color:grey;
         font-weight:250;
-        font-size:3em;
+        // font-size:3em;
         margin-top: 0;
+        text-align: center;
     }
+}
+
+#main-container{
+    display:flex;
+    flex-direction: column;
 }
 
 #main-score-container {
     display: flex;
     flex-direction: column;
-    // align-items: center;
+    justify-content: center;
     margin-top: 6em;
     margin-bottom:2em;
     .header-container{
@@ -52,21 +50,15 @@ $headerFont: 'Noto Sans KR', sans-serif;
         position: relative;
         top: -60;
     }
-    h2{
-        font-size:7em;
-        text-align:center;
-        margin-top: 0
-    }
     #address-container{
         text-align:center;
         position: relative;
+        margin-bottom: 1em;
         top: -50
     }
 }
 
 #second-score-container {
-    overflow: scroll;
-    max-height: 500px;
     h3 {
         font-weight:400;
         margin-bottom: 1em;
@@ -89,11 +81,9 @@ $headerFont: 'Noto Sans KR', sans-serif;
             margin: 20px;
         }
         h2 {
-            font-size:2.8em;
             color: white;
         }
         h3 {
-            font-size:2.2em;
             color: white;
             margin-bottom: .4em;
         }
@@ -117,9 +107,6 @@ $headerFont: 'Noto Sans KR', sans-serif;
     }
 }
 
-
-//add in scroll for box overflow
-//maybe not do containers in the same way and adjust the second container's height to fit whatever is needed for it's content?
 
 #detail-parameter-importance-bar {
     height: 2%;
@@ -227,4 +214,65 @@ $headerFont: 'Noto Sans KR', sans-serif;
 
 .score-footer {
     background-color: white;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index:1;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0, 0, 0, 0.7);
+    .modal-content{
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        
+        border-radius: 10px;
+        box-shadow: $box-shadow;
+        div{
+            margin: 10px;
+        }
+        .close{
+            color: #777;
+            float: right;
+            font-size:28px;
+            font-weight: bold;
+        }
+        .close:hover{
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}
+
+#loginContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+    .pageTitle{
+        color: $purple;
+        font-family: $headerFont;
+        font-size: 3em;
+        margin-bottom: 10%;
+        text-align: center;
+    }
+    .textItem{
+        margin-bottom:20px;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid black;
+        font-size:1.2em;
+    }
+    .textItem:focus{
+        outline: none;
+    }
+   
 }

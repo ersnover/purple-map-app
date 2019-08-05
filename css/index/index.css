@@ -265,6 +265,7 @@
     top: 35%;
   }
 }
+<<<<<<< HEAD
 
 .purple-body {
   background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(253, 251, 251, 0.7)), to(rgba(170, 144, 193, 0.3)));
@@ -281,37 +282,75 @@
   padding: 60px 50px;
   -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+=======
+@media only screen and (min-width: 1000px) {
+  .purple-body {
+    background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
+  }
+
+  .score-container {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #999;
+    margin: 0 auto;
+    width: 80%;
+    height: 65%;
+    padding: 60px 50px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+  }
+>>>>>>> master
 }
 
 .score-container h1 {
-  color: #572a7a;
+  color: grey;
   font-weight: 700;
+<<<<<<< HEAD
   font-size: 7em;
   margin-top: .3em;
+=======
+  font-size: 5em;
+  margin-bottom: 0;
+  text-align: center;
+>>>>>>> master
 }
 
 .score-container h2 {
   color: grey;
   font-weight: 350;
+<<<<<<< HEAD
   font-size: 4em;
   margin-top: .5em;
+=======
+  margin-top: 0.5em;
+  text-align: center;
+>>>>>>> master
 }
 
 .score-container h3 {
   color: grey;
   font-weight: 250;
-  font-size: 3em;
   margin-top: 0;
+  text-align: center;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
 }
 
 #main-score-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+<<<<<<< HEAD
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+=======
+  flex-direction: column;
+  justify-content: center;
+>>>>>>> master
   margin-top: 6em;
   margin-bottom: 2em;
 }
@@ -327,6 +366,7 @@
   position: relative;
   top: -60;
 }
+<<<<<<< HEAD
 
 #main-score-container h2 {
   font-size: 7em;
@@ -334,17 +374,23 @@
   margin-top: 0;
 }
 
+=======
+>>>>>>> master
 #main-score-container #address-container {
   text-align: center;
   position: relative;
+  margin-bottom: 1em;
   top: -50;
 }
 
+<<<<<<< HEAD
 #second-score-container {
   overflow: scroll;
   max-height: 500px;
 }
 
+=======
+>>>>>>> master
 #second-score-container h3 {
   font-weight: 400;
   margin-bottom: 1em;
@@ -386,12 +432,10 @@
 }
 
 #second-score-container #detail-score-container h2 {
-  font-size: 2.8em;
   color: white;
 }
 
 #second-score-container #detail-score-container h3 {
-  font-size: 2.2em;
   color: white;
   margin-bottom: .4em;
 }
@@ -1016,6 +1060,10 @@ h3 {
 .navBar .pageTitle {
   margin-right: auto;
   margin-left: 15px;
+  color: #572a7a;
+}
+.navBar .pageTitle:hover {
+  color: #8d6aa8;
 }
 
 .navBar #userSpan {
@@ -1026,7 +1074,7 @@ h3 {
 
 .navBar #userSpan:hover {
   cursor: pointer;
-  color: purple;
+  color: #572a7a;
 }
 
 .navBar i {
@@ -1077,6 +1125,39 @@ h3 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.unrestricted-section {
+  height: auto;
+  padding-top: 2vh;
+  padding-bottom: 10vh;
+}
+
+.page-section-purple {
+  background-image: linear-gradient(to top, rgba(63, 20, 113, 0.7), rgba(170, 144, 193, 0.7)), url(../../images/image3.jpg);
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+}
+.page-section-purple h3 {
+  border-bottom: 1px white solid;
+  line-height: 3;
+  color: cornsilk;
+}
+.page-section-purple p {
+  color: white;
+  padding: 50px;
+  font-size: 1.2em;
+}
+
+#container {
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .indexContent {
@@ -1182,6 +1263,7 @@ a:hover {
 
 /***SLIDE RIGHT**/
 .slide-right {
+<<<<<<< HEAD
   -webkit-animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
           animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
 }
@@ -1199,6 +1281,9 @@ a:hover {
     -webkit-transform: translate(0);
             transform: translate(0);
   }
+=======
+  animation: slide-right 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+>>>>>>> master
 }
 
 @keyframes slide-right {
@@ -1237,6 +1322,7 @@ a:hover {
             transform: translate(0);
   }
 }
+<<<<<<< HEAD
 
 @keyframes slide-left {
   0% {
@@ -1265,3 +1351,7 @@ a:hover {
           flex-direction: column;
 }
 /*# sourceMappingURL=index.css.map */
+=======
+
+/*# sourceMappingURL=index.css.map */
+>>>>>>> master
