@@ -56,6 +56,11 @@ h3{
     .pageTitle {
         margin-right: auto;
         margin-left: 15px;
+        color: $purple;
+    }
+
+    .pageTitle:hover {
+        color: #8d6aa8;
     }
 
     #userSpan {
@@ -66,7 +71,7 @@ h3{
 
     #userSpan:hover {
         cursor: pointer;
-        color: purple;
+        color: $purple;
     }
 
     i {
@@ -105,6 +110,47 @@ h3{
     display: flex;
     justify-content: center;
     align-items: center;   
+}
+
+.unrestricted-section {
+    height: auto;
+    padding-top: 2vh;
+    padding-bottom: 10vh;
+}
+
+.page-section-purple{
+    background-image: linear-gradient(to top, rgba(63, 20, 113, 0.70), rgba(170, 144, 193, 0.70)),
+                    url(../../images/image3.jpg);
+    height: 100vh; 
+    display: flex;
+    background-size: cover;
+    box-shadow: $box-shadow;
+    h3{
+        border-bottom: 1px white solid;
+        line-height: 3;
+        color:cornsilk;
+        
+    }
+    p{
+        color:white;
+        padding: 50px;
+        font-size: 1.2em;
+    }
+                    
+}
+
+
+
+
+#container{
+    
+    
+    background-size: cover; 
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    margin-bottom:20px;       
 }
 
 .indexContent {
@@ -236,7 +282,3 @@ a:hover {
 }
 
 
-#main-container{
-    display:flex;
-    flex-direction: column;
-}
