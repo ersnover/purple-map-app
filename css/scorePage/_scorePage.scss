@@ -56,7 +56,30 @@ $headerFont: 'Noto Sans KR', sans-serif;
         margin-bottom: 1em;
         top: -50
     }
+
+    #favoriteDiv {
+        display: flex;
+        flex-direction: column;
+        
     
+        button {
+            z-index: 5;
+            background: none;
+            border: none;
+            align-self: flex-start;
+            margin-top: 50px;
+        }
+
+        i {
+            color: purple;
+            font-size: 55px;
+        }
+    
+        span {
+            color: gray;
+            font-size: 25px;
+        }
+    }
 }
 
 #second-score-container {
