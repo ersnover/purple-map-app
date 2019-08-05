@@ -87,7 +87,7 @@ function generatePage(algorithmObject) {
         let parameterScore = parameterObj['score']
 
         let importanceClass = determineImportanceClass(parameterImportance)
-        let formattedType = parameterType.replace('_',' ')
+        let formattedType = criteriaStats[parameterType].placeDisplayName
         let detailScoreContainerHeight = detailScoreContainer.clientHeight
         let divDimension = (detailScoreContainerHeight/2.25)
 
@@ -108,37 +108,78 @@ function generatePage(algorithmObject) {
 
 }
 
-    //parameter score details
-    function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber, parameterScore) {
-        let formattedType = parameterType.replace('_',' ')
-        let detailParameterModal = document.getElementById('detail-parameter-modal')
-        let detailParameterContainer = document.getElementById('detail-parameter-container')
-        let disclaimer = ''
-        let formattedParameterNumber = parameterNumber
-        if (parameterNumber == 20) {
-            disclaimer = `<p class="disclaimer">*The maximum number of nearby places per type used for our website is 20. There may be more than 20 ${formattedType}s within 1000 meters.</p>`
-            formattedParameterNumber += '*'
-        }
-        // detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
-        let content =  `<div id="detail-parameter-header">
-                            <span><h2 class="toTitleCase">${formattedType}</h2></span>
-                            <span><h1>${parameterScore}</h1></span>
-                        </div>
-                        <h4>Selected level of importance for ${formattedType}s:</h4>
-                        <h3>${parameterImportance}</h3>
-                        <h4>Number of ${formattedType}s within 1000 meters:</h4>
-                        <h3>${formattedParameterNumber}</h3>
-                        <h4>More information:</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <img src="images/no-image-available.jpg">
-                        ${disclaimer}`
-
-        detailParameterContainer.innerHTML = content
-        detailParameterModal.style.display = 'block'
-    }
-
+//parameter score details
+function generateParameterDetailDiv(parameterType, parameterImportance, parameterNumber,parameterScore) {
+    let formattedType = criteriaStats[parameterType].placeDisplayName
     let detailParameterModal = document.getElementById('detail-parameter-modal')
-    let closeButton = document.getElementsByClassName('close')[0]
-    closeButton.onclick = function(){
-        detailParameterModal.style.display = "none";
+    let detailParameterContainer = document.getElementById('detail-parameter-container')
+    let disclaimer = ''
+    let formattedParameterNumber = parameterNumber
+    if (parameterNumber == 20) {
+        disclaimer = `<p class="disclaimer">*The maximum number of nearby places per type used for our website is 20. There may be more than 20 ${formattedType} within 1000 meters.</p>`
+        formattedParameterNumber += '*'
     }
+    // detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
+    let content =  `<div id="detail-parameter-header">
+                        <span><h2 class="toTitleCase">${formattedType}</h2></span>
+                        <span><h1>${parameterScore}</h1></span>
+                    </div>
+                    <h4>Selected level of importance for ${formattedType}:</h4>
+                    <h3>${parameterImportance}</h3>
+                    <h4>Number of ${formattedType} within 1000 meters:</h4>
+                    <h3>${formattedParameterNumber}</h3>
+                    <h4>More information:</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillumdolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <img src="images/no-image-available.jpg">
+                    ${disclaimer}`
+
+    detailParameterContainer.innerHTML = content
+    detailParameterModal.style.display = 'block'
+}
+
+let detailParameterModal = document.getElementById('detail-parameter-modal')
+let closeButton = document.getElementsByClassName('close')[0]
+closeButton.onclick = function(){
+    detailParameterModal.style.display = "none";
+}
+
+const favoriteBtn = document.getElementById('favoriteBtn')
+const favoriteSpan = document.getElementById('favoriteSpan')
+
+// search saving
+
+
+// favoriteBtn.addEventListener('mouseenter', () => {
+//     if (favoriteBtn.classList.contains('far')) {
+//         favoriteBtn.setAttribute('class', 'fas fa-heart')
+//         favoriteSpan.innerHTML = "Saved!"
+//         setTimeout(() => {
+//             favoriteSpan.style.display = (favoriteSpan.style.display == 'none' ? '' : 'none')
+//         }, 500)
+//     } else {
+//         favoriteBtn.setAttribute('class', 'far fa-heart')
+//         favoriteSpan.innerHTML = "Removed!"
+//         setTimeout(() => {
+//             favoriteSpan.style.display = (favoriteSpan.style.display == 'none' ? '' : 'none')
+//         }, 500)
+//     }
+// })
+
+// to save: 
+
+
+// #favoriteDiv {
+//     display: flex;
+//     flex-direction: column;
+//     position: absolute;
+
+//     i {
+//         color: purple;
+//         font-size: 55px;
+//     }
+
+//     span {
+//         color: gray;
+//         font-size: 25px;
+//     }
+// }

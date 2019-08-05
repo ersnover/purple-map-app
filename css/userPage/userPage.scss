@@ -75,5 +75,50 @@
 }
 
 .savedSearchesContainer {
-    margin-left: 100px;
+    margin-left: 50px;
+
+    .savedSearchDiv {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 3px solid purple;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .savedSearchScore {
+        font-size: 50px;
+    }
+
+    .addressText {
+        font-size: 30px;
+        background: none;
+        border: none;
+    }
+
+    .addressText:hover {
+        color: purple;
+    }
+
+    .savedSearchCriteriaDiv {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .searchFavoriteButton {
+        background: none;
+        border: none;
+    }
+
+    .searchFavoriteButton:hover {
+        opacity: .5;
+    }
+
+    i {
+        font-size: 30px;
+        color: purple;
+    }
 }
+
