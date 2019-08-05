@@ -1,8 +1,8 @@
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
   .purple-body {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(253, 251, 251, 0.7)), to(rgba(170, 144, 193, 0.3)));
     background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
   }
-
   .score-container {
     background-color: white;
     border-radius: 10px;
@@ -11,7 +11,8 @@
     width: 80%;
     height: 65%;
     padding: 60px 50px;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   }
 }
 @media only screen and (min-width: 1000px) {
@@ -40,7 +41,7 @@
 .score-container h2 {
   color: grey;
   font-weight: 350;
-  margin-top: 0.5em;
+  margin-top: .5em;
   text-align: center;
 }
 .score-container h3 {
@@ -51,14 +52,24 @@
 }
 
 #main-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #main-score-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 6em;
   margin-bottom: 2em;
 }
@@ -71,11 +82,39 @@
   justify-content: center;
   top: -60;
 }
+
 #main-score-container #address-container {
   text-align: center;
   position: relative;
   margin-bottom: 1em;
   top: -50;
+}
+
+#main-score-container #favoriteDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+}
+
+#main-score-container #favoriteDiv button {
+  z-index: 5;
+  background: none;
+  border: none;
+}
+
+#main-score-container #favoriteDiv i {
+  color: purple;
+  font-size: 55px;
+}
+
+#main-score-container #favoriteDiv span {
+  color: gray;
+  font-size: 25px;
 }
 
 #second-score-container h3 {
@@ -277,8 +316,8 @@
   border: 1px solid black;
   font-size: 1.2em;
 }
+
 #loginContainer .textItem:focus {
   outline: none;
 }
-
 /*# sourceMappingURL=scorePage.css.map */

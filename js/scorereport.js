@@ -186,6 +186,32 @@ closeButton.onclick = function(){
     detailParameterModal.style.display = "none";
 }
 
+
+//search saving
+const favoriteBtn = document.getElementById('favoriteBtn')
+const favoriteSpan = document.getElementById('favoriteSpan')
+
+favoriteBtn.addEventListener('click', () => {
+    favoriteBtn.innerHTML = '<i class="fas fa-heart"></i>'
+    favoriteBtn.disabled = true
+    saveSearch()
+    favoriteSpan.innerHTML = "Saved!"
+    favoriteSpan.style.display = "block"
+})
+
+function saveSearch() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        let userRef = db.collection('users').doc(user.uid)
+        let currentSearchDoc = userRef.collection('searches').doc('currentSearch')
+        currentSearchDoc.get().then(function(search) {
+            searchData = search.data()
+            userRef.collection('searches').add(searchData)
+        })
+    })
+}
+
+
+
 window.addEventListener('resize', function() {
     generateDetailScoreSection(algorithmObject)
     })

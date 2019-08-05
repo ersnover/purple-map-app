@@ -1,8 +1,25 @@
 @media only screen and (min-width: 1000px) {
     
-    .topDiv #profileInfoDiv #profileImg {
+    .topDiv {
+        position: relative;
+        top: 70px;
+        margin-left: 20px;
+    
+    #profileImg {
         height: 300px;
         width: 300px;
     }
+       
+        #defaultCriteriaContainer {
+            margin-right: 15vw;
+    
+            li {
+                width: 100%;
+            }
+        }
+    }
 
+    .savedSearchesContainer {
+        margin-left: 50px;
+    }
 }

@@ -369,6 +369,25 @@
   margin-bottom: 1em;
   top: -50;
 }
+#main-score-container #favoriteDiv {
+  display: flex;
+  flex-direction: column;
+}
+#main-score-container #favoriteDiv button {
+  z-index: 5;
+  background: none;
+  border: none;
+  align-self: flex-start;
+  margin-top: 50px;
+}
+#main-score-container #favoriteDiv i {
+  color: purple;
+  font-size: 55px;
+}
+#main-score-container #favoriteDiv span {
+  color: gray;
+  font-size: 25px;
+}
 
 #second-score-container h3 {
   font-weight: 400;
