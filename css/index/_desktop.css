@@ -35,27 +35,6 @@
     font-size: 4.5em;
   }
 
-  #footer {
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 30px;
-  }
-  #footer .footerContent {
-    width: 30%;
-  }
-  #footer h3 {
-    margin-bottom: 10px;
-  }
-  #footer .footerContent-extra {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-  }
-  #footer #iconsDiv {
-    justify-content: center;
-  }
-
   .navigation-desktop {
     width: 30%;
     display: flex;
@@ -103,21 +82,6 @@
   .modal-content .loader {
     left: 48%;
     top: 35%;
-  }
-
-  .purple-body {
-    background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
-  }
-
-  .score-container {
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #999;
-    margin: 0 auto;
-    width: 80%;
-    height: 65%;
-    padding: 60px 50px;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   }
 }
 

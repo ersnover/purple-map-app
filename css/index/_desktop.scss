@@ -101,25 +101,4 @@ $headerFont: 'Noto Sans KR', sans-serif;
     }
 }
 
-.purple-body {
-    background-image:linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.30));
-}
-
-.score-container {
-    //white box with shadow and outline proportional to outer div
-    background-color: white;
-    border-radius: 10px;
-    border: 1px solid #999;
-    margin: 0 auto;
-    width: 80%;
-    height: 65%;
-    padding: 60px 50px;
-    box-shadow: $box-shadow;
-}
-
-#second-score-container {
-    // overflow: scroll;
-    // max-height: 500px;
-}
-
 }
