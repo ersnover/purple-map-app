@@ -168,9 +168,12 @@ function grabSavedSearches(searchesSnapshot) {
     let searchDivs = []
 
     searchesSnapshot.docs.forEach(search => {
-       let searchObj = search.data()
-       let div = buildFavSearchDiv(searchObj, search.id)
-       searchDivs.push(div)
+        if (search.id == 'currentSearch') {
+        } else {
+            let searchObj = search.data()
+            let div = buildFavSearchDiv(searchObj, search.id)
+            searchDivs.push(div)
+        }
     })
 
     searchesContainer.innerHTML = searchDivs.join('')
@@ -185,12 +188,12 @@ function buildFavSearchDiv(searchObj, id) {
     let div = `<div id="${id}" class="savedSearchDiv">
                     <span class="savedSearchScore" style="color: ${scoreColor}">${score}</span>
                     <div class="savedSearchTextDiv">
-                        <button class="addressText" onclick="pullScorePage(this)">${address}</button>
+                        <button class="addressText" onclick="pullScorePage()">${address}</button>
                         <div class="savedSearchCriteriaDiv">
                             ${criteriaSpans}
                         </div>
                     </div>
-                    <button class="searchFavoriteButton"><i class="fas fa-heart"></i></button>
+                    <button class="searchFavoriteButton" onclick="unfavoriteSearch(this)"><i class="fas fa-heart"></i></button>
                 </div>`
 
     return div
@@ -208,6 +211,7 @@ function buildCriteriaSpans(array) {
     return criteriaSpans.join('')
 }
 
+// returns hex code based on number 1-100
 function findScoreColor(score) {
     if (score < 50) {
         let decimal = Math.round(5.1 * score)
@@ -224,4 +228,31 @@ function findScoreColor(score) {
         }
         return `#${hex}FF00`
     }
+}
+
+// opens detailed score page for address
+function pullScorePage(button) {
+    let searchId = button.parentElement.parentElement.id
+    firebase.auth().onAuthStateChanged(function(user) {
+        let searchesCollectionRef = db.collection('users').doc(user.uid).collection('searches')
+        let searchRef = searchesCollectionRef.doc(searchId)
+
+        searchRef.get().then(function(obj) {
+            let searchObj = obj.data()
+            searchesCollectionRef.doc('currentSearch').set(searchObj).then(function() {
+                window.location = "score.html"
+            })
+        })
+    })
+}
+
+//removes search from saved list
+function unfavoriteSearch() {
+    let unfavButton = event.target.parentElement
+    let searchId = unfavButton.parentElement.id
+    firebase.auth().onAuthStateChanged(function(user) {
+        let userRef = db.collection('users').doc(user.uid)
+        userRef.collection('searches').doc(searchId).delete()
+    })
+    document.getElementById(searchId).style.display = "none"
 }

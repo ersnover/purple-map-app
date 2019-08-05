@@ -1,18 +1,10 @@
 @import 'mobile', 'midSize', 'desktop', '../index/index.scss';
 
-.navBar {
-    margin-top: -100px;
-}
-
-.topDiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-left: 60px;
-    margin-top: 100px;
-
-
-
+    .topDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
 
     #profileInfoDiv {
         display: flex;
@@ -32,18 +24,16 @@
     }
    
     #defaultCriteriaContainer {
-        width: calc(100vw - 400px);
-        margin-right: 10vw;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
 
         #defaultCriteriaList {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            margin-left: 150px;
 
             .defaultCriteriaDiv {
                 width: 100%;
@@ -67,19 +57,31 @@
 
         li {
             list-style: none;
-            width: 800px;
             display: flex;
             flex-direction: row;
         }
     }
-}
 
 .savedSearchesContainer {
-    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+        font-size: 2.3em;
+    }
+
+    #savedSearchesDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
     .savedSearchDiv {
-        width: 100%;
+        width: 90%;
         margin-bottom: 10px;
+        margin-right: 0;
         padding: 10px;
         border: 3px solid purple;
         border-radius: 10px;
@@ -92,20 +94,26 @@
         font-size: 50px;
     }
 
-    .addressText {
-        font-size: 30px;
-        background: none;
-        border: none;
-    }
+    .savedSearchTextDiv {
+        width: 80%;
+        text-align: center;
 
-    .addressText:hover {
-        color: purple;
+        .addressText {
+            font-size: 30px;
+            background: none;
+            border: none;
+        }
+    
+        .addressText:hover {
+            color: purple;
+        }
+    
+        .savedSearchCriteriaDiv {
+            display: flex;
+            justify-content: space-between;
+        }
     }
-
-    .savedSearchCriteriaDiv {
-        display: flex;
-        justify-content: space-between;
-    }
+    
 
     .searchFavoriteButton {
         background: none;

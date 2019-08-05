@@ -1,25 +1,8 @@
-<<<<<<< HEAD
-.purple-body {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(253, 251, 251, 0.7)), to(rgba(170, 144, 193, 0.3)));
-  background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
-}
-
-.score-container {
-  background-color: white;
-  border-radius: 10px;
-  border: 1px solid #999;
-  margin: 0 auto;
-  width: 80%;
-  height: 65%;
-  padding: 60px 50px;
-  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
-          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
-=======
 @media only screen and (min-width: 1000px) {
   .purple-body {
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(253, 251, 251, 0.7)), to(rgba(170, 144, 193, 0.3)));
     background-image: linear-gradient(to top, rgba(253, 251, 251, 0.7), rgba(170, 144, 193, 0.3));
   }
-
   .score-container {
     background-color: white;
     border-radius: 10px;
@@ -28,34 +11,24 @@
     width: 80%;
     height: 65%;
     padding: 60px 50px;
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
   }
->>>>>>> master
 }
 
 .score-container h1 {
   color: grey;
   font-weight: 700;
-<<<<<<< HEAD
-  font-size: 7em;
-  margin-top: .3em;
-=======
   font-size: 5em;
   margin-bottom: 0;
   text-align: center;
->>>>>>> master
 }
 
 .score-container h2 {
   color: grey;
   font-weight: 350;
-<<<<<<< HEAD
-  font-size: 4em;
   margin-top: .5em;
-=======
-  margin-top: 0.5em;
   text-align: center;
->>>>>>> master
 }
 
 .score-container h3 {
@@ -66,23 +39,26 @@
 }
 
 #main-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #main-score-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-<<<<<<< HEAD
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-=======
-  flex-direction: column;
-  justify-content: center;
->>>>>>> master
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 6em;
   margin-bottom: 2em;
 }
@@ -98,16 +74,7 @@
   position: relative;
   top: -60;
 }
-<<<<<<< HEAD
 
-#main-score-container h2 {
-  font-size: 7em;
-  text-align: center;
-  margin-top: 0;
-}
-
-=======
->>>>>>> master
 #main-score-container #address-container {
   text-align: center;
   position: relative;
@@ -115,14 +82,33 @@
   top: -50;
 }
 
-<<<<<<< HEAD
-#second-score-container {
-  overflow: scroll;
-  max-height: 500px;
+#main-score-container #favoriteDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
 }
 
-=======
->>>>>>> master
+#main-score-container #favoriteDiv button {
+  z-index: 5;
+  background: none;
+  border: none;
+}
+
+#main-score-container #favoriteDiv i {
+  color: purple;
+  font-size: 55px;
+}
+
+#main-score-container #favoriteDiv span {
+  color: gray;
+  font-size: 25px;
+}
+
 #second-score-container h3 {
   font-weight: 400;
   margin-bottom: 1em;
@@ -307,9 +293,78 @@
 .score-footer {
   background-color: white;
 }
-<<<<<<< HEAD
-/*# sourceMappingURL=scorePage.css.map */
-=======
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 4px 28px rgba(0, 0, 0, 0.25), 0 6px 10px rgba(0, 0, 0, 0.22);
+}
+
+.modal .modal-content div {
+  margin: 10px;
+}
+
+.modal .modal-content .close {
+  color: #777;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal .modal-content .close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#loginContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10%;
+}
+
+#loginContainer .pageTitle {
+  color: #572a7a;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 3em;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+#loginContainer .textItem {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  font-size: 1.2em;
+}
+
+#loginContainer .textItem:focus {
+  outline: none;
+}
 /*# sourceMappingURL=scorePage.css.map */
->>>>>>> master
