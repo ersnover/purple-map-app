@@ -1,0 +1,13 @@
+@media only screen and (max-width: 580px) {
+    #page-section-one {
+        background-image:linear-gradient(to top, white, rgba(170, 144, 193, 0.30));
+    }
+    #detail-parameter-modal {
+        .modal-content {
+            height: auto;
+        }
+    }
+    #detail-parameter-header {
+        margin: 0;
+    }
+}

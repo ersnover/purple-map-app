@@ -28,11 +28,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function determineImportanceClass(parameterImportance) {
     if (parameterImportance == highImp) {
-        return highImp
+        return 'very-important'
     } else if (parameterImportance == medImp) {
-        return medImp
+        return 'important'
     } else if (parameterImportance == lowImp) {
-        return lowImp
+        return 'somewhat-important'
     }
 }
 
@@ -81,11 +81,15 @@ function generateDetailScoreSection(algorithmObject) {
     let parameterInfo = algorithmObject['criteriaArray']
     let detailScoreContainer = document.getElementById('detail-score-container')
 
+    let veryImportantDivs = []
+    let importantDivs = []
+    let somewhatImportantDivs =[]
     let detailScoreArray =[]
     let count = 1
-    let factorsHeader = document.getElementById('factors-header')
-    let factorsHeaderHeight = factorsHeader.clientHeight
-    parameterInfo.forEach(function(parameterObj) { //change the type name
+    let mainHeader = document.getElementById('main-header')
+    let mainHeaderHeight = mainHeader.clientHeight
+    parameterInfo.forEach(function(parameterObj) {
+        //break into smaller functions
         let parameterType = parameterObj['type']
         let parameterImportance = parameterObj['importance']
         let parameterNumber = parameterObj['number']
@@ -93,17 +97,36 @@ function generateDetailScoreSection(algorithmObject) {
 
         let importanceClass = determineImportanceClass(parameterImportance)
         let formattedType = parameterType.replace('_',' ')
-        let divDimension = factorsHeaderHeight * 3.75
+        let divDimension = mainHeaderHeight * 1.35
 
         let div = `<div class="parameter-container ${importanceClass}" id="parameter-container-${count}" style="height:${divDimension}; width:${divDimension}" onclick="generateParameterDetailDiv('${parameterType}','${parameterImportance}','${parameterNumber}','${parameterScore}')">
-                        <h3 class="toTitleCase">${formattedType}</h3>
+                        <h3 class="toTitleCase">${formattedType}s</h3>
                         <h2>${parameterScore}</h2>
                     </div>`
 
-        detailScoreArray.push(div)
+        if (importanceClass == 'very-important') {
+            veryImportantDivs.push(div)
+        } else if (importanceClass == 'important') {
+            importantDivs.push(div)
+        } else if (importanceClass == 'somewhat-important') {
+            somewhatImportantDivs.push(div)
+        }
         count += 1
     })
+    veryImportantDivs.forEach(function(div) {
+        detailScoreArray.push(div)
+    })
+    importantDivs.forEach(function(div) {
+        detailScoreArray.push(div)
+    })
+    somewhatImportantDivs.forEach(function(div) {
+        detailScoreArray.push(div)
+    })
+
     detailScoreContainer.innerHTML = detailScoreArray.join('')
+
+    let factorsHeader = document.getElementById('factors-header')
+    let factorsHeaderHeight = factorsHeader.clientHeight
     let parameterContainer = document.getElementById('parameter-container-1')
     let parameterContainerDimension = parameterContainer.clientHeight
     let parameterContainerWidth = parameterContainerDimension + 40
@@ -111,17 +134,15 @@ function generateDetailScoreSection(algorithmObject) {
     let numParameters = detailScoreArray.length
     let parameterContainersTotalWidth = parameterContainerWidth*numParameters
     let secondScoreContainer = document.getElementById('second-score-container')
-    // let secondScoreContainerWidth = secondScoreContainer.clientWidth
     let detailScoreContainerWidth = detailScoreContainer.clientWidth
 
-    //change this whole thing into a do while loop
     if ( parameterContainersTotalWidth > detailScoreContainerWidth) {
         let numParametersPerRow = (Math.floor(detailScoreContainerWidth/parameterContainerWidth))
         let numRows = Math.ceil(numParameters/numParametersPerRow)
         let parameterContainerTotalRowHeight = parameterContainerRowHeight * numRows
-        secondScoreContainer.style.height = factorsHeaderHeight + parameterContainerTotalRowHeight + 60
+        secondScoreContainer.style.height = factorsHeaderHeight + parameterContainerTotalRowHeight + 50
     } else {
-        secondScoreContainer.style.height = factorsHeaderHeight + parameterContainerRowHeight + 60
+        secondScoreContainer.style.height = factorsHeaderHeight + parameterContainerRowHeight + 50
     }
 }
 
@@ -143,7 +164,7 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
     }
     // detailParameterImportanceBar.className = determineImportanceClass(parameterImportance)
     let content =  `<div id="detail-parameter-header">
-                        <span><h2 class="toTitleCase">${formattedType}</h2></span>
+                        <span><h2 class="toTitleCase">${formattedType}s</h2></span>
                         <span><h1>${parameterScore}</h1></span>
                     </div>
                     <h4>Selected level of importance for ${formattedType}s:</h4>
@@ -152,7 +173,7 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
                     <h3>${formattedParameterNumber}</h3>
                     <h4>More information:</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <img src="images/no-image-available.jpg">
+                    <img src="http://via.placeholder.com/640x360">
                     ${disclaimer}`
 
     detailParameterContainer.innerHTML = content
@@ -160,7 +181,7 @@ function generateParameterDetailDiv(parameterType, parameterImportance, paramete
 }
 
 let detailParameterModal = document.getElementById('detail-parameter-modal')
-let closeButton = document.getElementsByClassName('close')[0]
+let closeButton = document.getElementsByClassName('close')[1]
 closeButton.onclick = function(){
     detailParameterModal.style.display = "none";
 }
