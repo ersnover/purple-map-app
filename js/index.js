@@ -1,6 +1,5 @@
 let usersCollectionRef = db.collection('users')
 let userRef = ""
-let activeUserId = ""
 var finalAddress = ""
 
 firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE - variable names will be used lower in script
@@ -14,11 +13,12 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
         var uid = user.uid;
         var providerData = user.providerData;
 
-        usernameSpan.innerHTML = email
-
-        activeUserId = uid
-
         userRef = usersCollectionRef.doc(uid)
+
+        userRef.get().then(function(obj) {
+            userProfile = obj.data()
+            document.getElementById('userSpan').innerHTML = userProfile.firstName
+        })
     }    
 })
 
