@@ -30,6 +30,11 @@ $headerFont: 'Noto Sans KR', sans-serif;
         margin-top: 0;
         text-align: center;
     }
+    h4 {
+        color: grey;
+        font-size: 1.5em;
+        font-weight: 500;
+    }
 }
 
 #main-container{
@@ -43,11 +48,13 @@ $headerFont: 'Noto Sans KR', sans-serif;
     justify-content: center;
     margin-top: 6em;
     margin-bottom:2em;
+    #main-header h1 {
+        margin-top:.5em;
+    }
     .header-container{
         position: relative;
         display: flex;
         justify-content: center;
-        position: relative;
         top: -60;
     }
     #address-container{
@@ -87,8 +94,10 @@ $headerFont: 'Noto Sans KR', sans-serif;
         font-weight:400;
         margin-bottom: 1em;
     }
-    .header-container{
+    h4 {
         text-align: center;
+        margin-top: 0;
+        margin-bottom: .6em;
     }
     #detail-score-container {
         //flex for squares inside
@@ -103,6 +112,9 @@ $headerFont: 'Noto Sans KR', sans-serif;
             align-items: center;
             box-shadow: $box-shadow;
             margin: 20px;
+        }
+        .parameter-container:hover{
+            background-color: #8d6aa8;
         }
         h2 {
             color: white;
@@ -144,19 +156,19 @@ $headerFont: 'Noto Sans KR', sans-serif;
     img {
         width: 100%;
     }
-    #detail-parameter-header {
-        display: flex;
-        justify-content: space-between;
-        margin: 0;
-    }
 }
 
 .modal-content {
     h1 {
         color:$purple;
+        margin-top: 25;
+        margin-bottom: 0;
     }
     h2 {
         color:grey;
+        margin-top: 30;
+        margin-bottom: 0;
+        padding-right: 2em;
     }
     h3 {
         color: $purple;
@@ -183,13 +195,16 @@ $headerFont: 'Noto Sans KR', sans-serif;
 }
 
 .very-important {
-    background-image: linear-gradient(to top, #19012c, #a785c2);
+    // background-image: linear-gradient(to top, #19012c, #a785c2);
+    background-color: #300e47;
 }
 .important {
-    background-image: linear-gradient(to top, #361054, #c6b0d7);
+    // background-image: linear-gradient(to top, #361054, #c6b0d7);
+    background-color: $purple;
 }
 .somewhat-important {
-    background-image: linear-gradient(to top, #765093, #e5d5ef);
+    // background-image: linear-gradient(to top, #765093, #e5d5ef);
+    background-color: #9a7cb1;
 }
 
 .svg-score{

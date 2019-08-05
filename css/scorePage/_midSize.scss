@@ -1,0 +1,28 @@
+$purple: #572a7a;
+$gray: #777;
+$box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
+$headerFont: 'Noto Sans KR', sans-serif;
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
+    .purple-body {
+        background-image:linear-gradient(to top, white, rgba(170, 144, 193, 0.30));
+    }
+    
+    .score-container {
+        //white box with shadow and outline proportional to outer div
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #999;
+        margin: 0 auto;
+        width: 80%;
+        height: 65%;
+        padding: 60px 50px;
+        box-shadow: $box-shadow;
+    }
+    #detail-parameter-header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+}
