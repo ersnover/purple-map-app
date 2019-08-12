@@ -36,7 +36,6 @@ function replaceDiv(){
     addressDivParent.replaceChild(preferencesDiv, addressDiv)
     goBackButton.addEventListener('click', function() {
         goBack()
-        console.log('hey')
     })
 }
 
@@ -162,4 +161,5 @@ function renderLoader(parent) {
     `
     parent.insertAdjacentHTML('beforeend', loader)
     document.getElementById("overlay").style.display = "block";
+    window.scrollTop = window.scrollHeight
 }
