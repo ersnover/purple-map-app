@@ -161,5 +161,5 @@ function renderLoader(parent) {
     `
     parent.insertAdjacentHTML('beforeend', loader)
     document.getElementById("overlay").style.display = "block";
-    window.scrollTop = window.scrollHeight
+    window.scrollTop(0)
 }
