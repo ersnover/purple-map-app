@@ -48,37 +48,6 @@ $headerFont: 'Noto Sans KR', sans-serif;
     }
     
 
-    #footer{
-        display: flex;
-        justify-content: space-around;
-        .footerContent{
-            width: 30%;
-        }
-        h3{
-            margin-bottom: 30px;
-        }
-        .footerContent-extra{
-            width:30%;
-            display: flex;
-            flex-direction: column;
-        }
-        #iconsDiv{
-            justify-content: center;
-        }
-    }
-    
-
-    .navigation-desktop{
-        width: 30%;
-        display:flex;
-        flex-direction: column;
-    }
-
-    .navigation-mobile{
-        display: none;
-        
-    }
-
     #search-criteria-div{
         -webkit-column-count: 2;
         -moz-column-count: 2;

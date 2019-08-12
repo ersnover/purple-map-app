@@ -1,9 +1,8 @@
-@media only screen and (min-width: 1000px) {
-
+@media only screen and (min-width: 480px) and (max-width: 1000px) {
     #footer{
-        text-align:center;
+        text-align: center;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding-bottom: 30px;
         .footerContent{
             width: 30%;
@@ -34,4 +33,5 @@
         display: none;
         
     }
+
 }
