@@ -1,25 +1,25 @@
 @media only screen and (min-width: 1000px) {
-    
-    .topDiv {
-        position: relative;
-        top: 70px;
-        margin-left: 20px;
-    
     #profileImg {
         height: 300px;
         width: 300px;
     }
-       
-        #defaultCriteriaContainer {
-            margin-right: 15vw;
-    
-            li {
-                width: 100%;
-            }
-        }
+
+    #defaultCriteriaList {
+        width: 800px;
     }
 
-    .savedSearchesContainer {
-        margin-left: 50px;
+    .search-h3 {
+        margin-bottom: 1em;
     }
+
+    #search-crit-div {
+        .search-criteria-element {
+            width: 40%;
+        }
+        select {
+            margin-left: 10px;
+            font-size: 16px;
+        }
+    } 
+
 }

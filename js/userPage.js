@@ -40,49 +40,45 @@ firebase.auth().onAuthStateChanged(function(user) {        //KEEP ON THIS PAGE -
 // BUILD DEFAULT CRITERIA DIV
 
 const defaultContainer = document.getElementById('defaultCriteriaList')
-
 placeTypes = Object.keys(criteriaStats)
 
-placeTypes.map((type) => {
-    
-    const googleId = criteriaStats[type].googleidname
-    const placeDisplayName =criteriaStats[type].placeDisplayName
+let searchCriteriaArray =[]
+let count = 1
+let mainHeader = document.getElementById('defaultHeader')
+let mainHeaderHeight = mainHeader.clientHeight
 
-    const criteriaDiv = `
-    
-    <li>
-    <label for="${googleId}Checkbox" class="place-type container">
-    
-    ${placeDisplayName}
+placeTypes.forEach(function(placeType) {
+    const googleId = criteriaStats[placeType].googleidname
+    const placeDisplayName = criteriaStats[placeType].placeDisplayName
 
-    <input type="checkbox" name="${googleId}Checkbox" id="${googleId}Checkbox" class="place-type-checkbox defaultCriteriaCheckbox"  data-selectid="${googleId}"> 
+    let divDimension = mainHeaderHeight * 1.35
 
-    <span class="checkmark"></span>
+    let div =`<!-- <div id="search-criteria-element-${count}"  class="search-criteria-element" style="height:${divDimension}; width:200px"> -->
+        <div id="search-criteria-element-${count}"  class="search-criteria-element">
+            <label for="${googleId}Selection">${placeDisplayName}</label>
+            <select  id="${googleId}" class="importance-selector">
+                <option class="not-important" value="">&#160&#160&#160&#160--&#160 Select &#160--&#160</option>
+                <option value="${googleId}&${highImp}">&#160&#160${highImp}</option>
+                <option value="${googleId}&${medImp}">&#160&#160&#160&#160&#160&#160&#160${medImp}</option>
+                <option value="${googleId}&${lowImp}">${lowImp}</option>
+            </select>
+        </div>`
 
-    </label>
-
-    <select  id="${googleId}" class="importance-selector">
-        <option value="${highImp}">${highImp}</option>
-        <option value="${medImp}">${medImp}</option>
-        <option value="${lowImp}">${lowImp}</option>
-    </select>
-    </li>
-    `
-
-    defaultContainer.insertAdjacentHTML('beforeend',criteriaDiv)
+    searchCriteriaArray.push(div)
+    count += 1
 })
 
+defaultContainer.innerHTML = searchCriteriaArray.join('')
 
 
 // SAVE DEFAULT SEARCH CRITERIA TO DATABASE
-const defaultCriteriaCheckboxes = document.querySelectorAll('.defaultCriteriaCheckbox')
+const allSelections = document.querySelectorAll('.importance-selector')
 const updateDefaultsButton = document.getElementById('updateDefaultsButton')
 
-defaultCriteriaCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
+allSelections.forEach(selection => {
+    selection.addEventListener('change', () => {
         updateDefaultsButton.innerHTML = "Update Defaults"
         updateDefaultsButton.disabled = false       // enables update button once new criteria have been selected
-        displaySelector(event.target)
     })
 })
 
@@ -104,24 +100,11 @@ function populateCriteriaFromDefaults(defaultCriteriaObjs) {
         let criteriaType = critObj.type
         let criteriaImportance = critObj.importance
 
-        let checkbox = document.getElementById(`${criteriaType}Checkbox`)
-        let select = document.getElementById(checkbox.dataset.selectid)
+        let select = document.getElementById(criteriaType)
 
-        checkbox.setAttribute('checked', 'true')
-        select.value = criteriaImportance
-        select.style.display = 'inline-block'
+        select.value = `${criteriaType}&${criteriaImportance}`
+        select.style.color = 'black'
     })
-}
-
-function displaySelector(checkbox) {
-    let selectorId = checkbox.dataset.selectid
-    let selector = document.getElementById(selectorId)
-    
-    if (checkbox.checked) {
-        selector.style.display = "inline-block"
-    } else {
-        selector.style.display = "none"
-    }
 }
 
 //GO FUNCTION
@@ -137,16 +120,16 @@ function updateDefaultSearchCriteria(userRef) {
 
     let defaultCriteriaInputObjs = []
 
-    defaultCriteriaCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            let criteriaType = checkbox.dataset.selectid
-
-            let selector = document.getElementById(criteriaType)
-            let criteriaImportance = selector.value
+    allSelections.forEach(selection => {
+        if (selection.value) {
+            let selectionString = selection.value
+            let ampersandIndex = (selectionString).indexOf('&')
+            let placeType = (selectionString).substring(0,ampersandIndex)
+            let placeTypeImportance = (selectionString).substring(ampersandIndex + 1, selectionString.length)
 
             let obj = {
-                type: criteriaType,
-                importance: criteriaImportance
+                type: placeType,
+                importance: placeTypeImportance
             }
             defaultCriteriaInputObjs.push(obj)
         }
@@ -159,7 +142,24 @@ function updateDefaultSearchCriteria(userRef) {
         updateDefaultsButton.disabled = true        // disables update button until new criteria are selected
     })
 }
+
 // end default search criteria saving
+
+var base = document.querySelector('#defaultCriteriaList');
+var selector = '.importance-selector';
+
+base.addEventListener('change', function(event) {
+  var closest = event.target.closest(selector);
+  if (closest && base.contains(closest)) {
+    if (event.target.value == '') {
+        event.target.style.color = 'grey'
+    } else {
+        event.target.style.color = 'black'
+    }
+  }
+});
+
+
 
 // SAVED SEARCHES
 
