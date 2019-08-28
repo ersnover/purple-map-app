@@ -46,22 +46,6 @@ $headerFont: 'Noto Sans KR', sans-serif;
         }
         
     }
-    
-
-    #search-criteria-div{
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    
-        -webkit-column-gap: 50px;
-        -moz-column-gap: 50px;
-        column-gap: 50px;
-
-        ul {
-            display: flex;
-            flex-direction: row;  
-        }
-    }
 
     
     .modal-content{
