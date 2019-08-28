@@ -1,80 +1,97 @@
-@import 'mobile', 'midSize', 'desktop', '../index/index.scss';
+@import 'mobile', 'midSize', 'desktop';
+
+$purple: #572a7a;
+$gray: #777;
+$box-shadow:0 4px 28px rgba(0,0,0,0.25), 0 6px 10px rgba(0,0,0,0.22);
+$headerFont: 'Noto Sans KR', sans-serif;
+$purple-gradient: linear-gradient(to top, rgba(63, 20, 113, 0.50), rgba(170, 144, 193, 0.50));
+$div-border-radius: 20px; 
+
+// body {
+//     background-image: $purple-gradient;
+// }
+
+html {
+    height: 100%;
+}
 
 body {
-    background: $purple-gradient;
+    background-image: $purple-gradient;
+    background-attachment: fixed;
 }
-    .topDiv {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
 
-    #profileInfoDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+.mainButton {
+        max-width: 300px;
+}
 
-        #profileImg {
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid $purple;
-            box-shadow: $box-shadow;
-        }
+#mainBodyDiv {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        #editProfileButton {
-            font-size: 12px;
-        }
-    }
-   
-    #defaultCriteriaContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+.topDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        #defaultCriteriaList {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            .defaultCriteriaDiv {
-                width: 100%;
-                // border-bottom: 1px solid purple;
-                display: flex;
-                justify-content: flex-start;
-            }
-        }
-
-        select {
-            margin-left: auto;
-            margin-left: 10px;
-            height: 30px;
-            // border-color: $purple;
-            border: 2px solid $purple;
-            border-radius: 2px;
-            background-color: #eee;
-            font-size: 16px;
-        }
-
-
-        li {
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-        }
-    }
-
-.savedSearchesContainer {
-    margin-top: 50px;
-    margin-bottom: 50px;
+#profileInfoDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    h3 {
-        font-size: 2.3em;
+    span {
+        margin-top: 5px;
     }
+
+    #profileImg {
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid $purple;
+        box-shadow: $box-shadow;
+    }
+
+    #editProfileButton {
+        font-size: 12px;
+    }
+}
+
+#defaultCriteriaContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#defaultCriteriaList {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    .search-criteria-element{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 5% 5px 5%;
+    }
+    select {
+        height: 30px;
+        border: 2px solid $purple;
+        border-radius: 2px;
+        background-color: #eee;
+        color: grey;
+    }
+}
+
+
+.savedSearchesContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     #savedSearchesDiv {
         display: flex;

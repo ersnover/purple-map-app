@@ -1,15 +1,17 @@
 /*mobile*/
-@media only screen and (max-width: 580px) {
-#go-back-btn {
-    width: 30%;
-    height: 40px;
-    font-size: 15px;
-    text-align: center;
-    padding: 5px;
-    left: .8rem;
-    top: 70px;
-    position: absolute;
-}
+@media only screen and (max-width: 480px) {
+    .mainButton {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 1.5em;
+        padding: 10px 30px;
+    }
+    .see-results-btn {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        padding: 10px 15px;
+    }
 }
 
 
@@ -17,15 +19,40 @@
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
     .mainButton {
         width:47%;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 1.5em;
+        padding: 10px 30px;
     }
     #go-back-btn {
-        width: 15%;
-        font-size: 15px;
-        text-align: center;
-        padding: 5px;
-        left: 6rem;
-        top: 2.5rem;
-        position: absolute;
+        margin-bottom: 15px;
+    }
+    .see-results-btn {
+        margin-top: 40px;
+    }
+    @media only screen and (min-width: 480px) and (max-width: 750px) {
+        .see-results-btn {
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            padding: 10px 15px;
+        }
+    }   
+}
+
+/*desktop*/
+@media only screen and (min-width: 1000px) {
+    .see-results-btn {
+        margin-top: 50px;
+    }
+    #go-back-btn {
+        margin-bottom: 1.5em;
+    }
+    .mainButton {
+        margin-top: 40px;
+        margin-bottom: 30px;
+        font-size: 1.5em;
+        padding: 10px 30px;
     }
 }
 
@@ -33,11 +60,7 @@
 .mainButton {
     background-color: $purple;
     color: white;
-    padding: 10px 30px;
-    font-size: 1.5em;
     border-radius: 15px;
-    margin-top: 10px;
-    margin-bottom: 30px;
     box-shadow: $box-shadow;
     border: none;
 
@@ -54,5 +77,12 @@
 
 .see-results-btn {
     width: 40%;
-    margin-top: 50px;
+}
+
+#go-back-btn {
+    width: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0;
+    font-size: .75em;
 }

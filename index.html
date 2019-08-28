@@ -10,7 +10,7 @@
 <body>
 
     <nav class="navBar">
-        <a href="/index.html"class="pageTitle">Purple</a>
+        <a href="/index.html" id="pageTitle" class="pageTitle">Purple</a>
 
         <span id="userSpan" class="pageTitle"></span>
 
@@ -24,7 +24,7 @@
     <div id="container">
         <div id ="addressIntakeDiv" class="indexContent slide-right">
             <h1>Purple</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium natus quidem facilis, animi eveniet blanditiis perferendis porro doloribus? Porro eligendi optio cum aspernatur iure nesciunt excepturi voluptatum repudiandae molestias in!</p>
+            <p>Live by what's important to you! Enter an address, select the places that are important to you, and get your address score.</p>
                 <input type="text" placeholder="Enter an address..." id="addressInput">
                 <div id="text"></div>
                 <button id="addressIntakeBtn" class="mainButton">
@@ -36,17 +36,16 @@
 
 <!-- PLACE TYPE SELECTION DIV -->
     <div id="search-div" class="indexContent slide-right">
-            
-        <button class='mainButton go-back-btn' id="go-back-btn">&laquo; Go Back</button>
-        
-        <ul id="search-criteria-div">
-            
-        </ul>
-    
+        <div id="go-back-div">
+            <button class='mainButton go-back-btn' id="go-back-btn">&laquo; Back</button>
+        </div>
+        <h3>Select the places that are important to you</h3>
+        <div id ="search-crit-div">
+
+        </div>
+        <!-- what is this -->
         <span id="defaultsLoadedSpan"></span>
-        
-        <button id="see-results-btn" class="mainButton see-results-btn">See Your Results!</button>
-    
+        <button id="see-results-btn" class="mainButton see-results-btn">Get Your Score!</button>
         <div class="alert-box failure" id="error-msg">Please select at least on place type.</div>
     
     </div>
@@ -56,7 +55,7 @@
             <img src="images/image1.jpg">
             <div id="nearbyContent">
                 <h3>Nearby Places</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed reiciendis asperiores aliquid mollitia ipsum, perspiciatis eligendi dicta aperiam ea nulla commodi voluptatem delectus omnis minus nam, itaque quibusdam quis. Illo.</p>
+                <p>Here at Purple, we believe every person should be able to live by what's important to them. If living by restaurants and bars makes you happy, you should live by restaurants and bars! If having bus stops and grocery stores nearby is more important to you, you should find a place where there are a few nearby! We know that nearby places are critical to deciding where you live, and we want to make the process easy for you.</p>
             </div>
         </div>
     </div> 
