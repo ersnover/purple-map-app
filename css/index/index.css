@@ -609,6 +609,10 @@
     font-size: 14px;
     margin-left: 0;
   }
+
+  #defaultsLoadedSpan {
+    color: white;
+  }
 }
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
   #search-div h3 {
@@ -619,6 +623,10 @@
   #search-crit-div select {
     margin-left: 10px;
     font-size: 16px;
+  }
+
+  #defaultsLoadedSpan {
+    color: #572a7a;
   }
 }
 @media only screen and (min-width: 480px) and (max-width: 1000px) and (min-width: 480px) and (max-width: 750px) {
@@ -647,6 +655,10 @@
   #search-crit-div select {
     margin-left: 10px;
     font-size: 16px;
+  }
+
+  #defaultsLoadedSpan {
+    color: #572a7a;
   }
 }
 #search-div {
@@ -681,6 +693,10 @@
   border-radius: 2px;
   background-color: #eee;
   color: grey;
+}
+
+#defaultsLoadedSpan {
+  margin-top: 15px;
 }
 
 .alert-box {
