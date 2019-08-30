@@ -5,6 +5,7 @@ $headerFont: 'Noto Sans KR', sans-serif;
 @media only screen and (min-width: 480px) and (max-width: 1000px) {
     .purple-body {
         background-image:linear-gradient(to top, white, rgba(170, 144, 193, 0.30));
+        background-attachment: fixed;
     }
     
     .score-container {
