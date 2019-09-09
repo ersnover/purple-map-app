@@ -827,6 +827,7 @@
 }
 #footer {
   display: flex;
+  width: 100%;
 }
 #footer .footerContent {
   display: flex;
